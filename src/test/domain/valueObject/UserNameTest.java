@@ -1,11 +1,10 @@
-package test.domain.valueObjects;
+package domain.valueObject;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
 import domain.exceptions.UserNameInvalidException;
-import domain.valueObject.UserName;
 
 class UserNameTest {
 
