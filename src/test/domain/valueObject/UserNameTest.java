@@ -41,6 +41,5 @@ class UserNameTest {
 		
 		assertEquals(UserName.ERROR_TOO_LONG , error.getMessage());
 	}
-	
 
 }

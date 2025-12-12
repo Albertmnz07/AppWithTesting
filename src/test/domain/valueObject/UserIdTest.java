@@ -13,6 +13,8 @@ class UserIdTest {
     @Test
     void shouldInstantiateUserId(){
         UserId id = new UserId(UUID.randomUUID());
+        assertNotNull(id);
+
     }
 
     @Test
