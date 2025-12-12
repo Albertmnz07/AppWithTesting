@@ -1,7 +1,7 @@
 package domain.entities;
 
 import domain.exceptions.SameUsersException;
-import domain.valueObject.ChatID;
+import domain.valueObject.ChatId;
 import domain.valueObject.Password;
 import domain.valueObject.UserId;
 import domain.valueObject.UserName;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ChatTest {
 
     private User userA , userB;
-    private ChatID id;
+    private ChatId id;
 
     @BeforeEach
     void setUp(){
@@ -25,31 +25,31 @@ class ChatTest {
         userB = new User(new UserName("Juan") ,
                 new Password("cba") ,
                 new UserId(UUID.randomUUID()));
-        id = new ChatID(UUID.randomUUID());
+        id = new ChatId(UUID.randomUUID());
     }
 
     @Test
     void shouldInstantiateChat(){
-        Chat chat = new Chat(userA , userB , new ChatID(UUID.randomUUID()));
+        Chat chat = new Chat(userA , userB , new ChatId(UUID.randomUUID()));
         assertNotNull(chat);
     }
 
     @Test
     void shouldGetUserA(){
-        Chat chat = new Chat(userA , userB , new ChatID(UUID.randomUUID()));
+        Chat chat = new Chat(userA , userB , new ChatId(UUID.randomUUID()));
         assertEquals(userA , chat.getUserA());
     }
 
     @Test
     void shouldGetUserB(){
-        Chat chat = new Chat(userA , userB , new ChatID(UUID.randomUUID()));
+        Chat chat = new Chat(userA , userB , new ChatId(UUID.randomUUID()));
         assertEquals(userB , chat.getUserB());
     }
 
     @Test
     void shouldGetChatId(){
         Chat chat = new Chat(userA , userB , id);
-        assertEquals(id , chat.getChatID());
+        assertEquals(id , chat.getChatId());
     }
 
     @Test

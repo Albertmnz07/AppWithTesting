@@ -4,16 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IDEmptyExceptionTest {
+class IdEmptyExceptionTest {
 
     @Test
     void shouldInstantiateIDEmptyException(){
-        IDEmptyException error = new IDEmptyException("");
+        IdEmptyException error = new IdEmptyException("");
     }
 
     @Test
     void shouldCatchIDEmptyException(){
-        IDEmptyException error = new IDEmptyException("abc");
+        IdEmptyException error = new IdEmptyException("abc");
         assertEquals("abc" , error.getMessage());
     }
 

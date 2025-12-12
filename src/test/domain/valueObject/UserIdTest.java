@@ -1,9 +1,8 @@
 package domain.valueObject;
 
-import domain.exceptions.IDEmptyException;
+import domain.exceptions.IdEmptyException;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Executable;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,7 +33,7 @@ class UserIdTest {
 
     @Test
     void shouldThrowIfNull(){
-        IDEmptyException error = assertThrows(IDEmptyException.class , () -> new UserId(null));
+        IdEmptyException error = assertThrows(IdEmptyException.class , () -> new UserId(null));
         assertEquals(UserId.USERID_NULL_ERROR , error.getMessage());
     }
 

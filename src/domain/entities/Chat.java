@@ -1,17 +1,17 @@
 package domain.entities;
 
 import domain.exceptions.SameUsersException;
-import domain.valueObject.ChatID;
+import domain.valueObject.ChatId;
 
 public class Chat {
 
     private final User userA;
     private final User userB;
-    private final ChatID chatID;
+    private final ChatId chatId;
 
     public static final String SAME_USER_ERROR = "Both users in chat must be different";
 
-    public Chat(User userA , User userB , ChatID chatID){
+    public Chat(User userA , User userB , ChatId chatId){
 
         if (userA.equals(userB)){
             throw new SameUsersException(SAME_USER_ERROR);
@@ -19,7 +19,7 @@ public class Chat {
 
         this.userA = userA;
         this.userB = userB;
-        this.chatID = chatID;
+        this.chatId = chatId;
     }
 
     public User getUserA(){
@@ -30,8 +30,8 @@ public class Chat {
         return userB;
     }
 
-    public ChatID getChatID(){
-        return chatID;
+    public ChatId getChatId(){
+        return chatId;
     }
 
 }

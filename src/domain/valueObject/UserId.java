@@ -1,6 +1,6 @@
 package domain.valueObject;
 
-import domain.exceptions.IDEmptyException;
+import domain.exceptions.IdEmptyException;
 
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ public class UserId {
     public UserId(UUID userId){
 
         if (userId == null){
-            throw new IDEmptyException(USERID_NULL_ERROR);
+            throw new IdEmptyException(USERID_NULL_ERROR);
         }
 
         this.userId = userId;

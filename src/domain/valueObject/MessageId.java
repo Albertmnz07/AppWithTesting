@@ -2,11 +2,11 @@ package domain.valueObject;
 
 import java.util.UUID;
 
-public class MessageID {
+public class MessageId {
 
     private final UUID messageID;
 
-    public MessageID(UUID messageID){
+    public MessageId(UUID messageID){
         this.messageID = messageID;
     }
 
@@ -14,7 +14,7 @@ public class MessageID {
         return this.messageID;
     }
 
-    public static MessageID fromUUID(UUID id){
-        return new MessageID(id);
+    public static MessageId fromUUID(UUID id){
+        return new MessageId(id);
     }
 }

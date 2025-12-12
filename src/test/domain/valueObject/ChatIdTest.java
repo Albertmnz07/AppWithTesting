@@ -6,25 +6,25 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ChatIDTest {
+class ChatIdTest {
 
     @Test
     void shouldInstantiateChatID(){
-        ChatID chatID = new ChatID(UUID.randomUUID());
+        ChatId chatID = new ChatId(UUID.randomUUID());
         assertNotNull(chatID);
     }
 
     @Test
     void shouldGetChatIDValue(){
         UUID id = UUID.randomUUID();
-        ChatID chatID = new ChatID(id);
+        ChatId chatID = new ChatId(id);
         assertEquals(id , chatID.getValue());
     }
 
     @Test
     void shouldCreateMessageFromUUID(){
         UUID id = UUID.randomUUID();
-        ChatID chatID = ChatID.fromUUID(id);
+        ChatId chatID = ChatId.fromUUID(id);
         assertEquals(id , chatID.getValue());
 
     }

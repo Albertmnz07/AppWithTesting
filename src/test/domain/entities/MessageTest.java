@@ -12,16 +12,16 @@ class MessageTest {
 
     private Message message;
     private UserId senderId;
-    private MessageID messageID;
+    private MessageId messageID;
     private MessageContent messageContent;
-    private ChatID chatID;
+    private ChatId chatID;
 
     @BeforeEach
     void setUp(){
         senderId = new UserId(UUID.randomUUID());
-        messageID = new MessageID(UUID.randomUUID());
+        messageID = new MessageId(UUID.randomUUID());
         messageContent = new MessageContent("Message content");
-        chatID = new ChatID(UUID.randomUUID());
+        chatID = new ChatId(UUID.randomUUID());
         message = new Message(senderId, messageID , messageContent , chatID);
     }
 

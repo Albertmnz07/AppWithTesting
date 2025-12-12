@@ -6,18 +6,18 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MessageIDTest {
+class MessageIdTest {
 
     @Test
     void shouldInstantiateMessageID(){
-        MessageID id = new MessageID(UUID.randomUUID());
+        MessageId id = new MessageId(UUID.randomUUID());
         assertNotNull(id);
     }
 
     @Test
     void shouldGetMessageIDValue(){
         UUID id = UUID.randomUUID();
-        MessageID messageID = new MessageID(id);
+        MessageId messageID = new MessageId(id);
         assertEquals(id , messageID.getValue());
 
     }
@@ -25,7 +25,7 @@ class MessageIDTest {
     @Test
     void shouldCreateMessageIDFromUUID(){
         UUID id = UUID.randomUUID();
-        MessageID messageID = MessageID.fromUUID(id);
+        MessageId messageID = MessageId.fromUUID(id);
 
 
         assertEquals(id , messageID.getValue());

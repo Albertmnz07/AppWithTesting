@@ -1,30 +1,30 @@
 package domain.entities;
 
-import domain.valueObject.ChatID;
+import domain.valueObject.ChatId;
 import domain.valueObject.MessageContent;
-import domain.valueObject.MessageID;
+import domain.valueObject.MessageId;
 import domain.valueObject.UserId;
 
 public class Message {
 
     private final UserId senderId;
-    private final MessageID messageID;
+    private final MessageId messageID;
     private MessageContent messageContent;
-    private final ChatID chatID;
+    private final ChatId chatID;
 
-    public Message(UserId senderId , MessageID messageID , MessageContent messageContent
-     , ChatID chatID) {
+    public Message(UserId senderId , MessageId messageId , MessageContent messageContent
+     , ChatId chatId) {
         this.senderId = senderId;
-        this.messageID = messageID;
+        this.messageID = messageId;
         this.messageContent = messageContent;
-        this.chatID = chatID;
+        this.chatID = chatId;
     }
 
     public UserId getSenderId(){
         return this.senderId;
     }
 
-    public MessageID getMessageID() {
+    public MessageId getMessageID() {
         return messageID;
     }
 
@@ -32,7 +32,7 @@ public class Message {
         return this.messageContent;
     }
 
-    public ChatID getChatID(){
+    public ChatId getChatID(){
         return this.chatID;
     }
 
