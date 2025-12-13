@@ -30,5 +30,13 @@ public class UserName {
 		return value;
 	}
 
+	@Override
+	public boolean equals(Object obj){
+		if (obj == null) return false;
+		if (obj.getClass() != getClass()) return false;
+		UserName possible = (UserName) obj;
+		return (this.value.equals(possible.getValue()));
+	}
+
 
 }

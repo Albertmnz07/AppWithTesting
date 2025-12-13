@@ -7,6 +7,7 @@ import domain.valueObject.UserId;
 import domain.valueObject.UserName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.TestConstants;
 
 import java.util.UUID;
 
@@ -19,13 +20,8 @@ class ChatTest {
 
     @BeforeEach
     void setUp(){
-        userA = new User(new UserName("Albert") ,
-                new Password("abc") ,
-                new UserId(UUID.randomUUID()));
-        userB = new User(new UserName("Juan") ,
-                new Password("cba") ,
-                new UserId(UUID.randomUUID()));
-        id = new ChatId(UUID.randomUUID());
+        userA = new User(new UserName(TestConstants.USER_NAME) , new Password(TestConstants.PASSWORD) , new UserId());
+        userB = new User(new UserName(TestConstants.DF_USER_NAME) , new Password(TestConstants.DF_PASSWORD) , new UserId());
     }
 
     @Test

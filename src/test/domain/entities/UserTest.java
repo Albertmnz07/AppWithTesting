@@ -3,25 +3,22 @@ package test.domain.entities;
 import static org.junit.jupiter.api.Assertions.*;
 
 import domain.entities.User;
+import domain.exceptions.InvalidCredentialsException;
 import domain.valueObject.Password;
 import domain.valueObject.UserId;
 import domain.valueObject.UserName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.TestConstants;
+
 import java.util.UUID;
 
 class UserTest {
 
-    public static final UserId userId = new UserId(UUID.randomUUID());
-    public static final UserName userName = new UserName("Albert");
-    public static final Password password = new Password("abc");
+    public static final UserId userId = new UserId();
+    public static final UserName userName = new UserName(TestConstants.USER_NAME);
+    public static final Password password = new Password(TestConstants.PASSWORD);
 
-    @BeforeEach
-    void setUp(){
-        UserId userId = new UserId(UUID.randomUUID());
-        UserName userName = new UserName("Albert");
-        Password password = new Password("abc");
-    }
 
 	@Test
 	void shouldInstantiateUser() {
@@ -68,7 +65,7 @@ class UserTest {
     void shouldCheckIfEqualsFalse(){
         UUID differentId = UUID.randomUUID();
         User user = new User(userName , password , userId);
-        User differentUser = new User(userName , password , new UserId(differentId));
+        User differentUser = new User(userName , password , new UserId());
 
         assertFalse(user.equals(differentUser));
     }
@@ -80,5 +77,14 @@ class UserTest {
 
         assertTrue(user.equals(user));
     }
+
+    @Test
+    void shouldReturnTrueIfPasswordMatches(){
+        Password samePassword = new Password(TestConstants.PASSWORD);
+        assertTrue(password.equals(samePassword));
+
+    }
+
+
 
 }

@@ -5,20 +5,21 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import domain.exceptions.UserNameInvalidException;
+import utils.TestConstants;
 
 class UserNameTest {
 
 	@Test
 	void shouldCreateObject() {
 		@SuppressWarnings("unused")
-		UserName name = new UserName("Alberto");
+		UserName name = new UserName(TestConstants.USER_NAME);
 	}
 	
 	@Test
 	void shouldGetValue() {
-		UserName name = new UserName("Alberto");
+		UserName name = new UserName(TestConstants.USER_NAME);
 		
-		assertEquals("Alberto" , name.getValue());
+		assertEquals(TestConstants.USER_NAME , name.getValue());
 	}
 	
 	@Test
@@ -40,6 +41,12 @@ class UserNameTest {
 				() -> new UserName(value));
 		
 		assertEquals(UserName.ERROR_TOO_LONG , error.getMessage());
+	}
+
+	@Test
+	void shouldReturnTrueIfEquals(){
+		UserName userName = new UserName(TestConstants.USER_NAME);
+		UserName sameUserName = new UserName(TestConstants.USER_NAME);
 	}
 
 }

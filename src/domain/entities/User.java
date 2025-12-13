@@ -10,12 +10,11 @@ public class User {
     private Password password;
 	private final UserId userId;
 	
-	public User(UserName userName , Password password, UserId userId)  {
+	public User(UserName userName , Password password , UserId userId)  {
 
         this.userName = userName;
         this.password = password;
         this.userId = userId;
-
 
 	}
 
@@ -37,6 +36,10 @@ public class User {
 
     public void changePassword(Password newPassword){
         this.password = newPassword;
+    }
+
+    public boolean passwordMatches(Password candidate){
+        return this.password.equals(candidate);
     }
 
     @Override

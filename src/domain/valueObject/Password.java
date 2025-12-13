@@ -24,4 +24,12 @@ public class Password {
 		return value;
 	}
 
+    @Override
+    public boolean equals(Object obj){
+        if (obj == null) return false;
+        if (obj.getClass() != getClass()) return false;
+        Password possibleEqual = (Password) obj;
+        return this.getValue().equals(possibleEqual.getValue());
+    }
+
 }

@@ -18,7 +18,7 @@ class MessageTest {
 
     @BeforeEach
     void setUp(){
-        senderId = new UserId(UUID.randomUUID());
+        senderId = new UserId();
         messageID = new MessageId(UUID.randomUUID());
         messageContent = new MessageContent("Message content");
         chatID = new ChatId(UUID.randomUUID());

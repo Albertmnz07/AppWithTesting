@@ -4,19 +4,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import domain.exceptions.PasswordInvalidException;
 import org.junit.jupiter.api.Test;
+import utils.TestConstants;
 
 class PasswordTest {
 
 	@Test
 	void shouldCreatePasswordObject() {
-		Password password = new Password("abcd");
+		Password password = new Password(TestConstants.PASSWORD);
+		assertNotNull(password);
 	}
 	
 	@Test
 	void shouldGetValue() {
-		Password password = new Password("abc");
+		Password password = new Password(TestConstants.PASSWORD);
 		
-		assertEquals("abc" , password.getValue());
+		assertEquals(TestConstants.PASSWORD , password.getValue());
 	}
 
     @Test

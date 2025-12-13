@@ -10,17 +10,20 @@ public class UserId {
 
     private final UUID userId;
 
-    public UserId(UUID userId){
-
-        if (userId == null){
-            throw new IdEmptyException(USERID_NULL_ERROR);
-        }
-
-        this.userId = userId;
+    public UserId(){
+        this.userId = UUID.randomUUID();
     }
 
     public UUID getValue(){
         return userId;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (obj == null) return false;
+        if (obj.getClass() != getClass()) return false;
+        UserId possible = (UserId) obj;
+        return (this.userId.equals(possible.userId));
     }
 
 }
