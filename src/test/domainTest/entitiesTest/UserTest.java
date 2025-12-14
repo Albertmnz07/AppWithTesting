@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-    public static final UserId userId = new UserId();
+    public static final UserId userId = UserId.generate();
     public static final UserName userName = new UserName(TestConstants.USER_NAME);
     public static final Password password = new Password(TestConstants.PASSWORD);
 
@@ -61,16 +61,14 @@ class UserTest {
 
     @Test
     void shouldCheckIfEqualsFalse(){
-        UUID differentId = UUID.randomUUID();
         User user = new User(userName , password , userId);
-        User differentUser = new User(userName , password , new UserId());
+        User differentUser = new User(userName , password , UserId.generate());
 
         assertFalse(user.equals(differentUser));
     }
 
     @Test
     void shouldCheckIfEqualsTrue(){
-        UUID differentId = UUID.randomUUID();
         User user = new User(userName , password , userId);
 
         assertTrue(user.equals(user));

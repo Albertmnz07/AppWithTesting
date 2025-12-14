@@ -17,17 +17,17 @@ class MessageTest {
 
     private Message message;
     private UserId senderId;
-    private MessageId messageID;
+    private MessageId messageId;
     private MessageContent messageContent;
-    private ChatId chatID;
+    private ChatId chatId;
 
     @BeforeEach
     void setUp(){
-        senderId = new UserId();
-        messageID = new MessageId(UUID.randomUUID());
+        senderId = UserId.generate();
+        messageId = MessageId.generate();
         messageContent = new MessageContent("Message content");
-        chatID = new ChatId(UUID.randomUUID());
-        message = new Message(senderId, messageID , messageContent , chatID);
+        chatId = ChatId.generate();
+        message = new Message(senderId, messageId, messageContent , chatId);
     }
 
     @Test
@@ -42,12 +42,12 @@ class MessageTest {
 
     @Test
     void shouldGetMessageId(){
-        assertEquals(messageID , message.getMessageID());
+        assertEquals(messageId, message.getMessageID());
     }
 
     @Test
     void shouldGetChatID(){
-        assertEquals(chatID , message.getChatID());
+        assertEquals(chatId, message.getChatID());
     }
 
     @Test

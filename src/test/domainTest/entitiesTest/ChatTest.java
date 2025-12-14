@@ -22,31 +22,31 @@ class ChatTest {
 
     @BeforeEach
     void setUp(){
-        userA = new User(new UserName(TestConstants.USER_NAME) , new Password(TestConstants.PASSWORD) , new UserId());
-        userB = new User(new UserName(TestConstants.DF_USER_NAME) , new Password(TestConstants.DF_PASSWORD) , new UserId());
+        userA = new User(new UserName(TestConstants.USER_NAME) , new Password(TestConstants.PASSWORD) , UserId.generate());
+        userB = new User(new UserName(TestConstants.DF_USER_NAME) , new Password(TestConstants.DF_PASSWORD) , UserId.generate());
     }
 
     @Test
     void shouldInstantiateChat(){
-        Chat chat = new Chat(userA , userB , new ChatId(UUID.randomUUID()));
+        Chat chat = new Chat(userA.getUserId() , userB.getUserId() , new ChatId(UUID.randomUUID()));
         assertNotNull(chat);
     }
 
     @Test
     void shouldGetUserA(){
-        Chat chat = new Chat(userA , userB , new ChatId(UUID.randomUUID()));
-        assertEquals(userA , chat.getUserA());
+        Chat chat = new Chat(userA.getUserId() , userB.getUserId() , new ChatId(UUID.randomUUID()));
+        assertEquals(userA.getUserId() , chat.getUserA());
     }
 
     @Test
     void shouldGetUserB(){
-        Chat chat = new Chat(userA , userB , new ChatId(UUID.randomUUID()));
-        assertEquals(userB , chat.getUserB());
+        Chat chat = new Chat(userA.getUserId() , userB.getUserId() , new ChatId(UUID.randomUUID()));
+        assertEquals(userB.getUserId() , chat.getUserB());
     }
 
     @Test
     void shouldGetChatId(){
-        Chat chat = new Chat(userA , userB , id);
+        Chat chat = new Chat(userA.getUserId() , userB.getUserId() , id);
         assertEquals(id , chat.getChatId());
     }
 
@@ -58,7 +58,7 @@ class ChatTest {
     @Test
     void shouldThrowSameUsersException(){
         SameUsersException error = assertThrows(SameUsersException.class ,
-                () -> new Chat(userA , userA , id));
+                () -> new Chat(userA.getUserId() , userA.getUserId() , id));
 
         assertEquals(Chat.SAME_USER_ERROR , error.getMessage());
 

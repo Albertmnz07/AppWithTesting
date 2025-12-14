@@ -19,16 +19,8 @@ class ChatIdTest {
     @Test
     void shouldGetChatIDValue(){
         UUID id = UUID.randomUUID();
-        ChatId chatID = new ChatId(id);
-        assertEquals(id , chatID.getValue());
-    }
-
-    @Test
-    void shouldCreateMessageFromUUID(){
-        UUID id = UUID.randomUUID();
-        ChatId chatID = ChatId.fromUUID(id);
-        assertEquals(id , chatID.getValue());
-
+        ChatId chatId = new ChatId(id);
+        assertEquals(id , chatId.getValue());
     }
 
 }

@@ -4,17 +4,17 @@ import java.util.UUID;
 
 public class ChatId {
 
-    private final UUID chatID;
+    private final UUID chatId;
 
-    public ChatId(UUID chatID){
-        this.chatID = chatID;
+    public ChatId(UUID value){
+        this.chatId = value;
+    }
+
+    public static ChatId generate(){
+        return new ChatId(UUID.randomUUID());
     }
 
     public UUID getValue(){
-        return this.chatID;
-    }
-
-    public static ChatId fromUUID(UUID id){
-        return new ChatId(id);
+        return this.chatId;
     }
 }

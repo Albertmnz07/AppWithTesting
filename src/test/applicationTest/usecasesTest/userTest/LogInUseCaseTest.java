@@ -5,6 +5,7 @@ import main.application.usecases.user.CreateUserUseCase;
 import main.application.usecases.user.LogInUseCase;
 import main.domain.entities.User;
 import main.domain.exceptions.InvalidCredentialsException;
+import main.domain.exceptions.UserNotFoundException;
 import org.junit.jupiter.api.Test;
 import utilsTest.TestConstants;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,6 +44,18 @@ class LogInUseCaseTest {
             assertEquals(InvalidCredentialsException.MESSAGE , error.getMessage());
 
 
+
+        }
+
+        @Test
+        void shouldThrowUserNotFoundException(){
+            FakeUserRepository userRepository = new FakeUserRepository();
+
+            LogInUseCase logInUseCase = new LogInUseCase(userRepository);
+
+            UserNotFoundException error = assertThrows(UserNotFoundException.class , () -> logInUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD));
+
+            assertEquals(error.getMessage() , UserNotFoundException.MESSAGE);
 
         }
 

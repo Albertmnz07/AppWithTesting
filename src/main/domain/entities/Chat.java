@@ -2,16 +2,17 @@ package main.domain.entities;
 
 import main.domain.exceptions.SameUsersException;
 import main.domain.valueObject.ChatId;
+import main.domain.valueObject.UserId;
 
 public class Chat {
 
-    private final User userA;
-    private final User userB;
+    private final UserId userA;
+    private final UserId userB;
     private final ChatId chatId;
 
     public static final String SAME_USER_ERROR = "Both users in chat must be different";
 
-    public Chat(User userA , User userB , ChatId chatId){
+    public Chat(UserId userA , UserId userB , ChatId chatId){
 
         if (userA.equals(userB)){
             throw new SameUsersException(SAME_USER_ERROR);
@@ -22,16 +23,20 @@ public class Chat {
         this.chatId = chatId;
     }
 
-    public User getUserA(){
+    public UserId getUserA(){
         return userA;
     }
 
-    public User getUserB(){
+    public UserId getUserB(){
         return userB;
     }
 
     public ChatId getChatId(){
         return chatId;
+    }
+
+    public boolean involves(UserId user){
+        return userA.equals(user) || userB.equals(user);
     }
 
 }

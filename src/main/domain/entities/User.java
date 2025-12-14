@@ -42,6 +42,10 @@ public class User {
         return this.password.equals(candidate);
     }
 
+    public boolean hasId(UserId userId){
+        return this.userId.equals(userId);
+    }
+
     @Override
     public boolean equals(Object object){
         if (this == object) return true;

@@ -4,14 +4,18 @@ import java.util.UUID;
 
 public class MessageId {
 
-    private final UUID messageID;
+    private final UUID messageId;
 
-    public MessageId(UUID messageID){
-        this.messageID = messageID;
+    public MessageId(UUID messageId){
+        this.messageId = messageId;
     }
 
     public UUID getValue() {
-        return this.messageID;
+        return this.messageId;
+    }
+
+    public static MessageId generate(){
+        return new MessageId(UUID.randomUUID());
     }
 
     public static MessageId fromUUID(UUID id){

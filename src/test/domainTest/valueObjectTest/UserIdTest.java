@@ -9,14 +9,14 @@ class UserIdTest {
 
     @Test
     void shouldInstantiateUserId(){
-        UserId id = new UserId();
+        UserId id = UserId.generate();
         assertNotNull(id);
 
     }
 
     @Test
     void shouldGetValue(){
-        UserId userId = new UserId();
+        UserId userId = UserId.generate();
         assertNotNull(userId);
     }
 

@@ -19,7 +19,7 @@ public class CreateUserUseCase {
 
         UserName userName = new UserName(userNameString);
         Password password = new Password(passwordString);
-        UserId userId = new UserId();
+        UserId userId = UserId.generate();
 
         User user = new User(userName , password , userId);
 
