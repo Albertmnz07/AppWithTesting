@@ -1,5 +1,6 @@
 package main.application.usecases.chat;
 
+import main.application.exceptions.ChatAlreadyExistsException;
 import main.application.usecases.user.CreateUserUseCase;
 import main.domain.entities.Chat;
 import main.domain.entities.User;
@@ -16,11 +17,18 @@ public class CreateChatUseCase {
     }
 
     public Chat execute(UserId userA , UserId userB){
+
+        if (chatRepository.findByUsersIds(userA , userB).isPresent()){
+            throw new ChatAlreadyExistsException();
+        }
+
         ChatId chatId = ChatId.generate();
 
         Chat chat = new Chat(userA , userB , chatId);
 
-        return null;
+        chatRepository.save(chat);
+
+        return chat;
 
     }
 }

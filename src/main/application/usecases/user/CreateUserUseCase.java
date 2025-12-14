@@ -1,7 +1,7 @@
 package main.application.usecases.user;
 
 import main.domain.entities.User;
-import main.domain.exceptions.UserNameAlreadyExistsException;
+import main.application.exceptions.UserNameAlreadyExistsException;
 import main.domain.repositories.UserRepository;
 import main.domain.valueObject.Password;
 import main.domain.valueObject.UserId;
