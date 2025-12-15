@@ -10,4 +10,6 @@ public class TestConstants {
     public static final String DF_USER_NAME = "OtherUser";
     public static final String DF_PASSWORD = "cba";
 
+    public static final String MESSAGE = "Content of message";
+
 }

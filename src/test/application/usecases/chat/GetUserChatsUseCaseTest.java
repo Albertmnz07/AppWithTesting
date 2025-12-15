@@ -24,6 +24,7 @@ class GetUserChatsUseCaseTest {
         chatRepository = new FakeChatRepository();
         getUserChatsUseCase = new GetUserChatsUseCase(chatRepository);
         createChatUseCase = new CreateChatUseCase(chatRepository);
+        userId = UserId.generate();
         //user = new User(new UserName(TestConstants.USER_NAME) , new Password(TestConstants.PASSWORD) , UserId.generate());
     }
 
