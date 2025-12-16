@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * <ul>
  *     <li>The length must be between {@value MIN_LENGTH} and {@value MAX_LENGTH} characters</li>
- *     <li>Names can not be empty or be contain only whitespace. To validate it constructor uses {@link String#trim()}</li>
+ *     <li>Names can not be empty or be contained only whitespace. To validate it constructor uses {@link String#trim()}</li>
  * </ul>
  */
 
