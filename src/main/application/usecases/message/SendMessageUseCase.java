@@ -26,9 +26,7 @@ public class SendMessageUseCase {
         MessageContent messageContent = new MessageContent(messageContentStr);
 
         Chat chat = chatRepository.findById(chatId).orElseThrow(ChatNotFoundException::new);
-        if (!chat.involves(senderId)){
-            throw new UserNotParticipantInChat();
-        }
+        if (!chat.involves(senderId)) throw new UserNotParticipantInChat();
 
         MessageId messageId = MessageId.generate();
 
