@@ -24,6 +24,7 @@ public class WelcomePage {
 
         switch (selection){
             case LOGIN -> handleLogIn();
+            case CREATE_ACCOUNT -> handleCreateAccount();
             case EXIT -> runner.exit();
         }
     }
