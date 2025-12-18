@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputReader {
 
-    private static final Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
 
     public static String readString(String prompt){
         System.out.print(prompt + ": ");
@@ -22,5 +22,9 @@ public class InputReader {
                 System.out.println("Please, enter a number");
             }
         }
+    }
+
+    public static void changeInputStream(java.io.InputStream in) {
+        sc = new Scanner(in);
     }
 }

@@ -43,7 +43,9 @@ public class ConsoleRunner {
 
     public void login(User user){this.currentUser = user;}
     public void logout(){this.currentUser = null;}
-    public void exit(){this.isRunning = false;}
+    public void exit(){
+        this.isRunning = false;
+        System.out.println("Thanks for using");}
 
     public User getCurrentUser() {
         return currentUser;

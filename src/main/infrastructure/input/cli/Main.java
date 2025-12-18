@@ -34,6 +34,8 @@ public class Main {
 
         var runner = new ConsoleRunner(createUserUseCase , logInUseCase , sendMessageUseCase , getChatMessagesUseCase
         , createChatUseCase , getUserChatsUseCase);
+
+        runner.run();
     }
 
 }

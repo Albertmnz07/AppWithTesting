@@ -8,6 +8,10 @@ public class WelcomePage {
 
     ConsoleRunner runner;
 
+    public static final int LOGIN = 1;
+    public static final int CREATE_ACCOUNT = 2;
+    public static final int EXIT = 0;
+
     public WelcomePage(ConsoleRunner runner){
         this.runner = runner;
     }
@@ -19,7 +23,8 @@ public class WelcomePage {
         int selection = InputReader.readInt("Option: ");
 
         switch (selection){
-            case 1 -> handleLogIn();
+            case LOGIN -> handleLogIn();
+            case EXIT -> runner.exit();
         }
     }
 
@@ -31,6 +36,19 @@ public class WelcomePage {
         try{
             User user = runner.getLogInUseCase().execute(username , password);
             System.out.println("Login successful");
+            this.runner.login(user);
+        } catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void handleCreateAccount(){
+        System.out.println("Create Account");
+        String username = InputReader.readString("Username");
+        String password = InputReader.readString("Password");
+
+        try{
+            User user = runner.getCreateUserUseCase().execute(username , password);
             this.runner.login(user);
         } catch (RuntimeException e){
             System.out.println(e.getMessage());
