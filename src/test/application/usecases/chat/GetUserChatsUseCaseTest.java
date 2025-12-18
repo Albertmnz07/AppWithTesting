@@ -1,6 +1,6 @@
 package application.usecases.chat;
 
-import domain.repositories.FakeChatRepository;
+import main.infrastructure.persistence.inmemory.FakeChatRepository;
 import main.application.usecases.chat.CreateChatUseCase;
 import main.application.usecases.chat.GetUserChatsUseCase;
 import main.domain.entities.Chat;

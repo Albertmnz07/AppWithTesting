@@ -1,4 +1,4 @@
-package domain.repositories;
+package main.infrastructure.persistence.inmemory;
 
 import main.domain.entities.Chat;
 import main.domain.repositories.ChatRepository;

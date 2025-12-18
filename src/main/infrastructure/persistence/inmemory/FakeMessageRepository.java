@@ -1,4 +1,4 @@
-package domain.repositories;
+package main.infrastructure.persistence.inmemory;
 
 import main.domain.entities.Message;
 import main.domain.repositories.MessageRepository;

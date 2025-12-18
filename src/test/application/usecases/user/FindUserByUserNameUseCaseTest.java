@@ -1,8 +1,7 @@
 package application.usecases.user;
 
-import domain.repositories.FakeUserRepository;
+import main.infrastructure.persistence.inmemory.FakeUserRepository;
 import main.application.exceptions.UserNotFoundException;
-import main.application.exceptions.UserSearchHimSelfException;
 import main.application.usecases.user.CreateUserUseCase;
 import main.application.usecases.user.FindUserByUserNameUseCase;
 import main.domain.entities.User;

@@ -1,9 +1,8 @@
 package application.usecases.message;
 
-import domain.repositories.FakeChatRepository;
-import domain.repositories.FakeMessageRepository;
+import main.infrastructure.persistence.inmemory.FakeChatRepository;
+import main.infrastructure.persistence.inmemory.FakeMessageRepository;
 import main.application.exceptions.ChatNotFoundException;
-import main.application.exceptions.UserNotFoundException;
 import main.application.exceptions.UserNotParticipantInChat;
 import main.application.usecases.chat.CreateChatUseCase;
 import main.application.usecases.message.SendMessageUseCase;
@@ -12,7 +11,6 @@ import main.domain.entities.Message;
 import main.domain.repositories.ChatRepository;
 import main.domain.repositories.MessageRepository;
 import main.domain.valueObject.ChatId;
-import main.domain.valueObject.MessageContent;
 import main.domain.valueObject.UserId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
