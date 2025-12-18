@@ -41,6 +41,10 @@ public class ConsoleRunner {
         }
     }
 
+    public void login(User user){this.currentUser = user;}
+    public void logout(){this.currentUser = null;}
+    public void exit(){this.isRunning = false;}
+
     public User getCurrentUser() {
         return currentUser;
     }
@@ -68,4 +72,6 @@ public class ConsoleRunner {
     public GetUserChatsUseCase getGetUserChatsUseCase() {
         return getUserChatsUseCase;
     }
+
+
 }
