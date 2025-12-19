@@ -1,5 +1,6 @@
 package main.infrastructure.input.cli.pages;
 
+import main.domain.entities.Chat;
 import main.domain.entities.User;
 import main.infrastructure.input.cli.ConsoleRunner;
 import main.infrastructure.input.cli.utils.InputReader;
@@ -42,7 +43,15 @@ public class HomePage {
     }
 
     public void handleStartChat(){
+        System.out.println("Adding new chat");
+        String username = InputReader.readString("Please insert the username");
 
+        try{
+            User newUser = runner.getFindUserByUserNameUseCase().execute(username);
+            Chat chat = runner.getCreateChatUseCase().execute(this.user.getUserId() , newUser.getUserId());
+        } catch(RuntimeException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void handleConfiguration(){

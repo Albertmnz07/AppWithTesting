@@ -17,10 +17,9 @@ public class LogInUseCase {
 
     public User execute(String userNameStr , String passwordStr){
 
-        UserName userName = new UserName(userNameStr);
         Password password = new Password(passwordStr);
 
-        User user = userRepository.findByUserName(userName).orElseThrow(UserNotFoundException::new);
+        User user = userRepository.findByUserName(userNameStr).orElseThrow(UserNotFoundException::new);
 
         if (!user.passwordMatches(password)){
             throw new InvalidCredentialsException();

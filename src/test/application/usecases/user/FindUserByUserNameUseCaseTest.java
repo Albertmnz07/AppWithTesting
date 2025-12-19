@@ -30,7 +30,7 @@ class FindUserByUserNameUseCaseTest {
     void shouldGetUser(){
         User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
 
-        User foundUser = findUserByUserNameUseCase.execute(user.getUserName());
+        User foundUser = findUserByUserNameUseCase.execute(user.getUserName().getValue());
 
         assertEquals(user , foundUser);
     }
@@ -40,7 +40,7 @@ class FindUserByUserNameUseCaseTest {
         User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
 
         UserNotFoundException error = assertThrows(UserNotFoundException.class,
-                () -> findUserByUserNameUseCase.execute(new UserName(TestConstants.DF_USER_NAME)));
+                () -> findUserByUserNameUseCase.execute(TestConstants.DF_USER_NAME));
 
         assertEquals(error.getMessage() , UserNotFoundException.MESSAGE);
     }

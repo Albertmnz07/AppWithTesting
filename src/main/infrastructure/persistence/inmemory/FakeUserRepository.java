@@ -22,8 +22,8 @@ public class FakeUserRepository implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByUserName(UserName userName) {
-        return storage.values().stream().filter(user -> user.getUserName().equals(userName)).findFirst();
+    public Optional<User> findByUserName(String userName) {
+        return storage.values().stream().filter(user -> user.getUserName().getValue().equals(userName)).findFirst();
     }
 
     @Test

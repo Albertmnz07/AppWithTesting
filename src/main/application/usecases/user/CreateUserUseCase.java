@@ -23,7 +23,7 @@ public class CreateUserUseCase {
 
         User user = new User(userName , password , userId);
 
-        if (userRepository.findByUserName(user.getUserName()).isPresent()){
+        if (userRepository.findByUserName(user.getUserName().getValue()).isPresent()){
             throw new UserNameAlreadyExistsException();
         }
 

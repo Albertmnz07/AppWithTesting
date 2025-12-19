@@ -5,6 +5,7 @@ import main.application.usecases.chat.GetUserChatsUseCase;
 import main.application.usecases.message.GetChatMessagesUseCase;
 import main.application.usecases.message.SendMessageUseCase;
 import main.application.usecases.user.CreateUserUseCase;
+import main.application.usecases.user.FindUserByUserNameUseCase;
 import main.application.usecases.user.LogInUseCase;
 import main.domain.entities.User;
 import main.domain.repositories.ChatRepository;
@@ -25,6 +26,7 @@ public class Main {
 
         CreateUserUseCase createUserUseCase = new CreateUserUseCase(userRepository);
         LogInUseCase logInUseCase = new LogInUseCase(userRepository);
+        FindUserByUserNameUseCase findUserByUserNameUseCase = new FindUserByUserNameUseCase(userRepository);
 
         SendMessageUseCase sendMessageUseCase = new SendMessageUseCase(messageRepository, chatRepository);
         GetChatMessagesUseCase getChatMessagesUseCase = new GetChatMessagesUseCase(messageRepository, chatRepository);
@@ -32,7 +34,7 @@ public class Main {
         CreateChatUseCase createChatUseCase = new CreateChatUseCase(chatRepository);
         GetUserChatsUseCase getUserChatsUseCase = new GetUserChatsUseCase(chatRepository);
 
-        var runner = new ConsoleRunner(createUserUseCase , logInUseCase , sendMessageUseCase , getChatMessagesUseCase
+        var runner = new ConsoleRunner(createUserUseCase , logInUseCase , findUserByUserNameUseCase , sendMessageUseCase , getChatMessagesUseCase
         , createChatUseCase , getUserChatsUseCase);
 
         runner.run();

@@ -12,7 +12,7 @@ public class FindUserByUserNameUseCase {
         this.userRepository = userRepository;
     }
 
-    public User execute(UserName userName){
+    public User execute(String userName){
 
         User user = userRepository.findByUserName(userName).orElseThrow(UserNotFoundException::new);
 
