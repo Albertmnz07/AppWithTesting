@@ -1,5 +1,6 @@
 package main.infrastructure.input.cli.pages;
 
+import main.application.ports.InputPort;
 import main.domain.entities.Chat;
 import main.domain.entities.User;
 import main.infrastructure.input.cli.ConsoleRunner;
@@ -7,16 +8,19 @@ import main.infrastructure.input.cli.utils.InputReader;
 
 public class HomePage {
 
-    ConsoleRunner runner;
-    User user = runner.getCurrentUser();
+    private final ConsoleRunner runner;
+    private final User user;
+    private final InputPort input;
 
     public static final int CHECK_CHATS = 1;
     public static final int START_CHAT = 2;
     public static final int CONFIGURATION = 3;
     public static final int LOGOUT = 4;
 
-    public HomePage(ConsoleRunner runner){
+    public HomePage(ConsoleRunner runner , InputPort input){
         this.runner = runner;
+        this.input = input;
+        this.user = runner.getCurrentUser();
     }
 
     public void show(){
@@ -28,7 +32,7 @@ public class HomePage {
                 3. Configuration
                 4. Log out
                 """);
-        int selection = InputReader.readInt("Selection");
+        int selection = input.readInt("Selection");
 
         switch (selection){
             case CHECK_CHATS -> handleCheckChats();
@@ -44,7 +48,7 @@ public class HomePage {
 
     public void handleStartChat(){
         System.out.println("Adding new chat");
-        String username = InputReader.readString("Please insert the username");
+        String username = input.readString("Please insert the username");
 
         try{
             User newUser = runner.getFindUserByUserNameUseCase().execute(username);

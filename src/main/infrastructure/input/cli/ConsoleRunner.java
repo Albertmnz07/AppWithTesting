@@ -1,5 +1,6 @@
 package main.infrastructure.input.cli;
 
+import main.application.ports.InputPort;
 import main.application.usecases.chat.CreateChatUseCase;
 import main.application.usecases.chat.GetUserChatsUseCase;
 import main.application.usecases.message.GetChatMessagesUseCase;
@@ -22,9 +23,10 @@ public class ConsoleRunner {
     GetChatMessagesUseCase getChatMessagesUseCase;
     CreateChatUseCase createChatUseCase;
     GetUserChatsUseCase getUserChatsUseCase;
+    InputPort input;
 
     public ConsoleRunner(CreateUserUseCase createUserUseCase, LogInUseCase logInUseCase , FindUserByUserNameUseCase findUserByUserNameUseCase , SendMessageUseCase sendMessageUseCase ,
-                         GetChatMessagesUseCase getChatMessagesUseCase , CreateChatUseCase createChatUseCase , GetUserChatsUseCase getUserChatsUseCase){
+                         GetChatMessagesUseCase getChatMessagesUseCase , CreateChatUseCase createChatUseCase , GetUserChatsUseCase getUserChatsUseCase , InputPort input){
         this.createUserUseCase = createUserUseCase;
         this.logInUseCase = logInUseCase;
         this.findUserByUserNameUseCase = findUserByUserNameUseCase;
@@ -32,12 +34,13 @@ public class ConsoleRunner {
         this.getChatMessagesUseCase = getChatMessagesUseCase;
         this.createChatUseCase = createChatUseCase;
         this.getUserChatsUseCase = getUserChatsUseCase;
+        this.input = input;
     }
 
     public void run(){
         while (isRunning){
             if (currentUser == null){
-                new WelcomePage(this).show();
+                new WelcomePage(this , this.input).show();
             } else {
                 //add home page
             }

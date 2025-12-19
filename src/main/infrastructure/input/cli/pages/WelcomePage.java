@@ -1,26 +1,29 @@
 package main.infrastructure.input.cli.pages;
 
+import main.application.ports.InputPort;
 import main.domain.entities.User;
 import main.infrastructure.input.cli.ConsoleRunner;
 import main.infrastructure.input.cli.utils.InputReader;
 
 public class WelcomePage {
 
-    ConsoleRunner runner;
+    private final ConsoleRunner runner;
+    private final InputPort input;
 
     public static final int LOGIN = 1;
     public static final int CREATE_ACCOUNT = 2;
     public static final int EXIT = 0;
 
-    public WelcomePage(ConsoleRunner runner){
+    public WelcomePage(ConsoleRunner runner , InputPort input){
         this.runner = runner;
+        this.input = input;
     }
 
     public void show(){
         System.out.println("Welcome to chat");
         System.out.println("Please, choose an option");
         System.out.println("1.Log In\n2.Create Account\n0.Exit");
-        int selection = InputReader.readInt("Option: ");
+        int selection = input.readInt("Option: ");
 
         switch (selection){
             case LOGIN -> handleLogIn();
@@ -31,8 +34,8 @@ public class WelcomePage {
 
     public void  handleLogIn(){
         System.out.println("LOG IN");
-        String username = InputReader.readString("Username");
-        String password = InputReader.readString("Password");
+        String username = input.readString("Username");
+        String password = input.readString("Password");
 
         try{
             User user = runner.getLogInUseCase().execute(username , password);
@@ -45,8 +48,8 @@ public class WelcomePage {
 
     public void handleCreateAccount(){
         System.out.println("Create Account");
-        String username = InputReader.readString("Username");
-        String password = InputReader.readString("Password");
+        String username = input.readString("Username");
+        String password = input.readString("Password");
 
         try{
             User user = runner.getCreateUserUseCase().execute(username , password);

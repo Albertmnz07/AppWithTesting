@@ -1,17 +1,19 @@
 package main.infrastructure.input.cli.utils;
 
+import main.application.ports.InputPort;
+
 import java.util.Scanner;
 
-public class InputReader {
+public class InputReader implements InputPort {
 
     private static Scanner sc = new Scanner(System.in);
 
-    public static String readString(String prompt){
+    public String readString(String prompt){
         System.out.print(prompt + ": ");
         return sc.nextLine().trim();
     }
 
-    public static int readInt(String prompt){
+    public int readInt(String prompt){
         while (true){
             System.out.print(prompt + ": ");
             String input = sc.nextLine();
