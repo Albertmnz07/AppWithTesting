@@ -2,7 +2,9 @@ package main.domain.exceptions;
 
 public class IdEmptyException extends RuntimeException{
 
-    public IdEmptyException(String message){
-        super(message);
+    public static final String MESSAGE = "Id can not be empty or null";
+
+    public IdEmptyException(){
+        super(MESSAGE);
     }
 }
