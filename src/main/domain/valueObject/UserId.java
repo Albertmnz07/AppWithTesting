@@ -5,7 +5,6 @@ import java.util.UUID;
 /**
  * <p>Represents a user's id inside the system</p>
  * <p>This object is immutable</p>
- *
  */
 public class UserId extends Identifier {
 
@@ -19,7 +18,7 @@ public class UserId extends Identifier {
 
     /**
      * Generates and return a new random {@link UserId}
-     * @return id in his Value Object form({@link UserId}
+     * @return id in his Value Object form({@link UUID}
      */
     public static UserId generate(){
         return new UserId(generateValue());
