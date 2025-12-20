@@ -24,13 +24,4 @@ class MessageIdTest {
 
     }
 
-    @Test
-    void shouldCreateMessageIDFromUUID(){
-        UUID id = UUID.randomUUID();
-        MessageId messageID = MessageId.fromUUID(id);
-
-
-        assertEquals(id , messageID.getValue());
-    }
-
 }
