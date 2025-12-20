@@ -2,19 +2,13 @@ package main.domain.valueObject;
 
 import java.util.UUID;
 
-public class ChatId {
-
-    private final UUID chatId;
+public class ChatId extends Identifier{
 
     public ChatId(UUID value){
-        this.chatId = value;
+        super(value);
     }
 
     public static ChatId generate(){
-        return new ChatId(UUID.randomUUID());
-    }
-
-    public UUID getValue(){
-        return this.chatId;
+        return new ChatId(generateValue());
     }
 }
