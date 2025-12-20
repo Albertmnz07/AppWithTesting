@@ -23,15 +23,21 @@ public abstract class Identifier {
         return value;
     }
 
+    /**
+     * Compares the object with another
+     * Two ids are equal if his primitive value({@link UUID}) is the same
+     * @param obj   the reference object with which to compare.
+     * @return true if are equals, false otherwise
+     */
     @Override
     public boolean equals(Object obj){
         if (obj == null) return false;
         if (obj.getClass() != getClass()) return false;
         Identifier possible = (Identifier) obj;
-        return possible.equals(this.value);
+        return possible.value.equals(this.value);
     }
 
-    public static UUID generate(){
+    protected static UUID generateValue(){
         return UUID.randomUUID();
     }
 
