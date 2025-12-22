@@ -35,7 +35,7 @@ public abstract class Identifier {
     }
 
     /**
-     * Ensueres the id provided to constructor is correct.
+     * Ensures the id provided to constructor is correct.
      * @param id the primitive id value
      */
     private void ensureValue(UUID id){
