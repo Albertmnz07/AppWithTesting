@@ -31,9 +31,13 @@ public class FakeChatRepository implements ChatRepository {
 
     @Override
     public Optional<Chat> findByUsersIds(UserId userA, UserId userB) {
-        return storage.values().
-                stream().filter(chat -> chat.involves(userA)).filter(chat -> chat.involves(userB))
-                .findFirst();
+        for (Chat value: storage.values()){
+            if (value.involves(userA) && value.involves(userB)){
+                return Optional.of(value);
+            }
+        }
+        return Optional.empty();
+        
     }
 
     @Override
