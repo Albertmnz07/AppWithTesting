@@ -67,7 +67,7 @@ public class MessageContent {
     public boolean equals(Object obj){
         if (obj == null) return false;
         if (obj.getClass() != getClass()) return false;
-        UserName possible = (UserName) obj;
+        MessageContent possible = (MessageContent) obj;
         return (this.content.equals(possible.getValue()));
     }
 
