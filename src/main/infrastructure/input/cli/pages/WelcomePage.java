@@ -23,7 +23,7 @@ public class WelcomePage {
         System.out.println("Welcome to chat");
         System.out.println("Please, choose an option");
         System.out.println("1.Log In\n2.Create Account\n0.Exit");
-        int selection = input.readInt("Option: ");
+        int selection = input.readInt("Option");
 
         switch (selection){
             case LOGIN -> handleLogIn();
