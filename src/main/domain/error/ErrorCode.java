@@ -8,7 +8,8 @@ public enum ErrorCode {
     USER_SEARCH_HIMSELF,
     SAME_USERS,
 
-    MESSAGE_CONTENT_INVALID,
+    MESSAGE_TOO_LONG,
+    MESSAGE_EMPTY,
 
     ID_EMPTY,
 

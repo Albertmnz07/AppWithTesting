@@ -1,10 +1,10 @@
 package main.domain.exceptions;
 
-public class IdEmptyException extends RuntimeException{
+import main.domain.error.ErrorCode;
 
-    public static final String MESSAGE = "Id can not be empty or null";
+public class IdEmptyException extends DomainException{
 
     public IdEmptyException(){
-        super(MESSAGE);
+        super(ErrorCode.ID_EMPTY);
     }
 }

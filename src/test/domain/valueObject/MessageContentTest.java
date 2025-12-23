@@ -1,6 +1,7 @@
 package domain.valueObject;
 
-import main.domain.exceptions.MessageContentInvalidException;
+import main.domain.exceptions.MessageEmptyException;
+import main.domain.exceptions.MessageTooLongException;
 import main.domain.valueObject.MessageContent;
 import org.junit.jupiter.api.Test;
 
@@ -16,19 +17,17 @@ class MessageContentTest {
 
     @Test
     void shouldThrowTooLongException(){
-        MessageContentInvalidException error = assertThrows(MessageContentInvalidException.class
+        MessageTooLongException error = assertThrows(MessageTooLongException.class
         , () -> new MessageContent("a".repeat(MessageContent.MAX_LENGTH + 1)));
 
-        assertEquals(MessageContent.TOO_LONG_ERROR , error.getMessage());
 
 
     }
     @Test
     void shouldNThrowNotEmptyException(){
-        MessageContentInvalidException error = assertThrows(MessageContentInvalidException.class
+        MessageEmptyException error = assertThrows(MessageEmptyException.class
                 , () -> new MessageContent(""));
 
-        assertEquals(MessageContent.NOT_EMPTY_ERROR , error.getMessage());
     }
 
     @Test

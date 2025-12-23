@@ -1,6 +1,7 @@
 package main.domain.valueObject;
 
-import main.domain.exceptions.MessageContentInvalidException;
+import main.domain.exceptions.MessageEmptyException;
+import main.domain.exceptions.MessageTooLongException;
 
 /**
  * <p>Represents the content of a message inside the system</p>
@@ -17,16 +18,6 @@ public class MessageContent {
      */
     public static final int MAX_LENGTH = 1000;
 
-    /**
-     * Error message thrown when the message is too long
-     */
-    public static final String TOO_LONG_ERROR = "The message is too long";
-
-    /**
-     * Error message thrown when the message is empty
-     */
-    public static final String NOT_EMPTY_ERROR = "The message must not be empty";
-
     private final String content;
 
     /**
@@ -34,17 +25,18 @@ public class MessageContent {
      * <p>The input is normalized using {@link String#trim()}</p>
      * Constructor validates the size and creates it
      * @param content The content of the message in his primitive value({@link String})
-     * @throws MessageContentInvalidException if normalized value is over 1000 characters or is empty
+     * @throws MessageTooLongException if normalized value is over 1000 characters
+     * @throws MessageEmptyException if normalized value is empty
      */
     public MessageContent(String content){
         content = content.trim();
 
         if (content.length() > MAX_LENGTH){
-            throw new MessageContentInvalidException(TOO_LONG_ERROR);
+            throw new MessageTooLongException();
         }
 
         if (content.isEmpty()){
-            throw new MessageContentInvalidException(NOT_EMPTY_ERROR);
+            throw new MessageEmptyException();
         }
         this.content = content;
     }
