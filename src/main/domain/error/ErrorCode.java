@@ -1,0 +1,21 @@
+package main.domain.error;
+
+public enum ErrorCode {
+
+    USER_NOT_FOUND,
+    USERNAME_INVALID,
+    USER_NOT_PARTICIPANT,
+    USER_SEARCH_HIMSELF,
+    SAME_USERS,
+
+    MESSAGE_CONTENT_INVALID,
+
+    ID_EMPTY,
+
+    PASSWORD_MISMATCH,
+    PASSWORD_INVALID_FORMAT,
+
+    CHAT_ALREADY_EXISTS,
+    CHAT_NOT_FOUND,
+
+}
