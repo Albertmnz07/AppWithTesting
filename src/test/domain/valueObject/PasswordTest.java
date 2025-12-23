@@ -1,6 +1,8 @@
 package domain.valueObject;
 
-import main.domain.exceptions.PasswordInvalidException;
+import main.domain.exceptions.PasswordEmptyException;
+import main.domain.exceptions.PasswordTooLongException;
+import main.domain.exceptions.PasswordTooShortException;
 import main.domain.valueObject.Password;
 import org.junit.jupiter.api.Test;
 import utils.TestConstants;
@@ -26,11 +28,22 @@ class PasswordTest {
     void shouldThrowsTooShortException(){
         String password = "a".repeat(Password.MIN_LENGTH - 1);
 
-        PasswordInvalidException error = assertThrows(PasswordInvalidException.class,
+        PasswordTooShortException error = assertThrows(PasswordTooShortException.class,
                 () -> new Password(password));
 
-        assertEquals(Password.ERROR_TOO_SHORT , error.getMessage());
-
     }
+
+	@Test
+	void shouldThrowPasswordEmptyException(){
+		PasswordEmptyException error = assertThrows(PasswordEmptyException.class,
+				() -> new Password(""));
+
+	}
+
+	@Test
+	void shouldThrownPasswordTooLongException(){
+		PasswordTooLongException error = assertThrows(PasswordTooLongException.class,
+				() -> new Password("a".repeat(Password.MAX_LENGTH + 1)));
+	}
 
 }

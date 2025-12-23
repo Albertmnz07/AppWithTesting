@@ -1,6 +1,8 @@
 package main.domain.valueObject;
 
-import main.domain.exceptions.PasswordInvalidException;
+import main.domain.exceptions.PasswordEmptyException;
+import main.domain.exceptions.PasswordTooLongException;
+import main.domain.exceptions.PasswordTooShortException;
 
 import java.util.Objects;
 
@@ -41,16 +43,22 @@ public class Password {
      *
      * Constructor validates the size of the password and creates it.
      * @param value The password in his primitive value(String)
-     * @throws PasswordInvalidException if value doesn't meet the size requirements.
+     * @throws PasswordTooShortException if length is under the minimum allowed
+     * @throws PasswordTooLongException if length is over the maximum allowed
+     * @throws PasswordEmptyException if the value is empty
      */
 	public Password(String value) {
 
+        if(value.isEmpty()){
+            throw new PasswordEmptyException();
+        }
+
         if (value.length() < MIN_LENGTH){
-            throw new PasswordInvalidException(ERROR_TOO_SHORT);
+            throw new PasswordTooShortException();
         }
 
         if (value.length() > MAX_LENGTH){
-            throw new PasswordInvalidException(ERROR_TOO_LONG);
+            throw new PasswordTooLongException();
         }
 		this.value = value;
 	}
