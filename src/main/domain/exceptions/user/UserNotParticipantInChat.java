@@ -1,8 +1,11 @@
 package main.domain.exceptions.user;
 
-public class UserNotParticipantInChat extends RuntimeException {
-    public static final String MESSAGE = "The user is not participant in the chat";
+import main.domain.error.ErrorCode;
+import main.domain.exceptions.DomainException;
+
+public class UserNotParticipantInChat extends DomainException {
+
     public UserNotParticipantInChat() {
-        super(MESSAGE);
+        super(ErrorCode.USER_NOT_PARTICIPANT);
     }
 }

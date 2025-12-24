@@ -1,6 +1,8 @@
 package main.domain.valueObject;
 
-import main.domain.exceptions.user.UserNameInvalidException;
+import main.domain.exceptions.user.UserNameEmptyException;
+import main.domain.exceptions.user.UserNameTooLongException;
+import main.domain.exceptions.user.UserNameTooShortException;
 
 import java.util.Objects;
 
@@ -25,16 +27,6 @@ public class UserName {
 	 */
 	public static final int MIN_LENGTH = 2;
 
-	/**
-	 * Error message thrown when username is too short
-	 */
-	public static final String ERROR_TOO_SHORT = "Name too short";
-	/**
-	 * Error message thrown when username is too long
-	 */
-	public static final String ERROR_TOO_LONG = "Name too long";
-
-
 	private final String value;
 
 	/**
@@ -45,17 +37,24 @@ public class UserName {
 	 * </p>
 	 * Constructor that validates the size of the name and creates it.
 	 * @param value The username in his primitive value(String).
-	 * @throws UserNameInvalidException if normalized value doesn't meet the size requirements.
+	 * @throws UserNameTooShortException if normalized value is too short.
+	 * @throws UserNameTooLongException if normalized value is too long
+	 * @throws UserNameEmptyException if normalized value is empty
 	 */
 
 	public UserName(String value) {
 		value = value.trim();
+
+		if (value.isEmpty()){
+			throw new UserNameEmptyException();
+		}
+
 		if(value.length() < MIN_LENGTH) {
-			throw new UserNameInvalidException(ERROR_TOO_SHORT);
+			throw new UserNameTooShortException();
 		}
 
 		if (value.length() > MAX_LENGTH) {
-			throw new UserNameInvalidException(ERROR_TOO_LONG);
+			throw new UserNameTooLongException();
 		}
 
 		this.value = value;

@@ -1,5 +1,6 @@
 package application.usecases.user;
 
+import main.domain.error.ErrorCode;
 import main.infrastructure.persistence.inmemory.FakeUserRepository;
 import main.application.usecases.user.CreateUserUseCase;
 import main.domain.entities.User;
@@ -29,7 +30,7 @@ class CreateUserUseCaseTest {
     }
 
     @Test
-    void shouldThrowExceptionIfUserNameExists(){
+    void shouldThrowUserNameAlreadyExistsException(){
         FakeUserRepository userRepository = new FakeUserRepository();
         CreateUserUseCase createUserUseCase = new CreateUserUseCase(userRepository);
 
@@ -37,6 +38,8 @@ class CreateUserUseCaseTest {
 
         UserNameAlreadyExistsException error = assertThrows(UserNameAlreadyExistsException.class ,
                 () -> createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD));
+
+        assertEquals(ErrorCode.USERNAME_ALREADY_EXISTS , error.getCode());
     }
 
 }

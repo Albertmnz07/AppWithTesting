@@ -1,9 +1,11 @@
 package main.domain.exceptions.user;
 
-public class UserSearchHimSelfException extends RuntimeException {
-    public static final String MESSAGE = "Use cannot search for himself";
+import main.domain.error.ErrorCode;
+import main.domain.exceptions.DomainException;
+
+public class UserSearchHimSelfException extends DomainException {
 
     public UserSearchHimSelfException() {
-        super(MESSAGE);
+        super(ErrorCode.USER_SEARCH_HIMSELF);
     }
 }

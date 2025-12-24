@@ -1,7 +1,10 @@
 package main.domain.exceptions.user;
 
-public class SameUsersException extends RuntimeException {
-    public SameUsersException(String message) {
-        super(message);
+import main.domain.error.ErrorCode;
+import main.domain.exceptions.DomainException;
+
+public class SameUsersException extends DomainException {
+    public SameUsersException() {
+        super(ErrorCode.SAME_USERS_IN_CHAT);
     }
 }

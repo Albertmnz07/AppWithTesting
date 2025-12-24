@@ -1,9 +1,11 @@
 package main.domain.exceptions.user;
 
-public class UserNameAlreadyExistsException extends RuntimeException {
-    public static final String MESSAGE = "User name already exists";
+import main.domain.error.ErrorCode;
+import main.domain.exceptions.DomainException;
+
+public class UserNameAlreadyExistsException extends DomainException {
 
     public UserNameAlreadyExistsException() {
-        super(MESSAGE);
+        super(ErrorCode.USERNAME_ALREADY_EXISTS);
     }
 }

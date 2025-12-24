@@ -80,7 +80,7 @@ class SendMessageUseCaseTest {
         UserNotParticipantInChat error = assertThrows(UserNotParticipantInChat.class ,
                 () -> sendMessageUseCase.execute(chat.getChatId() , UserId.generate() , TestConstants.MESSAGE));
 
-        assertEquals(error.getMessage() , UserNotParticipantInChat.MESSAGE);
+        assertEquals(ErrorCode.USER_NOT_PARTICIPANT , error.getCode());
 
 
     }

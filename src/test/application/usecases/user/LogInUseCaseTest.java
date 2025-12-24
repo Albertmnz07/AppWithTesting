@@ -54,7 +54,7 @@ class LogInUseCaseTest {
 
             UserNotFoundException error = assertThrows(UserNotFoundException.class , () -> logInUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD));
 
-            assertEquals(error.getMessage() , UserNotFoundException.MESSAGE);
+            assertEquals(ErrorCode.USER_NOT_FOUND , error.getCode());
 
         }
 

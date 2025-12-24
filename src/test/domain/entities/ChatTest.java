@@ -2,6 +2,7 @@ package domain.entities;
 
 import main.domain.entities.Chat;
 import main.domain.entities.User;
+import main.domain.error.ErrorCode;
 import main.domain.exceptions.user.SameUsersException;
 import main.domain.valueObject.ChatId;
 import main.domain.valueObject.Password;
@@ -60,7 +61,7 @@ class ChatTest {
         SameUsersException error = assertThrows(SameUsersException.class ,
                 () -> new Chat(userA.getUserId() , userA.getUserId() , id));
 
-        assertEquals(Chat.SAME_USER_ERROR , error.getMessage());
+        assertEquals(ErrorCode.SAME_USERS_IN_CHAT, error.getCode());
 
 
     }

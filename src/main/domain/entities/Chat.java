@@ -15,7 +15,7 @@ public class Chat {
     public Chat(UserId userA , UserId userB , ChatId chatId){
 
         if (userA.equals(userB)){
-            throw new SameUsersException(SAME_USER_ERROR);
+            throw new SameUsersException();
         }
 
         this.userA = userA;

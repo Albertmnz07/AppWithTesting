@@ -1,6 +1,9 @@
 package domain.valueObject;
 
-import main.domain.exceptions.user.UserNameInvalidException;
+import main.domain.error.ErrorCode;
+import main.domain.exceptions.user.UserNameEmptyException;
+import main.domain.exceptions.user.UserNameTooLongException;
+import main.domain.exceptions.user.UserNameTooShortException;
 import main.domain.valueObject.UserName;
 import org.junit.jupiter.api.Test;
 import utils.TestConstants;
@@ -24,24 +27,31 @@ class UserNameTest {
 	}
 	
 	@Test
-	void shouldTooShortThrowsException() {
+	void shouldThrowUsernameTooShortException() {
 		String value = "a".repeat(UserName.MIN_LENGTH - 1);
 		
-		UserNameInvalidException error = assertThrows(UserNameInvalidException.class , 
+		UserNameTooShortException error = assertThrows(UserNameTooShortException.class ,
 				() -> new UserName(value));
 		
-		assertEquals(UserName.ERROR_TOO_SHORT , error.getMessage());
+		assertEquals(ErrorCode.USERNAME_TOO_SHORT , error.getCode());
 	
 	}
 	
 	@Test
-	void shouldTooLongThrowsExceptions() {
+	void shouldThrowUsernameTooLongExceptions() {
 		String value = "a".repeat(UserName.MAX_LENGTH + 1);
 		
-		UserNameInvalidException error = assertThrows(UserNameInvalidException.class ,
+		UserNameTooLongException error = assertThrows(UserNameTooLongException.class ,
 				() -> new UserName(value));
 		
-		assertEquals(UserName.ERROR_TOO_LONG , error.getMessage());
+		assertEquals(ErrorCode.USERNAME_TOO_LONG , error.getCode());
+	}
+
+	@Test
+	void shouldThrowUsernameEmptyException(){
+		UserNameEmptyException error = assertThrows(UserNameEmptyException.class , () -> new UserName(""));
+
+		assertEquals(ErrorCode.USERNAME_EMPTY , error.getCode());
 	}
 
 	@Test
