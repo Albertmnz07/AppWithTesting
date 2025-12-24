@@ -1,5 +1,6 @@
 package application.usecases.chat;
 
+import main.domain.error.ErrorCode;
 import main.infrastructure.persistence.inmemory.FakeChatRepository;
 import main.infrastructure.persistence.inmemory.FakeMessageRepository;
 import main.domain.exceptions.chat.ChatNotFoundException;
@@ -58,6 +59,8 @@ class GetChatMessagesUseCaseTest {
 
          ChatNotFoundException error = assertThrows(ChatNotFoundException.class ,
                  () -> getChatMessagesUseCase.execute(chatId));
+
+         assertEquals(ErrorCode.CHAT_NOT_FOUND , error.getCode());
      }
 
 }

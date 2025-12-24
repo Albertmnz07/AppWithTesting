@@ -1,8 +1,11 @@
 package main.domain.exceptions.chat;
 
-public class ChatNotFoundException extends RuntimeException {
-    public static final String MESSAGE = "Chat haven't been found";
-    public ChatNotFoundException() {
-        super(MESSAGE);
+import main.domain.error.ErrorCode;
+import main.domain.exceptions.DomainException;
+
+public class ChatNotFoundException extends DomainException {
+
+     public ChatNotFoundException() {
+        super(ErrorCode.CHAT_NOT_FOUND);
     }
 }

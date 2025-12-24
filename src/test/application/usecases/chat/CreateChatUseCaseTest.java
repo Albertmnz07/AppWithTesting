@@ -1,5 +1,6 @@
 package application.usecases.chat;
 
+import main.domain.error.ErrorCode;
 import main.infrastructure.persistence.inmemory.FakeChatRepository;
 import main.domain.exceptions.chat.ChatAlreadyExistsException;
 import main.application.usecases.chat.CreateChatUseCase;
@@ -45,6 +46,8 @@ class CreateChatUseCaseTest {
                 ChatAlreadyExistsException.class ,
                 () -> createChatUseCase.execute(userA , userB)
         );
+
+        assertEquals(ErrorCode.CHAT_ALREADY_EXISTS , error.getCode());
     }
 
 }

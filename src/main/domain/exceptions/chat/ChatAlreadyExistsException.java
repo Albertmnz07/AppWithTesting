@@ -1,9 +1,11 @@
 package main.domain.exceptions.chat;
 
-public class ChatAlreadyExistsException extends RuntimeException {
+import main.domain.error.ErrorCode;
+import main.domain.exceptions.DomainException;
 
-    public static final String MESSAGE = "There is already a chat between this two users";
+public class ChatAlreadyExistsException extends DomainException {
+
     public ChatAlreadyExistsException() {
-        super(MESSAGE);
+        super(ErrorCode.CHAT_ALREADY_EXISTS);
     }
 }
