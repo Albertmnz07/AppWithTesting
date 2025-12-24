@@ -1,5 +1,6 @@
 package domain.valueObject;
 
+import main.domain.error.ErrorCode;
 import main.domain.exceptions.MessageEmptyException;
 import main.domain.exceptions.MessageTooLongException;
 import main.domain.valueObject.MessageContent;
@@ -20,13 +21,15 @@ class MessageContentTest {
         MessageTooLongException error = assertThrows(MessageTooLongException.class
         , () -> new MessageContent("a".repeat(MessageContent.MAX_LENGTH + 1)));
 
-
-
+        assertEquals(ErrorCode.MESSAGE_TOO_LONG , error.getCode());
     }
+
     @Test
     void shouldNThrowNotEmptyException(){
         MessageEmptyException error = assertThrows(MessageEmptyException.class
                 , () -> new MessageContent(""));
+
+        assertEquals(ErrorCode.MESSAGE_EMPTY , error.getCode());
 
     }
 
