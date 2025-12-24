@@ -1,4 +1,4 @@
-package main.application.exceptions;
+package main.domain.exceptions.user;
 
 public class UserNotFoundException extends RuntimeException {
 

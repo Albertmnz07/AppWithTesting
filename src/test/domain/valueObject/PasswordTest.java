@@ -1,9 +1,9 @@
 package domain.valueObject;
 
 import main.domain.error.ErrorCode;
-import main.domain.exceptions.PasswordEmptyException;
-import main.domain.exceptions.PasswordTooLongException;
-import main.domain.exceptions.PasswordTooShortException;
+import main.domain.exceptions.password.PasswordEmptyException;
+import main.domain.exceptions.password.PasswordTooLongException;
+import main.domain.exceptions.password.PasswordTooShortException;
 import main.domain.valueObject.Password;
 import org.junit.jupiter.api.Test;
 import utils.TestConstants;

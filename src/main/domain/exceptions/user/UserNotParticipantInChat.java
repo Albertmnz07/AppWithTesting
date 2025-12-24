@@ -1,4 +1,4 @@
-package main.application.exceptions;
+package main.domain.exceptions.user;
 
 public class UserNotParticipantInChat extends RuntimeException {
     public static final String MESSAGE = "The user is not participant in the chat";

@@ -1,9 +1,8 @@
 package main.application.usecases.user;
 
-import main.application.exceptions.UserNotFoundException;
+import main.domain.exceptions.user.UserNotFoundException;
 import main.domain.entities.User;
 import main.domain.repositories.UserRepository;
-import main.domain.valueObject.UserName;
 
 public class FindUserByUserNameUseCase {
     UserRepository userRepository;

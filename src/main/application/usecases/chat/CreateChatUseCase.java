@@ -1,9 +1,7 @@
 package main.application.usecases.chat;
 
-import main.application.exceptions.ChatAlreadyExistsException;
-import main.application.usecases.user.CreateUserUseCase;
+import main.domain.exceptions.chat.ChatAlreadyExistsException;
 import main.domain.entities.Chat;
-import main.domain.entities.User;
 import main.domain.repositories.ChatRepository;
 import main.domain.valueObject.ChatId;
 import main.domain.valueObject.UserId;

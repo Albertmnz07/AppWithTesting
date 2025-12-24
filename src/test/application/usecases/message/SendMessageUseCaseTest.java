@@ -2,8 +2,8 @@ package application.usecases.message;
 
 import main.infrastructure.persistence.inmemory.FakeChatRepository;
 import main.infrastructure.persistence.inmemory.FakeMessageRepository;
-import main.application.exceptions.ChatNotFoundException;
-import main.application.exceptions.UserNotParticipantInChat;
+import main.domain.exceptions.chat.ChatNotFoundException;
+import main.domain.exceptions.user.UserNotParticipantInChat;
 import main.application.usecases.chat.CreateChatUseCase;
 import main.application.usecases.message.SendMessageUseCase;
 import main.domain.entities.Chat;

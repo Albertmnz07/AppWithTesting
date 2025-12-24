@@ -1,12 +1,11 @@
 package application.usecases.user;
 
 import main.infrastructure.persistence.inmemory.FakeUserRepository;
-import main.application.exceptions.UserNotFoundException;
+import main.domain.exceptions.user.UserNotFoundException;
 import main.application.usecases.user.CreateUserUseCase;
 import main.application.usecases.user.FindUserByUserNameUseCase;
 import main.domain.entities.User;
 import main.domain.repositories.UserRepository;
-import main.domain.valueObject.UserName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utils.TestConstants;

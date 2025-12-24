@@ -1,4 +1,4 @@
-package main.domain.exceptions;
+package main.domain.exceptions.user;
 
 public class UserNameInvalidException extends RuntimeException {
 

@@ -1,8 +1,8 @@
 package main.application.usecases.user;
 
 import main.domain.entities.User;
-import main.domain.exceptions.PasswordMismatchException;
-import main.application.exceptions.UserNotFoundException;
+import main.domain.exceptions.password.PasswordMismatchException;
+import main.domain.exceptions.user.UserNotFoundException;
 import main.domain.repositories.UserRepository;
 import main.domain.valueObject.Password;
 

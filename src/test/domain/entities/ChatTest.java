@@ -2,7 +2,7 @@ package domain.entities;
 
 import main.domain.entities.Chat;
 import main.domain.entities.User;
-import main.domain.exceptions.SameUsersException;
+import main.domain.exceptions.user.SameUsersException;
 import main.domain.valueObject.ChatId;
 import main.domain.valueObject.Password;
 import main.domain.valueObject.UserId;

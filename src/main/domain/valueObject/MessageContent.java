@@ -1,7 +1,7 @@
 package main.domain.valueObject;
 
-import main.domain.exceptions.MessageEmptyException;
-import main.domain.exceptions.MessageTooLongException;
+import main.domain.exceptions.message.MessageEmptyException;
+import main.domain.exceptions.message.MessageTooLongException;
 
 /**
  * <p>Represents the content of a message inside the system</p>

@@ -3,7 +3,7 @@ package application.usecases.user;
 import main.infrastructure.persistence.inmemory.FakeUserRepository;
 import main.application.usecases.user.CreateUserUseCase;
 import main.domain.entities.User;
-import main.application.exceptions.UserNameAlreadyExistsException;
+import main.domain.exceptions.user.UserNameAlreadyExistsException;
 import org.junit.jupiter.api.Test;
 import utils.TestConstants;
 

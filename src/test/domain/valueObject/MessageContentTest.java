@@ -1,8 +1,8 @@
 package domain.valueObject;
 
 import main.domain.error.ErrorCode;
-import main.domain.exceptions.MessageEmptyException;
-import main.domain.exceptions.MessageTooLongException;
+import main.domain.exceptions.message.MessageEmptyException;
+import main.domain.exceptions.message.MessageTooLongException;
 import main.domain.valueObject.MessageContent;
 import org.junit.jupiter.api.Test;
 

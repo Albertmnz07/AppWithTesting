@@ -1,4 +1,4 @@
-package main.application.exceptions;
+package main.domain.exceptions.chat;
 
 public class ChatNotFoundException extends RuntimeException {
     public static final String MESSAGE = "Chat haven't been found";

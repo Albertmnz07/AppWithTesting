@@ -1,6 +1,6 @@
 package main.domain.valueObject;
 
-import main.domain.exceptions.UserNameInvalidException;
+import main.domain.exceptions.user.UserNameInvalidException;
 
 import java.util.Objects;
 

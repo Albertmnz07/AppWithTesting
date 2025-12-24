@@ -1,6 +1,6 @@
 package main.domain.valueObject;
 
-import main.domain.exceptions.IdEmptyException;
+import main.domain.exceptions.id.IdEmptyException;
 
 import java.util.Objects;
 import java.util.UUID;

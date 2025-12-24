@@ -1,6 +1,6 @@
 package main.domain.entities;
 
-import main.domain.exceptions.SameUsersException;
+import main.domain.exceptions.user.SameUsersException;
 import main.domain.valueObject.ChatId;
 import main.domain.valueObject.UserId;
 

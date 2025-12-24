@@ -1,4 +1,4 @@
-package main.application.exceptions;
+package main.domain.exceptions.chat;
 
 public class ChatAlreadyExistsException extends RuntimeException {
 

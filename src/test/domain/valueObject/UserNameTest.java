@@ -1,6 +1,6 @@
 package domain.valueObject;
 
-import main.domain.exceptions.UserNameInvalidException;
+import main.domain.exceptions.user.UserNameInvalidException;
 import main.domain.valueObject.UserName;
 import org.junit.jupiter.api.Test;
 import utils.TestConstants;

@@ -1,8 +1,8 @@
 package main.domain.valueObject;
 
-import main.domain.exceptions.PasswordEmptyException;
-import main.domain.exceptions.PasswordTooLongException;
-import main.domain.exceptions.PasswordTooShortException;
+import main.domain.exceptions.password.PasswordEmptyException;
+import main.domain.exceptions.password.PasswordTooLongException;
+import main.domain.exceptions.password.PasswordTooShortException;
 
 import java.util.Objects;
 

@@ -1,7 +1,7 @@
 package main.application.usecases.message;
 
-import main.application.exceptions.ChatNotFoundException;
-import main.application.exceptions.UserNotParticipantInChat;
+import main.domain.exceptions.chat.ChatNotFoundException;
+import main.domain.exceptions.user.UserNotParticipantInChat;
 import main.domain.entities.Chat;
 import main.domain.entities.Message;
 import main.domain.repositories.ChatRepository;
