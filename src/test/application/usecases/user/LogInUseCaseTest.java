@@ -1,10 +1,11 @@
 package application.usecases.user;
 
+import main.domain.error.ErrorCode;
 import main.infrastructure.persistence.inmemory.FakeUserRepository;
 import main.application.usecases.user.CreateUserUseCase;
 import main.application.usecases.user.LogInUseCase;
 import main.domain.entities.User;
-import main.application.exceptions.InvalidCredentialsException;
+import main.domain.exceptions.PasswordMismatchException;
 import main.application.exceptions.UserNotFoundException;
 import org.junit.jupiter.api.Test;
 import utils.TestConstants;
@@ -29,7 +30,7 @@ class LogInUseCaseTest {
     }
 
         @Test
-        void shouldThrowInvalidCredentialException(){
+        void shouldThrowPasswordMismatchException(){
 
             FakeUserRepository userRepository = new FakeUserRepository();
 
@@ -38,12 +39,10 @@ class LogInUseCaseTest {
 
             User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
 
-            InvalidCredentialsException error = assertThrows(InvalidCredentialsException.class ,
+            PasswordMismatchException error = assertThrows(PasswordMismatchException.class ,
                     () -> logInUseCase.execute(TestConstants.USER_NAME , TestConstants.DF_PASSWORD));
 
-            assertEquals(InvalidCredentialsException.MESSAGE , error.getMessage());
-
-
+            assertEquals(ErrorCode.PASSWORD_MISMATCH, error.getCode());
 
         }
 

@@ -1,11 +1,10 @@
 package main.application.usecases.user;
 
 import main.domain.entities.User;
-import main.application.exceptions.InvalidCredentialsException;
+import main.domain.exceptions.PasswordMismatchException;
 import main.application.exceptions.UserNotFoundException;
 import main.domain.repositories.UserRepository;
 import main.domain.valueObject.Password;
-import main.domain.valueObject.UserName;
 
 public class LogInUseCase {
 
@@ -22,7 +21,7 @@ public class LogInUseCase {
         User user = userRepository.findByUserName(userNameStr).orElseThrow(UserNotFoundException::new);
 
         if (!user.passwordMatches(password)){
-            throw new InvalidCredentialsException();
+            throw new PasswordMismatchException();
         }
 
         return user;
