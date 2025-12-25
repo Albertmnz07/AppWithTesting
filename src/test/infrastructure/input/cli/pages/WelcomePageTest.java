@@ -48,7 +48,6 @@ class WelcomePageTest {
 
         verify(runner).login(user);
 
-
     }
 
 }

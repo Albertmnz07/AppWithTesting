@@ -2,8 +2,8 @@ package main.infrastructure.input.cli.pages;
 
 import main.application.ports.InputPort;
 import main.domain.entities.User;
-import main.infrastructure.input.cli.ConsoleRunner;
-import main.infrastructure.input.cli.utils.InputReader;
+import main.domain.exceptions.DomainException;import main.infrastructure.input.cli.ConsoleRunner;
+import main.infrastructure.input.cli.utils.CliErrorMessage;import main.infrastructure.input.cli.utils.InputReader;
 
 public class WelcomePage {
 
@@ -41,8 +41,8 @@ public class WelcomePage {
             User user = runner.getLogInUseCase().execute(username , password);
             System.out.println("Login successful");
             this.runner.login(user);
-        } catch (RuntimeException e){
-            System.out.println(e.getMessage());
+        } catch (DomainException e){
+            System.out.println(CliErrorMessage.from(e.getCode()));
         }
     }
 
@@ -54,8 +54,8 @@ public class WelcomePage {
         try{
             User user = runner.getCreateUserUseCase().execute(username , password);
             this.runner.login(user);
-        } catch (RuntimeException e){
-            System.out.println(e.getMessage());
+        } catch (DomainException e){
+            System.out.println(CliErrorMessage.from(e.getCode()));
         }
     }
 }

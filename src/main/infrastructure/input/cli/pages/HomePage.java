@@ -3,8 +3,8 @@ package main.infrastructure.input.cli.pages;
 import main.application.ports.InputPort;
 import main.domain.entities.Chat;
 import main.domain.entities.User;
-import main.infrastructure.input.cli.ConsoleRunner;
-import main.infrastructure.input.cli.utils.InputReader;
+import main.domain.exceptions.DomainException;import main.infrastructure.input.cli.ConsoleRunner;
+import main.infrastructure.input.cli.utils.CliErrorMessage;import main.infrastructure.input.cli.utils.InputReader;
 
 public class HomePage {
 
@@ -51,10 +51,10 @@ public class HomePage {
         String username = input.readString("Please insert the username");
 
         try{
-            User newUser = runner.getFindUserByUserNameUseCase().execute(username);
+            User newUser = runner.getFindUserByUserNameUseCase().execute(user.getUserId() , username);
             Chat chat = runner.getCreateChatUseCase().execute(this.user.getUserId() , newUser.getUserId());
-        } catch(RuntimeException e){
-            System.out.println(e.getMessage());
+        } catch(DomainException e){
+            System.out.println(CliErrorMessage.from(e.getCode()));
         }
     }
 
