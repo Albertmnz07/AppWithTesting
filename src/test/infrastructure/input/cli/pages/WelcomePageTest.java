@@ -1,8 +1,10 @@
 package infrastructure.input.cli.pages;
 
 import main.application.ports.InputPort;
+import main.application.usecases.user.CreateUserUseCase;
 import main.application.usecases.user.LogInUseCase;
 import main.domain.entities.User;
+import main.domain.exceptions.password.PasswordTooShortException;
 import main.domain.exceptions.user.UserNotFoundException;
 import main.infrastructure.input.cli.ConsoleRunner;
 import main.infrastructure.input.cli.pages.WelcomePage;
@@ -26,6 +28,9 @@ class WelcomePageTest {
 
     @Mock
     LogInUseCase logInUseCase;
+
+    @Mock
+    CreateUserUseCase createUserUseCase;
 
     WelcomePage welcomePage;
 
@@ -64,5 +69,35 @@ class WelcomePageTest {
         welcomePage.show();
         verify(runner , never()).login(any());
     }
+
+    @Test
+    void shouldCreateAccount(){
+        when(input.readInt(any())).thenReturn(WelcomePage.CREATE_ACCOUNT);
+
+        when(input.readString("Username")).thenReturn(TestConstants.USER_NAME);
+        when(input.readString("Password")).thenReturn(TestConstants.PASSWORD);
+
+        when(runner.getCreateUserUseCase()).thenReturn(createUserUseCase);
+        User user = mock(User.class);
+        when(createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD)).thenReturn(user);
+
+        welcomePage.show();
+        verify(runner).login(user);
+    }
+
+     @Test
+    void shouldFailCreateAccount(){
+         when(input.readInt(any())).thenReturn(WelcomePage.CREATE_ACCOUNT);
+
+         when(input.readString("Username")).thenReturn(TestConstants.USER_NAME);
+         when(input.readString("Password")).thenReturn(TestConstants.PASSWORD);
+
+         when(runner.getCreateUserUseCase()).thenReturn(createUserUseCase);
+
+         when(createUserUseCase.execute(anyString() , anyString())).thenThrow(new PasswordTooShortException());
+
+         welcomePage.show();
+         verify(runner , never()).login(any());
+     }
 
 }
