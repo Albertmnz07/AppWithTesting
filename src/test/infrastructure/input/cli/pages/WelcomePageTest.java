@@ -3,7 +3,6 @@ package infrastructure.input.cli.pages;
 import main.application.ports.InputPort;
 import main.application.usecases.user.LogInUseCase;
 import main.domain.entities.User;
-import main.domain.exceptions.DomainException;
 import main.domain.exceptions.user.UserNotFoundException;
 import main.infrastructure.input.cli.ConsoleRunner;
 import main.infrastructure.input.cli.pages.WelcomePage;
@@ -12,9 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import utils.TestConstants;
+import main.temporalUtils.TestConstants;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)

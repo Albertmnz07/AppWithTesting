@@ -5,7 +5,7 @@ import main.domain.valueObject.Password;
 import main.domain.valueObject.UserId;
 import main.domain.valueObject.UserName;
 import org.junit.jupiter.api.Test;
-import utils.TestConstants;
+import main.temporalUtils.TestConstants;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -10,7 +10,7 @@ import main.domain.valueObject.UserId;
 import main.domain.valueObject.UserName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import utils.TestConstants;
+import main.temporalUtils.TestConstants;
 
 import java.util.UUID;
 

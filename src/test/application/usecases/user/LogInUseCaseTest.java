@@ -8,7 +8,7 @@ import main.domain.entities.User;
 import main.domain.exceptions.password.PasswordMismatchException;
 import main.domain.exceptions.user.UserNotFoundException;
 import org.junit.jupiter.api.Test;
-import utils.TestConstants;
+import main.temporalUtils.TestConstants;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

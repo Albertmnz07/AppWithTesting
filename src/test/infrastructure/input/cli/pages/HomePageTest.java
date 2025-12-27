@@ -6,14 +6,12 @@ import main.domain.valueObject.UserName;
 import main.infrastructure.input.cli.ConsoleRunner;
 import main.infrastructure.input.cli.pages.HomePage;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import utils.TestConstants;
+import main.temporalUtils.TestConstants;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

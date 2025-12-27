@@ -15,7 +15,7 @@ import main.domain.valueObject.MessageId;
 import main.domain.valueObject.UserId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import utils.TestConstants;
+import main.temporalUtils.TestConstants;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@ import main.domain.exceptions.user.UserNameTooLongException;
 import main.domain.exceptions.user.UserNameTooShortException;
 import main.domain.valueObject.UserName;
 import org.junit.jupiter.api.Test;
-import utils.TestConstants;
+import main.temporalUtils.TestConstants;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

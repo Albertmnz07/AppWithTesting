@@ -6,7 +6,7 @@ import main.application.usecases.user.CreateUserUseCase;
 import main.domain.entities.User;
 import main.domain.exceptions.user.UserNameAlreadyExistsException;
 import org.junit.jupiter.api.Test;
-import utils.TestConstants;
+import main.temporalUtils.TestConstants;
 
 import static org.junit.jupiter.api.Assertions.*;
 
