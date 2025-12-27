@@ -100,4 +100,14 @@ class WelcomePageTest {
          verify(runner , never()).login(any());
      }
 
+     @Test
+    void shouldExitProgram(){
+        when(input.readInt(any())).thenReturn(WelcomePage.EXIT);
+
+        welcomePage.show();
+
+        verify(runner).exit();
+
+     }
+
 }
