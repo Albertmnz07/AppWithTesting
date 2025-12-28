@@ -9,6 +9,7 @@ import main.application.usecases.user.CreateUserUseCase;
 import main.application.usecases.user.FindUserByUserNameUseCase;
 import main.application.usecases.user.LogInUseCase;
 import main.domain.entities.User;
+import main.infrastructure.input.cli.pages.HomePage;
 import main.infrastructure.input.cli.pages.WelcomePage;
 
 public class ConsoleRunner {
@@ -42,7 +43,7 @@ public class ConsoleRunner {
             if (currentUser == null){
                 new WelcomePage(this , this.input).show();
             } else {
-                //add home page
+                new HomePage(this , input).show();
             }
         }
     }
