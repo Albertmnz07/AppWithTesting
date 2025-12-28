@@ -24,22 +24,32 @@ public class HomePage {
     }
 
     public void show(){
-        System.out.println("Main menu, welcome " + user.getUserName().getValue());
-        System.out.println("Please, select one of this options");
-        System.out.println("""
+        boolean isOnPage = true;
+
+        while (isOnPage){
+
+            System.out.println("Main menu, welcome " + user.getUserName().getValue());
+            System.out.println("Please, select one of this options");
+            System.out.println("""
                 1. Check my chats
                 2. Star new chat
                 3. Configuration
                 4. Log out
                 """);
-        int selection = input.readInt("Selection");
+            int selection = input.readInt("Selection");
 
-        switch (selection){
-            case CHECK_CHATS -> handleCheckChats();
-            case START_CHAT -> handleStartChat();
-            case CONFIGURATION -> handleConfiguration();
-            case LOGOUT -> runner.logout();
+            switch (selection){
+                case CHECK_CHATS -> handleCheckChats();
+                case START_CHAT -> handleStartChat();
+                case CONFIGURATION -> handleConfiguration();
+                case LOGOUT -> {
+                    runner.logout();
+                    isOnPage = false;
+                }
+                default -> System.out.println("Please, select a correct option");
+            }
         }
+
     }
 
     public void handleCheckChats(){

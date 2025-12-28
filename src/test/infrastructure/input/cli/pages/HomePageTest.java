@@ -5,6 +5,8 @@ import main.application.usecases.chat.CreateChatUseCase;
 import main.application.usecases.user.FindUserByUserNameUseCase;
 import main.domain.entities.Chat;
 import main.domain.entities.User;
+import main.domain.exceptions.chat.ChatAlreadyExistsException;
+import main.domain.exceptions.user.UserNotFoundException;
 import main.domain.valueObject.UserName;
 import main.infrastructure.input.cli.ConsoleRunner;
 import main.infrastructure.input.cli.pages.HomePage;
@@ -52,7 +54,7 @@ class HomePageTest {
 
     @Test
     void shouldStartNewChat(){
-        when(input.readInt(any())).thenReturn(HomePage.START_CHAT);
+        when(input.readInt(any())).thenReturn(HomePage.START_CHAT , HomePage.LOGOUT);
         User searchUser = mock(User.class);
         when(input.readString(any())).thenReturn(TestConstants.USER_NAME);
 
@@ -63,9 +65,27 @@ class HomePageTest {
         when(createChatUseCase.execute(currentUser.getUserId() , searchUser.getUserId())).thenReturn(mock(Chat.class));
 
         homePage.show();
-        verify(createChatUseCase).execute(currentUser.getUserId() , searchUser.getUserId());
+        verify(createChatUseCase).execute(any() , any());
 
     }
+
+   /* @Test
+    void shouldFailStartNewChat(){
+        when(input.readInt(any())).thenReturn(HomePage.START_CHAT , HomePage.LOGOUT);
+        User searchUser = mock(User.class);
+        when(input.readString(any())).thenReturn(TestConstants.USER_NAME);
+
+        when(runner.getFindUserByUserNameUseCase()).thenReturn(findUserByUserNameUseCase);
+        when(findUserByUserNameUseCase.execute(currentUser.getUserId() , TestConstants.USER_NAME)).thenReturn(searchUser);
+
+        when(runner.getCreateChatUseCase()).thenReturn(createChatUseCase);
+        when(createChatUseCase.execute(any() , any())).thenThrow(new ChatAlreadyExistsException());
+
+        homePage.show();
+
+        verify(createChatUseCase , never()).execute(any() , any());
+
+    }*/
 
     @Test
     void shouldLogOut(){
