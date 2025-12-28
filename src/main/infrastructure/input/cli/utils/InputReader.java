@@ -25,8 +25,4 @@ public class InputReader implements InputPort {
             }
         }
     }
-
-    public static void changeInputStream(java.io.InputStream in) {
-        sc = new Scanner(in);
-    }
 }
