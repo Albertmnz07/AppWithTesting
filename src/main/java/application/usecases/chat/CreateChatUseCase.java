@@ -1,7 +1,7 @@
 package main.java.application.usecases.chat;
 
-import main.java.domain.exceptions.chat.ChatAlreadyExistsException;
 import main.java.domain.entities.Chat;
+import main.java.domain.exceptions.chat.ChatAlreadyExistsException;
 import main.java.domain.repositories.ChatRepository;
 import main.java.domain.valueObject.ChatId;
 import main.java.domain.valueObject.UserId;

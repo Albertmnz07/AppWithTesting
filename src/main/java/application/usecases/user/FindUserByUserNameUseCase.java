@@ -1,7 +1,7 @@
 package main.java.application.usecases.user;
 
-import main.java.domain.exceptions.user.UserNotFoundException;
 import main.java.domain.entities.User;
+import main.java.domain.exceptions.user.UserNotFoundException;
 import main.java.domain.exceptions.user.UserSearchHimSelfException;
 import main.java.domain.repositories.UserRepository;
 import main.java.domain.valueObject.UserId;

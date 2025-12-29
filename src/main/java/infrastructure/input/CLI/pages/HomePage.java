@@ -3,7 +3,8 @@ package main.java.infrastructure.input.CLI.pages;
 import main.java.application.ports.InputPort;
 import main.java.domain.entities.Chat;
 import main.java.domain.entities.User;
-import main.java.domain.exceptions.DomainException;import main.java.infrastructure.input.CLI.ConsoleRunner;
+import main.java.domain.exceptions.DomainException;
+import main.java.infrastructure.input.CLI.ConsoleRunner;
 import main.java.infrastructure.input.CLI.utils.CliErrorMessage;
 
 public class HomePage {
