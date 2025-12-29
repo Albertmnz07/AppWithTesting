@@ -7,10 +7,10 @@ import java.util.ResourceBundle;
 
 public class MessageProvider {
 
-    public static final Locale currentLocale = Locale.getDefault();
+    public static Locale currentLocale = Locale.getDefault();
 
-    private static final String ERROR_BUNDLE = "error.i18n";
-    private static final String MESSAGE_BUNDLE = "message.i18n";
+    private static final String ERROR_BUNDLE = "i18n.error";
+    private static final String MESSAGE_BUNDLE = "i18n.message";
 
     /**
      * Obtains a text in the correct language. Is independent of errors or simple plain text.
