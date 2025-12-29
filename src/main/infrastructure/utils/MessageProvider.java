@@ -12,6 +12,13 @@ public class MessageProvider {
     private static final String ERROR_BUNDLE = "error.i18n";
     private static final String MESSAGE_BUNDLE = "message.i18n";
 
+    /**
+     * Obtains a text in the correct language. Is independent of errors or simple plain text.
+     * This function exists because calling other functions will be easier separating responsibilities.
+     * @param bundleName Defines the type of text(error, simple text, etc)
+     * @param key the code of the text that is required
+     * @return the {@link String} ready to be displayed
+     */
     public static String getRawText(String bundleName , String key){
         try{
             ResourceBundle bundle = ResourceBundle.getBundle(bundleName , currentLocale);
@@ -23,7 +30,7 @@ public class MessageProvider {
 
     public static String getError(ErrorCode code){
         String pattern = getRawText(ERROR_BUNDLE , code.toString());
-        return pattern;
+        return pattern; //is expected to add an implementation to include variables
     }
 
     public static String getMessage(String text){
