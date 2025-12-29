@@ -1,0 +1,88 @@
+package main.java.infrastructure.input.CLI;
+
+import main.java.application.ports.InputPort;
+import main.java.application.usecases.chat.CreateChatUseCase;
+import main.java.application.usecases.chat.GetUserChatsUseCase;
+import main.java.application.usecases.message.GetChatMessagesUseCase;
+import main.java.application.usecases.message.SendMessageUseCase;
+import main.java.application.usecases.user.CreateUserUseCase;
+import main.java.application.usecases.user.FindUserByUserNameUseCase;
+import main.java.application.usecases.user.LogInUseCase;
+import main.java.domain.entities.User;
+import main.java.infrastructure.input.CLI.pages.HomePage;
+import main.java.infrastructure.input.CLI.pages.WelcomePage;
+
+public class ConsoleRunner {
+
+    User currentUser = null;
+    boolean isRunning = true;
+
+    CreateUserUseCase createUserUseCase;
+    LogInUseCase logInUseCase;
+    FindUserByUserNameUseCase findUserByUserNameUseCase;
+    SendMessageUseCase sendMessageUseCase;
+    GetChatMessagesUseCase getChatMessagesUseCase;
+    CreateChatUseCase createChatUseCase;
+    GetUserChatsUseCase getUserChatsUseCase;
+    InputPort input;
+
+    public ConsoleRunner(CreateUserUseCase createUserUseCase, LogInUseCase logInUseCase , FindUserByUserNameUseCase findUserByUserNameUseCase , SendMessageUseCase sendMessageUseCase ,
+                         GetChatMessagesUseCase getChatMessagesUseCase , CreateChatUseCase createChatUseCase , GetUserChatsUseCase getUserChatsUseCase , InputPort input){
+        this.createUserUseCase = createUserUseCase;
+        this.logInUseCase = logInUseCase;
+        this.findUserByUserNameUseCase = findUserByUserNameUseCase;
+        this.sendMessageUseCase = sendMessageUseCase;
+        this.getChatMessagesUseCase = getChatMessagesUseCase;
+        this.createChatUseCase = createChatUseCase;
+        this.getUserChatsUseCase = getUserChatsUseCase;
+        this.input = input;
+    }
+
+    public void run(){
+        while (isRunning){
+            if (currentUser == null){
+                new WelcomePage(this , this.input).show();
+            } else {
+                new HomePage(this , input).show();
+            }
+        }
+    }
+
+    public void login(User user){this.currentUser = user;}
+    public void logout(){this.currentUser = null;}
+    public void exit(){
+        this.isRunning = false;
+        System.out.println("Thanks for using");}
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public CreateUserUseCase getCreateUserUseCase() {
+        return createUserUseCase;
+    }
+
+    public LogInUseCase getLogInUseCase() {
+        return logInUseCase;
+    }
+
+    public SendMessageUseCase getSendMessageUseCase() {
+        return sendMessageUseCase;
+    }
+
+    public GetChatMessagesUseCase getGetChatMessagesUseCase() {
+        return getChatMessagesUseCase;
+    }
+
+    public CreateChatUseCase getCreateChatUseCase() {
+        return createChatUseCase;
+    }
+
+    public GetUserChatsUseCase getGetUserChatsUseCase() {
+        return getUserChatsUseCase;
+    }
+
+    public FindUserByUserNameUseCase getFindUserByUserNameUseCase(){return findUserByUserNameUseCase;}
+
+
+}

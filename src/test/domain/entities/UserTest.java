@@ -1,11 +1,11 @@
 package test.domain.entities;
 
-import main.domain.entities.User;
-import main.domain.valueObject.Password;
-import main.domain.valueObject.UserId;
-import main.domain.valueObject.UserName;
+import main.java.domain.entities.User;
+import main.java.domain.valueObject.Password;
+import main.java.domain.valueObject.UserId;
+import main.java.domain.valueObject.UserName;
 import org.junit.jupiter.api.Test;
-import main.temporalUtils.TestConstants;
+import main.java.temporalUtils.TestConstants;
 
 import static org.junit.jupiter.api.Assertions.*;
 

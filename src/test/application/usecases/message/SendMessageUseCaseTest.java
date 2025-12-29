@@ -1,21 +1,21 @@
 package application.usecases.message;
 
-import main.domain.error.ErrorCode;
-import main.infrastructure.persistence.inmemory.FakeChatRepository;
-import main.infrastructure.persistence.inmemory.FakeMessageRepository;
-import main.domain.exceptions.chat.ChatNotFoundException;
-import main.domain.exceptions.user.UserNotParticipantInChat;
-import main.application.usecases.chat.CreateChatUseCase;
-import main.application.usecases.message.SendMessageUseCase;
-import main.domain.entities.Chat;
-import main.domain.entities.Message;
-import main.domain.repositories.ChatRepository;
-import main.domain.repositories.MessageRepository;
-import main.domain.valueObject.ChatId;
-import main.domain.valueObject.UserId;
+import main.java.domain.error.ErrorCode;
+import main.java.infrastructure.persistence.inmemory.FakeChatRepository;
+import main.java.infrastructure.persistence.inmemory.FakeMessageRepository;
+import main.java.domain.exceptions.chat.ChatNotFoundException;
+import main.java.domain.exceptions.user.UserNotParticipantInChat;
+import main.java.application.usecases.chat.CreateChatUseCase;
+import main.java.application.usecases.message.SendMessageUseCase;
+import main.java.domain.entities.Chat;
+import main.java.domain.entities.Message;
+import main.java.domain.repositories.ChatRepository;
+import main.java.domain.repositories.MessageRepository;
+import main.java.domain.valueObject.ChatId;
+import main.java.domain.valueObject.UserId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import main.temporalUtils.TestConstants;
+import main.java.temporalUtils.TestConstants;
 
 import java.util.List;
 

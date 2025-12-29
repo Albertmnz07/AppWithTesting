@@ -1,17 +1,17 @@
 package application.usecases.user;
 
-import main.domain.error.ErrorCode;
-import main.domain.exceptions.user.UserSearchHimSelfException;
-import main.domain.valueObject.UserId;
-import main.infrastructure.persistence.inmemory.FakeUserRepository;
-import main.domain.exceptions.user.UserNotFoundException;
-import main.application.usecases.user.CreateUserUseCase;
-import main.application.usecases.user.FindUserByUserNameUseCase;
-import main.domain.entities.User;
-import main.domain.repositories.UserRepository;
+import main.java.domain.error.ErrorCode;
+import main.java.domain.exceptions.user.UserSearchHimSelfException;
+import main.java.domain.valueObject.UserId;
+import main.java.infrastructure.persistence.inmemory.FakeUserRepository;
+import main.java.domain.exceptions.user.UserNotFoundException;
+import main.java.application.usecases.user.CreateUserUseCase;
+import main.java.application.usecases.user.FindUserByUserNameUseCase;
+import main.java.domain.entities.User;
+import main.java.domain.repositories.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import main.temporalUtils.TestConstants;
+import main.java.temporalUtils.TestConstants;
 
 import static org.junit.jupiter.api.Assertions.*;
 

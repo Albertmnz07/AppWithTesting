@@ -1,12 +1,12 @@
 package domain.valueObject;
 
-import main.domain.error.ErrorCode;
-import main.domain.exceptions.user.UserNameEmptyException;
-import main.domain.exceptions.user.UserNameTooLongException;
-import main.domain.exceptions.user.UserNameTooShortException;
-import main.domain.valueObject.UserName;
+import main.java.domain.error.ErrorCode;
+import main.java.domain.exceptions.user.UserNameEmptyException;
+import main.java.domain.exceptions.user.UserNameTooLongException;
+import main.java.domain.exceptions.user.UserNameTooShortException;
+import main.java.domain.valueObject.UserName;
 import org.junit.jupiter.api.Test;
-import main.temporalUtils.TestConstants;
+import main.java.temporalUtils.TestConstants;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
