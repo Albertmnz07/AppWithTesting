@@ -1,10 +1,10 @@
-package main.infrastructure.input.cli.pages;
+package main.infrastructure.input.CLI.pages;
 
 import main.application.ports.InputPort;
 import main.domain.entities.Chat;
 import main.domain.entities.User;
-import main.domain.exceptions.DomainException;import main.infrastructure.input.cli.ConsoleRunner;
-import main.infrastructure.input.cli.utils.CliErrorMessage;import main.infrastructure.input.cli.utils.InputReader;
+import main.domain.exceptions.DomainException;import main.infrastructure.input.CLI.ConsoleRunner;
+import main.infrastructure.input.CLI.utils.CliErrorMessage;
 
 public class HomePage {
 

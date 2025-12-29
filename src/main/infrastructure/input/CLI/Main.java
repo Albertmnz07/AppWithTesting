@@ -1,4 +1,4 @@
-package main.infrastructure.input.cli;
+package main.infrastructure.input.CLI;
 
 import main.application.ports.InputPort;
 import main.application.usecases.chat.CreateChatUseCase;
@@ -12,7 +12,7 @@ import main.domain.entities.User;
 import main.domain.repositories.ChatRepository;
 import main.domain.repositories.MessageRepository;
 import main.domain.repositories.UserRepository;
-import main.infrastructure.input.cli.utils.InputReader;
+import main.infrastructure.input.CLI.utils.InputReader;
 import main.infrastructure.persistence.inmemory.FakeChatRepository;
 import main.infrastructure.persistence.inmemory.FakeMessageRepository;
 import main.infrastructure.persistence.inmemory.FakeUserRepository;

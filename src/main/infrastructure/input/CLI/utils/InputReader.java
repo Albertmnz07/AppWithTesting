@@ -1,4 +1,4 @@
-package main.infrastructure.input.cli.utils;
+package main.infrastructure.input.CLI.utils;
 
 import main.application.ports.InputPort;
 

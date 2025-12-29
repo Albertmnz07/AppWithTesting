@@ -1,4 +1,4 @@
-package main.infrastructure.input.cli;
+package main.infrastructure.input.CLI;
 
 import main.application.ports.InputPort;
 import main.application.usecases.chat.CreateChatUseCase;
@@ -9,8 +9,8 @@ import main.application.usecases.user.CreateUserUseCase;
 import main.application.usecases.user.FindUserByUserNameUseCase;
 import main.application.usecases.user.LogInUseCase;
 import main.domain.entities.User;
-import main.infrastructure.input.cli.pages.HomePage;
-import main.infrastructure.input.cli.pages.WelcomePage;
+import main.infrastructure.input.CLI.pages.HomePage;
+import main.infrastructure.input.CLI.pages.WelcomePage;
 
 public class ConsoleRunner {
 

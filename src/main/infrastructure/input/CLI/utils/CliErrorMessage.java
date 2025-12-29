@@ -1,7 +1,6 @@
-package main.infrastructure.input.cli.utils;
+package main.infrastructure.input.CLI.utils;
 
 import main.domain.error.ErrorCode;
-import main.domain.valueObject.UserName;
 
 public class CliErrorMessage {
 
