@@ -1,6 +1,6 @@
-package main.java.domain.exceptions;
+package domain.exceptions;
 
-import main.java.domain.error.ErrorCode;
+import domain.error.ErrorCode;
 
 public abstract class DomainException extends RuntimeException {
 

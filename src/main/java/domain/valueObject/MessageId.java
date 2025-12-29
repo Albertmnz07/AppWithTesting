@@ -1,9 +1,9 @@
-package main.java.domain.valueObject;
+package domain.valueObject;
 
 import java.util.UUID;
 
 /**
- * <p>Represents a user's id inside the system</p>
+ * <p>Represents a message's id inside the system</p>
  * <p>This object is immutable</p>
  */
 public class MessageId extends Identifier {

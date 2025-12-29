@@ -1,14 +1,14 @@
 package application.usecases.user;
 
-import main.java.domain.error.ErrorCode;
-import main.java.infrastructure.persistence.inmemory.FakeUserRepository;
-import main.java.application.usecases.user.CreateUserUseCase;
-import main.java.application.usecases.user.LogInUseCase;
-import main.java.domain.entities.User;
-import main.java.domain.exceptions.password.PasswordMismatchException;
-import main.java.domain.exceptions.user.UserNotFoundException;
+import domain.error.ErrorCode;
+import infrastructure.persistence.inmemory.FakeUserRepository;
+import application.usecases.user.CreateUserUseCase;
+import application.usecases.user.LogInUseCase;
+import domain.entities.User;
+import domain.exceptions.password.PasswordMismatchException;
+import domain.exceptions.user.UserNotFoundException;
 import org.junit.jupiter.api.Test;
-import main.java.temporalUtils.TestConstants;
+import temporalUtils.TestConstants;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

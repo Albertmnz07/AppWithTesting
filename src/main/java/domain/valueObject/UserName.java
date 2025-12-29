@@ -1,8 +1,8 @@
-package main.java.domain.valueObject;
+package domain.valueObject;
 
-import main.java.domain.exceptions.user.UserNameEmptyException;
-import main.java.domain.exceptions.user.UserNameTooLongException;
-import main.java.domain.exceptions.user.UserNameTooShortException;
+import domain.exceptions.user.UserNameEmptyException;
+import domain.exceptions.user.UserNameTooLongException;
+import domain.exceptions.user.UserNameTooShortException;
 
 import java.util.Objects;
 

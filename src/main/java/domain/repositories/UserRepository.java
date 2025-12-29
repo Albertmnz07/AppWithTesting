@@ -1,7 +1,7 @@
-package main.java.domain.repositories;
+package domain.repositories;
 
-import main.java.domain.entities.User;
-import main.java.domain.valueObject.UserId;
+import domain.entities.User;
+import domain.valueObject.UserId;
 
 import java.util.Optional;
 

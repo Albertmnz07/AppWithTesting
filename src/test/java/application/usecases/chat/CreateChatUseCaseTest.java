@@ -1,11 +1,11 @@
 package application.usecases.chat;
 
-import main.java.domain.error.ErrorCode;
-import main.java.infrastructure.persistence.inmemory.FakeChatRepository;
-import main.java.domain.exceptions.chat.ChatAlreadyExistsException;
-import main.java.application.usecases.chat.CreateChatUseCase;
-import main.java.domain.entities.Chat;
-import main.java.domain.valueObject.UserId;
+import domain.error.ErrorCode;
+import infrastructure.persistence.inmemory.FakeChatRepository;
+import domain.exceptions.chat.ChatAlreadyExistsException;
+import application.usecases.chat.CreateChatUseCase;
+import domain.entities.Chat;
+import domain.valueObject.UserId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

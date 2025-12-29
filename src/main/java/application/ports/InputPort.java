@@ -1,4 +1,4 @@
-package main.java.application.ports;
+package application.ports;
 
 public interface InputPort {
     String readString(String prompt);

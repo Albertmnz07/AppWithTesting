@@ -1,9 +1,9 @@
-package main.java.infrastructure.persistence.inmemory;
+package infrastructure.persistence.inmemory;
 
-import main.java.domain.entities.Message;
-import main.java.domain.repositories.MessageRepository;
-import main.java.domain.valueObject.ChatId;
-import main.java.domain.valueObject.MessageId;
+import domain.entities.Message;
+import domain.repositories.MessageRepository;
+import domain.valueObject.ChatId;
+import domain.valueObject.MessageId;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,11 +1,11 @@
-package main.java.application.usecases.user;
+package application.usecases.user;
 
-import main.java.domain.entities.User;
-import main.java.domain.exceptions.user.UserNameAlreadyExistsException;
-import main.java.domain.repositories.UserRepository;
-import main.java.domain.valueObject.Password;
-import main.java.domain.valueObject.UserId;
-import main.java.domain.valueObject.UserName;
+import domain.entities.User;
+import domain.exceptions.user.UserNameAlreadyExistsException;
+import domain.repositories.UserRepository;
+import domain.valueObject.Password;
+import domain.valueObject.UserId;
+import domain.valueObject.UserName;
 
 public class CreateUserUseCase {
 

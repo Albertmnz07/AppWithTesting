@@ -1,6 +1,6 @@
-package main.java.infrastructure.utils;
+package infrastructure.utils;
 
-import main.java.domain.error.ErrorCode;
+import domain.error.ErrorCode;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

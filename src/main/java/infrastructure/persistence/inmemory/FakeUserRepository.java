@@ -1,9 +1,8 @@
-package main.java.infrastructure.persistence.inmemory;
+package infrastructure.persistence.inmemory;
 
-import main.java.domain.entities.User;
-import main.java.domain.repositories.UserRepository;
-import main.java.domain.valueObject.UserId;
-import org.junit.jupiter.api.Test;
+import domain.entities.User;
+import domain.repositories.UserRepository;
+import domain.valueObject.UserId;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,8 +25,4 @@ public class FakeUserRepository implements UserRepository {
         return storage.values().stream().filter(user -> user.getUserName().getValue().equals(userName)).findFirst();
     }
 
-    @Test
-    void none(){
-
-    }
 }

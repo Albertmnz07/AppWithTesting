@@ -1,8 +1,8 @@
-package main.java.domain.entities;
+package domain.entities;
 
-import main.java.domain.valueObject.Password;
-import main.java.domain.valueObject.UserId;
-import main.java.domain.valueObject.UserName;
+import domain.valueObject.Password;
+import domain.valueObject.UserId;
+import domain.valueObject.UserName;
 
 public class User {
 	

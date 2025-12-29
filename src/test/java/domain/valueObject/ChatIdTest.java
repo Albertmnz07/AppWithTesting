@@ -1,6 +1,6 @@
 package domain.valueObject;
 
-import main.java.domain.valueObject.ChatId;
+import domain.valueObject.ChatId;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

@@ -1,7 +1,7 @@
-package main.java.domain.exceptions.id;
+package domain.exceptions.id;
 
-import main.java.domain.error.ErrorCode;
-import main.java.domain.exceptions.DomainException;
+import domain.error.ErrorCode;
+import domain.exceptions.DomainException;
 
 public class IdEmptyException extends DomainException {
 

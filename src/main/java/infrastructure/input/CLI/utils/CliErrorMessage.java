@@ -1,6 +1,6 @@
-package main.java.infrastructure.input.CLI.utils;
+package infrastructure.input.CLI.utils;
 
-import main.java.domain.error.ErrorCode;
+import domain.error.ErrorCode;
 
 public class CliErrorMessage {
 

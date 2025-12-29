@@ -1,10 +1,10 @@
-package main.java.application.usecases.chat;
+package application.usecases.chat;
 
-import main.java.domain.entities.Chat;
-import main.java.domain.exceptions.chat.ChatAlreadyExistsException;
-import main.java.domain.repositories.ChatRepository;
-import main.java.domain.valueObject.ChatId;
-import main.java.domain.valueObject.UserId;
+import domain.entities.Chat;
+import domain.exceptions.chat.ChatAlreadyExistsException;
+import domain.repositories.ChatRepository;
+import domain.valueObject.ChatId;
+import domain.valueObject.UserId;
 
 public class CreateChatUseCase {
 

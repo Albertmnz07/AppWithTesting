@@ -1,4 +1,4 @@
-package main.java.domain.valueObject;
+package domain.valueObject;
 
 import java.util.UUID;
 
@@ -6,7 +6,7 @@ import java.util.UUID;
  * <p>Represents a chat's id inside the system</p>
  * <p>This object is immutable</p>
  */
-public class ChatId extends Identifier{
+public class ChatId extends Identifier {
 
     /**
      * Create a new {@code ChatId}

@@ -1,6 +1,6 @@
-package main.java.infrastructure.input.CLI.utils;
+package infrastructure.input.CLI.utils;
 
-import main.java.application.ports.InputPort;
+import application.ports.InputPort;
 
 import java.util.Scanner;
 

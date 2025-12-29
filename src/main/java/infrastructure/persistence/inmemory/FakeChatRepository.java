@@ -1,10 +1,9 @@
-package main.java.infrastructure.persistence.inmemory;
+package infrastructure.persistence.inmemory;
 
-import main.java.domain.entities.Chat;
-import main.java.domain.repositories.ChatRepository;
-import main.java.domain.valueObject.ChatId;
-import main.java.domain.valueObject.UserId;
-
+import domain.entities.Chat;
+import domain.repositories.ChatRepository;
+import domain.valueObject.ChatId;
+import domain.valueObject.UserId;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

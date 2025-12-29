@@ -1,8 +1,8 @@
-package main.java.domain.repositories;
+package domain.repositories;
 
-import main.java.domain.entities.Message;
-import main.java.domain.valueObject.ChatId;
-import main.java.domain.valueObject.MessageId;
+import domain.entities.Message;
+import domain.valueObject.ChatId;
+import domain.valueObject.MessageId;
 
 import java.util.List;
 import java.util.Optional;

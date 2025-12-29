@@ -1,9 +1,9 @@
-package main.java.domain.entities;
+package domain.entities;
 
-import main.java.domain.valueObject.ChatId;
-import main.java.domain.valueObject.MessageContent;
-import main.java.domain.valueObject.MessageId;
-import main.java.domain.valueObject.UserId;
+import domain.valueObject.ChatId;
+import domain.valueObject.MessageContent;
+import domain.valueObject.MessageId;
+import domain.valueObject.UserId;
 
 /**
  * Represents a message sent by a user within a chat

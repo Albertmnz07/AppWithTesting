@@ -1,19 +1,19 @@
 package infrastructure.input.cli.pages;
 
-import main.java.application.ports.InputPort;
-import main.java.application.usecases.chat.CreateChatUseCase;
-import main.java.application.usecases.user.FindUserByUserNameUseCase;
-import main.java.domain.entities.Chat;
-import main.java.domain.entities.User;
-import main.java.domain.valueObject.UserName;
-import main.java.infrastructure.input.CLI.ConsoleRunner;
-import main.java.infrastructure.input.CLI.pages.HomePage;
+import application.ports.InputPort;
+import application.usecases.chat.CreateChatUseCase;
+import application.usecases.user.FindUserByUserNameUseCase;
+import domain.entities.Chat;
+import domain.entities.User;
+import domain.valueObject.UserName;
+import infrastructure.input.CLI.ConsoleRunner;
+import infrastructure.input.CLI.pages.HomePage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import main.java.temporalUtils.TestConstants;
+import temporalUtils.TestConstants;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;

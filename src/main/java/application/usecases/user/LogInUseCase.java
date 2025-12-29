@@ -1,10 +1,10 @@
-package main.java.application.usecases.user;
+package application.usecases.user;
 
-import main.java.domain.entities.User;
-import main.java.domain.exceptions.password.PasswordMismatchException;
-import main.java.domain.exceptions.user.UserNotFoundException;
-import main.java.domain.repositories.UserRepository;
-import main.java.domain.valueObject.Password;
+import domain.entities.User;
+import domain.exceptions.password.PasswordMismatchException;
+import domain.exceptions.user.UserNotFoundException;
+import domain.repositories.UserRepository;
+import domain.valueObject.Password;
 
 public class LogInUseCase {
 

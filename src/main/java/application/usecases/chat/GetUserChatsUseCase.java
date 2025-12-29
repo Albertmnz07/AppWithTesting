@@ -1,8 +1,8 @@
-package main.java.application.usecases.chat;
+package application.usecases.chat;
 
-import main.java.domain.entities.Chat;
-import main.java.domain.repositories.ChatRepository;
-import main.java.domain.valueObject.UserId;
+import domain.entities.Chat;
+import domain.repositories.ChatRepository;
+import domain.valueObject.UserId;
 
 import java.util.List;
 

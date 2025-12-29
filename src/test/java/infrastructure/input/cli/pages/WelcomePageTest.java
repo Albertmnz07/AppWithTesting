@@ -1,19 +1,19 @@
 package infrastructure.input.cli.pages;
 
-import main.java.application.ports.InputPort;
-import main.java.application.usecases.user.CreateUserUseCase;
-import main.java.application.usecases.user.LogInUseCase;
-import main.java.domain.entities.User;
-import main.java.domain.exceptions.password.PasswordTooShortException;
-import main.java.domain.exceptions.user.UserNotFoundException;
-import main.java.infrastructure.input.CLI.ConsoleRunner;
-import main.java.infrastructure.input.CLI.pages.WelcomePage;
+import application.ports.InputPort;
+import application.usecases.user.CreateUserUseCase;
+import application.usecases.user.LogInUseCase;
+import domain.entities.User;
+import domain.exceptions.password.PasswordTooShortException;
+import domain.exceptions.user.UserNotFoundException;
+import infrastructure.input.CLI.ConsoleRunner;
+import infrastructure.input.CLI.pages.WelcomePage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import main.java.temporalUtils.TestConstants;
+import temporalUtils.TestConstants;
 
 import static org.mockito.Mockito.*;
 

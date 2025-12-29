@@ -1,6 +1,7 @@
-package main.java.domain.valueObject;
+package domain.valueObject;
 
 import java.util.UUID;
+
 
 /**
  * <p>Represents a user's id inside the system</p>

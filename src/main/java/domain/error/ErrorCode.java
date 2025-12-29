@@ -1,4 +1,4 @@
-package main.java.domain.error;
+package domain.error;
 
 public enum ErrorCode {
 

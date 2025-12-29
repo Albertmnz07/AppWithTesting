@@ -1,16 +1,16 @@
-package main.java.infrastructure.input.CLI;
+package infrastructure.input.CLI;
 
-import main.java.application.ports.InputPort;
-import main.java.application.usecases.chat.CreateChatUseCase;
-import main.java.application.usecases.chat.GetUserChatsUseCase;
-import main.java.application.usecases.message.GetChatMessagesUseCase;
-import main.java.application.usecases.message.SendMessageUseCase;
-import main.java.application.usecases.user.CreateUserUseCase;
-import main.java.application.usecases.user.FindUserByUserNameUseCase;
-import main.java.application.usecases.user.LogInUseCase;
-import main.java.domain.entities.User;
-import main.java.infrastructure.input.CLI.pages.HomePage;
-import main.java.infrastructure.input.CLI.pages.WelcomePage;
+import application.ports.InputPort;
+import application.usecases.chat.CreateChatUseCase;
+import application.usecases.chat.GetUserChatsUseCase;
+import application.usecases.message.GetChatMessagesUseCase;
+import application.usecases.message.SendMessageUseCase;
+import application.usecases.user.CreateUserUseCase;
+import application.usecases.user.FindUserByUserNameUseCase;
+import application.usecases.user.LogInUseCase;
+import domain.entities.User;
+import infrastructure.input.CLI.pages.HomePage;
+import infrastructure.input.CLI.pages.WelcomePage;
 
 public class ConsoleRunner {
 

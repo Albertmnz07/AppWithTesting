@@ -1,16 +1,16 @@
 package domain.entities;
 
-import main.java.domain.entities.Chat;
-import main.java.domain.entities.User;
-import main.java.domain.error.ErrorCode;
-import main.java.domain.exceptions.user.SameUsersException;
-import main.java.domain.valueObject.ChatId;
-import main.java.domain.valueObject.Password;
-import main.java.domain.valueObject.UserId;
-import main.java.domain.valueObject.UserName;
+import domain.entities.Chat;
+import domain.entities.User;
+import domain.error.ErrorCode;
+import domain.exceptions.user.SameUsersException;
+import domain.valueObject.ChatId;
+import domain.valueObject.Password;
+import domain.valueObject.UserId;
+import domain.valueObject.UserName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import main.java.temporalUtils.TestConstants;
+import temporalUtils.TestConstants;
 
 import java.util.UUID;
 

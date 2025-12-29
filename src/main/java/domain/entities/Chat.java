@@ -1,8 +1,8 @@
-package main.java.domain.entities;
+package domain.entities;
 
-import main.java.domain.exceptions.user.SameUsersException;
-import main.java.domain.valueObject.ChatId;
-import main.java.domain.valueObject.UserId;
+import domain.exceptions.user.SameUsersException;
+import domain.valueObject.ChatId;
+import domain.valueObject.UserId;
 
 public class Chat {
 
