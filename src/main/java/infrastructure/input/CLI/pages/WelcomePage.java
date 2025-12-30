@@ -4,7 +4,6 @@ import application.ports.InputPort;
 import domain.entities.User;
 import domain.exceptions.DomainException;
 import infrastructure.input.CLI.ConsoleRunner;
-import infrastructure.input.CLI.utils.CliErrorMessage;
 import infrastructure.utils.MessageProvider;
 
 public class WelcomePage {

@@ -4,7 +4,6 @@ import domain.entities.User;
 import domain.exceptions.password.PasswordMismatchException;
 import domain.exceptions.user.UserNotFoundException;
 import domain.repositories.UserRepository;
-import domain.valueObject.Password;
 
 public class LogInUseCase {
 

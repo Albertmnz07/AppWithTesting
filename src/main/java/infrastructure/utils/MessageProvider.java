@@ -1,6 +1,5 @@
 package infrastructure.utils;
 
-import domain.error.ErrorCode;
 import domain.exceptions.DomainException;
 
 import java.util.Locale;

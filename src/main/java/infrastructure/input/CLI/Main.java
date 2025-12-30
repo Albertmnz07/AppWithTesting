@@ -8,7 +8,6 @@ import application.usecases.message.SendMessageUseCase;
 import application.usecases.user.CreateUserUseCase;
 import application.usecases.user.FindUserByUserNameUseCase;
 import application.usecases.user.LogInUseCase;
-import domain.entities.User;
 import domain.repositories.ChatRepository;
 import domain.repositories.MessageRepository;
 import domain.repositories.UserRepository;
