@@ -5,6 +5,7 @@ import application.usecases.chat.CreateChatUseCase;
 import application.usecases.user.FindUserByUserNameUseCase;
 import domain.entities.Chat;
 import domain.entities.User;
+import domain.exceptions.chat.ChatAlreadyExistsException;
 import domain.valueObject.UserName;
 import infrastructure.input.CLI.ConsoleRunner;
 import infrastructure.input.CLI.pages.HomePage;
@@ -70,7 +71,7 @@ class HomePageTest {
 
     }
 
-   /* @Test
+    @Test
     void shouldFailStartNewChat(){
         when(input.readInt(any())).thenReturn(HomePage.START_CHAT , HomePage.LOGOUT);
         User searchUser = mock(User.class);
@@ -84,9 +85,9 @@ class HomePageTest {
 
         homePage.show();
 
-        verify(createChatUseCase , never()).execute(any() , any());
+        verify(runner).logout();
 
-    }*/
+    }
 
     @Test
     void shouldLogOut(){
