@@ -20,7 +20,7 @@ public class MessageProvider {
      * @param key the code of the text that is required
      * @return the {@link String} ready to be displayed
      */
-    public String getRawText(String bundleName , String key){
+    private String getRawText(String bundleName , String key){
         try{
             ResourceBundle bundle = ResourceBundle.getBundle(bundleName , currentLocale);
             return bundle.getString(key);
