@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 public class MessageProvider {
 
+    //public static Locale currentLocale = new Locale("es");
     public static Locale currentLocale = Locale.getDefault();
 
     private static final String ERROR_BUNDLE = "i18n.error";

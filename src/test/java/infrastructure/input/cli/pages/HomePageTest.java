@@ -8,6 +8,7 @@ import domain.entities.User;
 import domain.valueObject.UserName;
 import infrastructure.input.CLI.ConsoleRunner;
 import infrastructure.input.CLI.pages.HomePage;
+import infrastructure.utils.MessageProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,6 +33,8 @@ class HomePageTest {
     InputPort input;
 
     @Mock
+    MessageProvider messageProvider;
+    @Mock
     UserName username;
 
     @Mock
@@ -47,7 +50,7 @@ class HomePageTest {
         when(currentUser.getUserName()).thenReturn(username);
         when(username.getValue()).thenReturn(TestConstants.USER_NAME);
 
-        homePage = new HomePage(runner , input);
+        homePage = new HomePage(runner , input , messageProvider);
     }
 
     @Test

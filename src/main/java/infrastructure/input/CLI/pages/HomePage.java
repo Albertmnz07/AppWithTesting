@@ -68,7 +68,7 @@ public class HomePage {
             User newUser = runner.getFindUserByUserNameUseCase().execute(user.getUserId() , username);
             Chat chat = runner.getCreateChatUseCase().execute(this.user.getUserId() , newUser.getUserId());
         } catch(DomainException e){
-            System.out.println(CliErrorMessage.from(e.getCode()));
+            System.out.println(messageProvider.getError(e));
         }
     }
 

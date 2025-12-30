@@ -46,7 +46,7 @@ public class WelcomePage {
             System.out.println("Login successful");
             this.runner.login(user);
         } catch (DomainException e){
-            System.out.println(CliErrorMessage.from(e.getCode()));
+            System.out.println(messageProvider.getError(e));
         }
     }
 
@@ -59,7 +59,7 @@ public class WelcomePage {
             User user = runner.getCreateUserUseCase().execute(username , password);
             this.runner.login(user);
         } catch (DomainException e){
-            System.out.println(CliErrorMessage.from(e.getCode()));
+            System.out.println(messageProvider.getError(e));
         }
     }
 }

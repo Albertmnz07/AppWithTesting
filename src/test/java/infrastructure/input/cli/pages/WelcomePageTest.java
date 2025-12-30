@@ -8,6 +8,7 @@ import domain.exceptions.password.PasswordTooShortException;
 import domain.exceptions.user.UserNotFoundException;
 import infrastructure.input.CLI.ConsoleRunner;
 import infrastructure.input.CLI.pages.WelcomePage;
+import infrastructure.utils.MessageProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,6 +28,9 @@ class WelcomePageTest {
     InputPort input;
 
     @Mock
+    MessageProvider messageProvider;
+
+    @Mock
     LogInUseCase logInUseCase;
 
     @Mock
@@ -36,7 +40,7 @@ class WelcomePageTest {
 
     @BeforeEach
     void setUp(){
-        welcomePage = new WelcomePage(runner , input);
+        welcomePage = new WelcomePage(runner , input , messageProvider);
     }
     @Test
     void shouldLogIn(){
