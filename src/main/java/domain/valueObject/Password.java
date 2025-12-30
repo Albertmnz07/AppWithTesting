@@ -73,6 +73,14 @@ public class Password {
 	}
 
     /**
+     * Compares to passwords in his primitive value
+     * @param candidate candidate password in primitive form ({@link String})
+     * @return true if passwords match, false otherwise
+     */
+    public boolean match(String candidate){
+        return this.value.equals(candidate);
+    }
+    /**
      * Compares the object with another
      * Two passwords are equals if his primitive value({@link String}) is the same
      * @param obj   the reference object with which to compare.

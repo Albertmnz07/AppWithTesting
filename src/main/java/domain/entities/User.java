@@ -38,9 +38,9 @@ public class User {
         this.password = newPassword;
     }
 
-    public boolean passwordMatches(Password candidate){
-        return this.password.equals(candidate);
-    }
+        public boolean passwordMatches(String candidate){
+            return this.password.match(candidate);
+        }
 
     public boolean hasId(UserId userId){
         return this.userId.equals(userId);
