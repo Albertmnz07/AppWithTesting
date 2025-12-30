@@ -16,12 +16,12 @@ import infrastructure.input.CLI.utils.InputReader;
 import infrastructure.persistence.inmemory.FakeChatRepository;
 import infrastructure.persistence.inmemory.FakeMessageRepository;
 import infrastructure.persistence.inmemory.FakeUserRepository;
+import infrastructure.utils.MessageProvider;
 
 public class Main {
 
 
     public static void main(String[] args) {
-        User currentUser;
         MessageRepository messageRepository = new FakeMessageRepository();
         UserRepository userRepository = new FakeUserRepository();
         ChatRepository chatRepository = new FakeChatRepository();
@@ -37,9 +37,10 @@ public class Main {
         GetUserChatsUseCase getUserChatsUseCase = new GetUserChatsUseCase(chatRepository);
 
         InputPort input = new InputReader();
+        MessageProvider messageProvider = new MessageProvider();
 
         var runner = new ConsoleRunner(createUserUseCase , logInUseCase , findUserByUserNameUseCase , sendMessageUseCase , getChatMessagesUseCase
-        , createChatUseCase , getUserChatsUseCase , input);
+        , createChatUseCase , getUserChatsUseCase , input , messageProvider);
 
         runner.run();
     }

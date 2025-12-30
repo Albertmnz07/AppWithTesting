@@ -5,19 +5,22 @@ import domain.entities.User;
 import domain.exceptions.DomainException;
 import infrastructure.input.CLI.ConsoleRunner;
 import infrastructure.input.CLI.utils.CliErrorMessage;
+import infrastructure.utils.MessageProvider;
 
 public class WelcomePage {
 
     private final ConsoleRunner runner;
     private final InputPort input;
+    private final MessageProvider messageProvider;
 
     public static final int LOGIN = 1;
     public static final int CREATE_ACCOUNT = 2;
     public static final int EXIT = 0;
 
-    public WelcomePage(ConsoleRunner runner , InputPort input){
+    public WelcomePage(ConsoleRunner runner , InputPort input , MessageProvider messageProvider){
         this.runner = runner;
         this.input = input;
+        this.messageProvider = messageProvider;
     }
 
     public void show(){

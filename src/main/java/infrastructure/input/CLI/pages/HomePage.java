@@ -6,21 +6,24 @@ import domain.entities.User;
 import domain.exceptions.DomainException;
 import infrastructure.input.CLI.ConsoleRunner;
 import infrastructure.input.CLI.utils.CliErrorMessage;
+import infrastructure.utils.MessageProvider;
 
 public class HomePage {
 
     private final ConsoleRunner runner;
     private final User user;
     private final InputPort input;
+    private final MessageProvider messageProvider;
 
     public static final int CHECK_CHATS = 1;
     public static final int START_CHAT = 2;
     public static final int CONFIGURATION = 3;
     public static final int LOGOUT = 4;
 
-    public HomePage(ConsoleRunner runner , InputPort input){
+    public HomePage(ConsoleRunner runner , InputPort input , MessageProvider messageProvider){
         this.runner = runner;
         this.input = input;
+        this.messageProvider = messageProvider;
         this.user = runner.getCurrentUser();
     }
 

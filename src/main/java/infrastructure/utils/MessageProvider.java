@@ -1,6 +1,7 @@
 package infrastructure.utils;
 
 import domain.error.ErrorCode;
+import domain.exceptions.DomainException;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -19,7 +20,7 @@ public class MessageProvider {
      * @param key the code of the text that is required
      * @return the {@link String} ready to be displayed
      */
-    public static String getRawText(String bundleName , String key){
+    public String getRawText(String bundleName , String key){
         try{
             ResourceBundle bundle = ResourceBundle.getBundle(bundleName , currentLocale);
             return bundle.getString(key);
@@ -28,12 +29,12 @@ public class MessageProvider {
         }
     }
 
-    public static String getError(ErrorCode code){
-        String pattern = getRawText(ERROR_BUNDLE , code.toString());
+    public String getError(DomainException code){
+        String pattern = getRawText(ERROR_BUNDLE , code.getCode().toString());
         return pattern; //is expected to add an implementation to include variables
     }
 
-    public static String getMessage(String text){
+    public String getMessage(String text){
         String pattern = getRawText(MESSAGE_BUNDLE , text);
         return pattern;
     }

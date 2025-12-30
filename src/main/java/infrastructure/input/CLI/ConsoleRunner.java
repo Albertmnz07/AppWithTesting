@@ -11,6 +11,7 @@ import application.usecases.user.LogInUseCase;
 import domain.entities.User;
 import infrastructure.input.CLI.pages.HomePage;
 import infrastructure.input.CLI.pages.WelcomePage;
+import infrastructure.utils.MessageProvider;
 
 public class ConsoleRunner {
 
@@ -25,9 +26,10 @@ public class ConsoleRunner {
     CreateChatUseCase createChatUseCase;
     GetUserChatsUseCase getUserChatsUseCase;
     InputPort input;
+    MessageProvider messageProvider;
 
     public ConsoleRunner(CreateUserUseCase createUserUseCase, LogInUseCase logInUseCase , FindUserByUserNameUseCase findUserByUserNameUseCase , SendMessageUseCase sendMessageUseCase ,
-                         GetChatMessagesUseCase getChatMessagesUseCase , CreateChatUseCase createChatUseCase , GetUserChatsUseCase getUserChatsUseCase , InputPort input){
+                         GetChatMessagesUseCase getChatMessagesUseCase , CreateChatUseCase createChatUseCase , GetUserChatsUseCase getUserChatsUseCase , InputPort input , MessageProvider messageProvider){
         this.createUserUseCase = createUserUseCase;
         this.logInUseCase = logInUseCase;
         this.findUserByUserNameUseCase = findUserByUserNameUseCase;
@@ -36,14 +38,15 @@ public class ConsoleRunner {
         this.createChatUseCase = createChatUseCase;
         this.getUserChatsUseCase = getUserChatsUseCase;
         this.input = input;
+        this.messageProvider = messageProvider;
     }
 
     public void run(){
         while (isRunning){
             if (currentUser == null){
-                new WelcomePage(this , this.input).show();
+                new WelcomePage(this , this.input , this.messageProvider).show();
             } else {
-                new HomePage(this , input).show();
+                new HomePage(this , input , this.messageProvider).show();
             }
         }
     }
