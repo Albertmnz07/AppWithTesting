@@ -7,6 +7,8 @@ import domain.exceptions.DomainException;
 import infrastructure.input.CLI.ConsoleRunner;
 import infrastructure.utils.MessageProvider;
 
+import java.util.List;
+
 public class HomePage {
 
     private final ConsoleRunner runner;
@@ -57,6 +59,12 @@ public class HomePage {
 
     public void handleCheckChats(){
         System.out.println("====Your chats====");
+        List<Chat> chatList = runner.getGetUserChatsUseCase().execute(user.getUserId());
+        for (int i = 0 ; i < chatList.size() ; i++){
+            System.out.println((i + 1) + ". " + chatList.get(i));
+        }
+        input.readString("Enter the chat number or 0 to return to the main menu");
+        //create chat page
 
     }
 
