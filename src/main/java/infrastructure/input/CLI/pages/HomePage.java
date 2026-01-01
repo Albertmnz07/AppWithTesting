@@ -46,7 +46,7 @@ public class HomePage {
             switch (selection){
                 case CHECK_CHATS -> handleCheckChats();
                 case START_CHAT -> handleStartChat();
-                case CONFIGURATION -> handleConfiguration();
+                case CONFIGURATION -> System.out.println("Unimplemented");
                 case LOGOUT -> {
                     runner.logout();
                     isOnPage = false;
@@ -78,10 +78,6 @@ public class HomePage {
         } catch(DomainException e){
             System.out.println(messageProvider.getError(e));
         }
-    }
-
-    public void handleConfiguration(){
-
     }
 
 }
