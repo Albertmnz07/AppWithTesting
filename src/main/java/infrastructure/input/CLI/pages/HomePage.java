@@ -31,7 +31,7 @@ public class HomePage {
 
         while (isOnPage){
 
-            System.out.println("Main menu, welcome " + user.getUserName().getValue());
+            System.out.println("====Main menu, welcome " + user.getUserName().getValue() + "====");
             System.out.println("Please, select one of this options");
             System.out.println("""
                 1. Check my chats
@@ -60,7 +60,7 @@ public class HomePage {
     }
 
     public void handleStartChat(){
-        System.out.println("Adding new chat");
+        System.out.println("====Adding new chat====");
         String username = input.readString("Please insert the username");
 
         try{
