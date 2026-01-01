@@ -56,6 +56,7 @@ public class HomePage {
     }
 
     public void handleCheckChats(){
+        System.out.println("====Your chats====");
 
     }
 
