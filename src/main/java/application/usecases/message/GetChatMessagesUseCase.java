@@ -6,9 +6,11 @@ import domain.exceptions.chat.ChatNotFoundException;
 import domain.repositories.ChatRepository;
 import domain.repositories.MessageRepository;
 import domain.valueObject.ChatId;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GetChatMessagesUseCase {
 
     private final MessageRepository messageRepository;

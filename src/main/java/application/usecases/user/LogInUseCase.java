@@ -4,7 +4,9 @@ import domain.entities.User;
 import domain.exceptions.password.PasswordMismatchException;
 import domain.exceptions.user.UserNotFoundException;
 import domain.repositories.UserRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LogInUseCase {
 
     UserRepository userRepository;

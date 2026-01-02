@@ -5,7 +5,9 @@ import domain.exceptions.user.UserNotFoundException;
 import domain.exceptions.user.UserSearchHimSelfException;
 import domain.repositories.UserRepository;
 import domain.valueObject.UserId;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FindUserByUserNameUseCase {
     UserRepository userRepository;
 

@@ -3,9 +3,11 @@ package application.usecases.chat;
 import domain.entities.Chat;
 import domain.repositories.ChatRepository;
 import domain.valueObject.UserId;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GetUserChatsUseCase {
 
     private final ChatRepository chatRepository;

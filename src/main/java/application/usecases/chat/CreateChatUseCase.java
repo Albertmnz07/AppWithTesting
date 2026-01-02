@@ -5,7 +5,9 @@ import domain.exceptions.chat.ChatAlreadyExistsException;
 import domain.repositories.ChatRepository;
 import domain.valueObject.ChatId;
 import domain.valueObject.UserId;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateChatUseCase {
 
     ChatRepository chatRepository;

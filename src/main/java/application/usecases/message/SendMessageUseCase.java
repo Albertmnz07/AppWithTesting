@@ -10,7 +10,9 @@ import domain.valueObject.ChatId;
 import domain.valueObject.MessageContent;
 import domain.valueObject.MessageId;
 import domain.valueObject.UserId;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SendMessageUseCase {
 
     private final MessageRepository messageRepository;

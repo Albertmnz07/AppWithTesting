@@ -6,7 +6,9 @@ import domain.repositories.UserRepository;
 import domain.valueObject.Password;
 import domain.valueObject.UserId;
 import domain.valueObject.UserName;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateUserUseCase {
 
     private final UserRepository userRepository;
