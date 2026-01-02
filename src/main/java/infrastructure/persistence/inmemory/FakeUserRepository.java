@@ -3,11 +3,13 @@ package infrastructure.persistence.inmemory;
 import domain.entities.User;
 import domain.repositories.UserRepository;
 import domain.valueObject.UserId;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
 public class FakeUserRepository implements UserRepository {
     private final Map<UserId , User> storage = new HashMap<>();
     @Override

@@ -4,12 +4,14 @@ import domain.entities.Message;
 import domain.repositories.MessageRepository;
 import domain.valueObject.ChatId;
 import domain.valueObject.MessageId;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
 public class FakeMessageRepository implements MessageRepository {
     Map<MessageId , Message> storage = new HashMap<>();
 
