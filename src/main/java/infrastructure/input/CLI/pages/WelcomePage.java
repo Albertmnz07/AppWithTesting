@@ -22,7 +22,7 @@ public class WelcomePage {
         this.messageProvider = messageProvider;
     }
 
-    public void show(){
+    public void show(ConsoleRunner runner){
         System.out.println("Welcome to chat");
         System.out.println("Please, choose an option");
         System.out.println("1.Log In\n2.Create Account\n0.Exit");

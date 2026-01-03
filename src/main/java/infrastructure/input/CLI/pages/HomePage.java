@@ -28,7 +28,7 @@ public class HomePage {
         this.user = runner.getCurrentUser();
     }
 
-    public void show(){
+    public void show(ConsoleRunner consoleRunner){
         boolean isOnPage = true;
 
         while (isOnPage){

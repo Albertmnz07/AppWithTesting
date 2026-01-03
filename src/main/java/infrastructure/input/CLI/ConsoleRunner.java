@@ -18,39 +18,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConsoleRunner implements CommandLineRunner {
 
+    private final WelcomePage welcomePage;
+    private final HomePage homePage;
+
     User currentUser = null;
     boolean isRunning = true;
 
-    CreateUserUseCase createUserUseCase;
-    LogInUseCase logInUseCase;
-    FindUserByUserNameUseCase findUserByUserNameUseCase;
-    SendMessageUseCase sendMessageUseCase;
-    GetChatMessagesUseCase getChatMessagesUseCase;
-    CreateChatUseCase createChatUseCase;
-    GetUserChatsUseCase getUserChatsUseCase;
-    InputPort input;
-    MessageProvider messageProvider;
-
-    public ConsoleRunner(CreateUserUseCase createUserUseCase, LogInUseCase logInUseCase , FindUserByUserNameUseCase findUserByUserNameUseCase , SendMessageUseCase sendMessageUseCase ,
-                         GetChatMessagesUseCase getChatMessagesUseCase , CreateChatUseCase createChatUseCase , GetUserChatsUseCase getUserChatsUseCase , InputPort input , MessageProvider messageProvider){
-        this.createUserUseCase = createUserUseCase;
-        this.logInUseCase = logInUseCase;
-        this.findUserByUserNameUseCase = findUserByUserNameUseCase;
-        this.sendMessageUseCase = sendMessageUseCase;
-        this.getChatMessagesUseCase = getChatMessagesUseCase;
-        this.createChatUseCase = createChatUseCase;
-        this.getUserChatsUseCase = getUserChatsUseCase;
-        this.input = input;
-        this.messageProvider = messageProvider;
+    public ConsoleRunner(WelcomePage welcomePage , HomePage homePage){
+        this.welcomePage = welcomePage;
+        this.homePage = homePage;
     }
 
     @Override
     public void run(String... args) throws Exception {
         while (isRunning){
             if (currentUser == null){
-                new WelcomePage(this , this.input , this.messageProvider).show();
+                welcomePage.show(this); //Its necessary give the runner instance to access login and logout
             } else {
-                new HomePage(this , input , this.messageProvider).show();
+                homePage.show(this);
             }
         }
     }
@@ -65,31 +50,5 @@ public class ConsoleRunner implements CommandLineRunner {
     public User getCurrentUser() {
         return currentUser;
     }
-
-    public CreateUserUseCase getCreateUserUseCase() {
-        return createUserUseCase;
-    }
-
-    public LogInUseCase getLogInUseCase() {
-        return logInUseCase;
-    }
-
-    public SendMessageUseCase getSendMessageUseCase() {
-        return sendMessageUseCase;
-    }
-
-    public GetChatMessagesUseCase getGetChatMessagesUseCase() {
-        return getChatMessagesUseCase;
-    }
-
-    public CreateChatUseCase getCreateChatUseCase() {
-        return createChatUseCase;
-    }
-
-    public GetUserChatsUseCase getGetUserChatsUseCase() {
-        return getUserChatsUseCase;
-    }
-
-    public FindUserByUserNameUseCase getFindUserByUserNameUseCase(){return findUserByUserNameUseCase;}
 
 }
