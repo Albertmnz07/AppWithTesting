@@ -5,7 +5,6 @@ import application.usecases.user.CreateUserUseCase;
 import application.usecases.user.LogInUseCase;
 import domain.entities.User;
 import domain.exceptions.DomainException;
-import infrastructure.input.CLI.ConsoleRunner;
 import infrastructure.input.CLI.utils.SessionContext;
 import infrastructure.utils.MessageProvider;
 

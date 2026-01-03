@@ -1,25 +1,25 @@
 package application.usecases.message;
 
-import domain.error.ErrorCode;
-import infrastructure.persistence.inmemory.FakeChatRepository;
-import infrastructure.persistence.inmemory.FakeMessageRepository;
-import domain.exceptions.chat.ChatNotFoundException;
-import domain.exceptions.user.UserNotParticipantInChat;
 import application.usecases.chat.CreateChatUseCase;
-import application.usecases.message.SendMessageUseCase;
 import domain.entities.Chat;
 import domain.entities.Message;
+import domain.error.ErrorCode;
+import domain.exceptions.chat.ChatNotFoundException;
+import domain.exceptions.user.UserNotParticipantInChat;
 import domain.repositories.ChatRepository;
 import domain.repositories.MessageRepository;
 import domain.valueObject.ChatId;
 import domain.valueObject.UserId;
+import infrastructure.persistence.inmemory.FakeChatRepository;
+import infrastructure.persistence.inmemory.FakeMessageRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import temporalUtils.TestConstants;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SendMessageUseCaseTest {
 

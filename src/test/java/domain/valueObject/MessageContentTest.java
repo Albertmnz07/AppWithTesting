@@ -3,7 +3,6 @@ package domain.valueObject;
 import domain.error.ErrorCode;
 import domain.exceptions.message.MessageEmptyException;
 import domain.exceptions.message.MessageTooLongException;
-import domain.valueObject.MessageContent;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -3,17 +3,13 @@ package infrastructure.input.CLI.pages;
 import application.ports.InputPort;
 import application.usecases.chat.CreateChatUseCase;
 import application.usecases.chat.GetUserChatsUseCase;
-import application.usecases.message.GetChatMessagesUseCase;
 import application.usecases.user.FindUserByUserNameUseCase;
 import domain.entities.Chat;
 import domain.entities.User;
 import domain.exceptions.DomainException;
-import infrastructure.input.CLI.ConsoleRunner;
 import infrastructure.input.CLI.utils.SessionContext;
 import infrastructure.utils.MessageProvider;
-import org.springframework.boot.web.servlet.server.Session;
 
-import java.nio.channels.SeekableByteChannel;
 import java.util.List;
 
 public class HomePage {

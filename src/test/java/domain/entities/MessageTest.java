@@ -1,6 +1,5 @@
 package domain.entities;
 
-import domain.entities.Message;
 import domain.valueObject.ChatId;
 import domain.valueObject.MessageContent;
 import domain.valueObject.MessageId;

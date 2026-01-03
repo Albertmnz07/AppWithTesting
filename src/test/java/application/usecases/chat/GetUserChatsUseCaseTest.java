@@ -1,10 +1,8 @@
 package application.usecases.chat;
 
-import infrastructure.persistence.inmemory.FakeChatRepository;
-import application.usecases.chat.CreateChatUseCase;
-import application.usecases.chat.GetUserChatsUseCase;
 import domain.entities.Chat;
 import domain.valueObject.UserId;
+import infrastructure.persistence.inmemory.FakeChatRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

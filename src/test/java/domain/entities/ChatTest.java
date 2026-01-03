@@ -1,7 +1,5 @@
 package domain.entities;
 
-import domain.entities.Chat;
-import domain.entities.User;
 import domain.error.ErrorCode;
 import domain.exceptions.user.SameUsersException;
 import domain.valueObject.ChatId;

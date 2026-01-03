@@ -1,6 +1,5 @@
 package domain.entities;
 
-import domain.entities.User;
 import domain.valueObject.Password;
 import domain.valueObject.UserId;
 import domain.valueObject.UserName;

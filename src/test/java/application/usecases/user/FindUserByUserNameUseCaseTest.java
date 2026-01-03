@@ -1,19 +1,18 @@
 package application.usecases.user;
 
+import domain.entities.User;
 import domain.error.ErrorCode;
+import domain.exceptions.user.UserNotFoundException;
 import domain.exceptions.user.UserSearchHimSelfException;
+import domain.repositories.UserRepository;
 import domain.valueObject.UserId;
 import infrastructure.persistence.inmemory.FakeUserRepository;
-import domain.exceptions.user.UserNotFoundException;
-import application.usecases.user.CreateUserUseCase;
-import application.usecases.user.FindUserByUserNameUseCase;
-import domain.entities.User;
-import domain.repositories.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import temporalUtils.TestConstants;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FindUserByUserNameUseCaseTest {
 

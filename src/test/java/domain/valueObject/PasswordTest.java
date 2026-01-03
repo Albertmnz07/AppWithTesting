@@ -4,7 +4,6 @@ import domain.error.ErrorCode;
 import domain.exceptions.password.PasswordEmptyException;
 import domain.exceptions.password.PasswordTooLongException;
 import domain.exceptions.password.PasswordTooShortException;
-import domain.valueObject.Password;
 import org.junit.jupiter.api.Test;
 import temporalUtils.TestConstants;
 

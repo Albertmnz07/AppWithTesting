@@ -4,7 +4,6 @@ import domain.error.ErrorCode;
 import domain.exceptions.user.UserNameEmptyException;
 import domain.exceptions.user.UserNameTooLongException;
 import domain.exceptions.user.UserNameTooShortException;
-import domain.valueObject.UserName;
 import org.junit.jupiter.api.Test;
 import temporalUtils.TestConstants;
 
