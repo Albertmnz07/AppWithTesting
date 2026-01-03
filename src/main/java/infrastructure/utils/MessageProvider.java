@@ -1,10 +1,12 @@
 package infrastructure.utils;
 
 import domain.exceptions.DomainException;
+import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+@Component
 public class MessageProvider {
 
     //public static Locale currentLocale = new Locale("es");

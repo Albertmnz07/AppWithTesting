@@ -1,9 +1,11 @@
 package infrastructure.input.CLI.utils;
 
 import application.ports.InputPort;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class InputReader implements InputPort {
 
     private static Scanner sc = new Scanner(System.in);
