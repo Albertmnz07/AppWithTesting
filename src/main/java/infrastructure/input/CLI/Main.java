@@ -26,28 +26,6 @@ public class Main {
     public static void main(String[] args) {
 
         SpringApplication.run(Main.class , args);
-
-        MessageRepository messageRepository = new FakeMessageRepository();
-        UserRepository userRepository = new FakeUserRepository();
-        ChatRepository chatRepository = new FakeChatRepository();
-
-        CreateUserUseCase createUserUseCase = new CreateUserUseCase(userRepository);
-        LogInUseCase logInUseCase = new LogInUseCase(userRepository);
-        FindUserByUserNameUseCase findUserByUserNameUseCase = new FindUserByUserNameUseCase(userRepository);
-
-        SendMessageUseCase sendMessageUseCase = new SendMessageUseCase(messageRepository, chatRepository);
-        GetChatMessagesUseCase getChatMessagesUseCase = new GetChatMessagesUseCase(messageRepository, chatRepository);
-
-        CreateChatUseCase createChatUseCase = new CreateChatUseCase(chatRepository);
-        GetUserChatsUseCase getUserChatsUseCase = new GetUserChatsUseCase(chatRepository);
-
-        InputPort input = new InputReader();
-        MessageProvider messageProvider = new MessageProvider();
-
-        var runner = new ConsoleRunner(createUserUseCase , logInUseCase , findUserByUserNameUseCase , sendMessageUseCase , getChatMessagesUseCase
-        , createChatUseCase , getUserChatsUseCase , input , messageProvider);
-
-        runner.run();
     }
 
 }
