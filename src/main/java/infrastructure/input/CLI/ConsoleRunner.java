@@ -12,8 +12,11 @@ import domain.entities.User;
 import infrastructure.input.CLI.pages.HomePage;
 import infrastructure.input.CLI.pages.WelcomePage;
 import infrastructure.utils.MessageProvider;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
-public class ConsoleRunner {
+@Component
+public class ConsoleRunner implements CommandLineRunner {
 
     User currentUser = null;
     boolean isRunning = true;
@@ -41,7 +44,8 @@ public class ConsoleRunner {
         this.messageProvider = messageProvider;
     }
 
-    public void run(){
+    @Override
+    public void run(String... args) throws Exception {
         while (isRunning){
             if (currentUser == null){
                 new WelcomePage(this , this.input , this.messageProvider).show();
@@ -50,6 +54,7 @@ public class ConsoleRunner {
             }
         }
     }
+
 
     public void login(User user){this.currentUser = user;}
     public void logout(){this.currentUser = null;}
@@ -86,6 +91,5 @@ public class ConsoleRunner {
     }
 
     public FindUserByUserNameUseCase getFindUserByUserNameUseCase(){return findUserByUserNameUseCase;}
-
 
 }
