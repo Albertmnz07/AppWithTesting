@@ -1,34 +1,48 @@
 package infrastructure.input.CLI.pages;
 
 import application.ports.InputPort;
+import application.usecases.chat.CreateChatUseCase;
+import application.usecases.chat.GetUserChatsUseCase;
+import application.usecases.message.GetChatMessagesUseCase;
+import application.usecases.user.FindUserByUserNameUseCase;
 import domain.entities.Chat;
 import domain.entities.User;
 import domain.exceptions.DomainException;
 import infrastructure.input.CLI.ConsoleRunner;
+import infrastructure.input.CLI.utils.SessionContext;
 import infrastructure.utils.MessageProvider;
+import org.springframework.boot.web.servlet.server.Session;
 
+import java.nio.channels.SeekableByteChannel;
 import java.util.List;
 
 public class HomePage {
 
-    private final ConsoleRunner runner;
     private final User user;
     private final InputPort input;
     private final MessageProvider messageProvider;
+    private final SessionContext sessionContext;
+    private final GetUserChatsUseCase getUserChatsUseCase;
+    private final FindUserByUserNameUseCase findUserByUserNameUseCase;
+    private final CreateChatUseCase createChatUseCase;
 
     public static final int CHECK_CHATS = 1;
     public static final int START_CHAT = 2;
     public static final int CONFIGURATION = 3;
     public static final int LOGOUT = 4;
 
-    public HomePage(ConsoleRunner runner , InputPort input , MessageProvider messageProvider){
-        this.runner = runner;
+    public HomePage(InputPort input , MessageProvider messageProvider , SessionContext sessionContext , GetUserChatsUseCase getUserChatsUseCase
+     , FindUserByUserNameUseCase findUserByUserNameUseCase , CreateChatUseCase createChatUseCase){
         this.input = input;
         this.messageProvider = messageProvider;
-        this.user = runner.getCurrentUser();
+        this.user = sessionContext.getCurrentUser();
+        this.sessionContext = sessionContext;
+        this.getUserChatsUseCase = getUserChatsUseCase;
+        this.findUserByUserNameUseCase = findUserByUserNameUseCase;
+        this.createChatUseCase = createChatUseCase;
     }
 
-    public void show(ConsoleRunner consoleRunner){
+    public void show(){
         boolean isOnPage = true;
 
         while (isOnPage){
@@ -48,7 +62,7 @@ public class HomePage {
                 case START_CHAT -> handleStartChat();
                 case CONFIGURATION -> System.out.println("Unimplemented");
                 case LOGOUT -> {
-                    runner.logout();
+                    sessionContext.setUser(null);
                     isOnPage = false;
                 }
                 default -> System.out.println("Please, select a correct option");
@@ -59,7 +73,7 @@ public class HomePage {
 
     public void handleCheckChats(){
         System.out.println("====Your chats====");
-        List<Chat> chatList = runner.getGetUserChatsUseCase().execute(user.getUserId());
+        List<Chat> chatList = getUserChatsUseCase.execute(user.getUserId());
         for (int i = 0 ; i < chatList.size() ; i++){
             System.out.println((i + 1) + ". " + chatList.get(i));
         }
@@ -73,8 +87,8 @@ public class HomePage {
         String username = input.readString("Please insert the username");
 
         try{
-            User newUser = runner.getFindUserByUserNameUseCase().execute(user.getUserId() , username);
-            Chat chat = runner.getCreateChatUseCase().execute(this.user.getUserId() , newUser.getUserId());
+            User newUser = findUserByUserNameUseCase.execute(user.getUserId() , username);
+            Chat chat = createChatUseCase.execute(this.user.getUserId() , newUser.getUserId());
         } catch(DomainException e){
             System.out.println(messageProvider.getError(e));
         }
