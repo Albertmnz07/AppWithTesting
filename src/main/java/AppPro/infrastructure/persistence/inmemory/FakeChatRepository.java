@@ -1,0 +1,48 @@
+package AppPro.infrastructure.persistence.inmemory;
+
+import AppPro.domain.entities.Chat;
+import AppPro.domain.repositories.ChatRepository;
+import AppPro.domain.valueObject.ChatId;
+import AppPro.domain.valueObject.UserId;
+import org.springframework.stereotype.Repository;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+@Repository
+public class FakeChatRepository implements ChatRepository {
+    private final Map<ChatId , Chat> storage = new HashMap<>();
+    @Override
+    public Optional<Chat> findById(ChatId chatId) {
+        return Optional.ofNullable(storage.get(chatId));
+    }
+
+    @Override
+    public void save(Chat chat) {
+        storage.put(chat.getChatId() , chat);
+    }
+
+    @Override
+    public List<Chat> findAllByUserId(UserId userId) {
+        return storage.values().stream().
+                        filter(chat -> chat.involves(userId)).
+                        toList();
+    }
+
+    @Override
+    public Optional<Chat> findByUsersIds(UserId userA, UserId userB) {
+        return storage.values().
+                stream().
+                filter(chat -> chat.involves(userA)).
+                filter(chat -> chat.involves(userB)) .
+                findFirst();
+
+    }
+
+    @Override
+    public void delete(ChatId chatId) {
+        storage.remove(chatId);
+    }
+}

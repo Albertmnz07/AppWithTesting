@@ -1,11 +1,12 @@
 package application.usecases.user;
 
-import domain.entities.User;
-import domain.error.ErrorCode;
-import domain.exceptions.user.UserNameAlreadyExistsException;
-import infrastructure.persistence.inmemory.FakeUserRepository;
+import AppPro.application.usecases.user.CreateUserUseCase;
+import AppPro.domain.entities.User;
+import AppPro.domain.error.ErrorCode;
+import AppPro.domain.exceptions.user.UserNameAlreadyExistsException;
+import AppPro.infrastructure.persistence.inmemory.FakeUserRepository;
 import org.junit.jupiter.api.Test;
-import temporalUtils.TestConstants;
+import AppPro.temporalUtils.TestConstants;
 
 import static org.junit.jupiter.api.Assertions.*;
 

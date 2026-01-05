@@ -1,5 +1,6 @@
 package domain.valueObject;
 
+import AppPro.domain.valueObject.UserId;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;

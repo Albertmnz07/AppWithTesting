@@ -1,11 +1,12 @@
 package domain.valueObject;
 
-import domain.error.ErrorCode;
-import domain.exceptions.user.UserNameEmptyException;
-import domain.exceptions.user.UserNameTooLongException;
-import domain.exceptions.user.UserNameTooShortException;
+import AppPro.domain.error.ErrorCode;
+import AppPro.domain.exceptions.user.UserNameEmptyException;
+import AppPro.domain.exceptions.user.UserNameTooLongException;
+import AppPro.domain.exceptions.user.UserNameTooShortException;
+import AppPro.domain.valueObject.UserName;
 import org.junit.jupiter.api.Test;
-import temporalUtils.TestConstants;
+import AppPro.temporalUtils.TestConstants;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -15,7 +16,7 @@ class UserNameTest {
 	@Test
 	void shouldCreateObject() {
 		@SuppressWarnings("unused")
-		UserName name = new UserName(TestConstants.USER_NAME);
+        UserName name = new UserName(TestConstants.USER_NAME);
 	}
 	
 	@Test

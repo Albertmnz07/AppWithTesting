@@ -1,9 +1,10 @@
 package domain.entities;
 
-import domain.valueObject.ChatId;
-import domain.valueObject.MessageContent;
-import domain.valueObject.MessageId;
-import domain.valueObject.UserId;
+import AppPro.domain.entities.Message;
+import AppPro.domain.valueObject.ChatId;
+import AppPro.domain.valueObject.MessageContent;
+import AppPro.domain.valueObject.MessageId;
+import AppPro.domain.valueObject.UserId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

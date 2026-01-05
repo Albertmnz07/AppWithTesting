@@ -1,5 +1,6 @@
 package domain.valueObject;
 
+import AppPro.domain.valueObject.MessageId;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
