@@ -1,6 +1,7 @@
 package infrastructure.utils;
 
 import domain.exceptions.DomainException;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
 import java.util.Locale;
@@ -10,10 +11,15 @@ import java.util.ResourceBundle;
 public class MessageProvider {
 
     //public static Locale currentLocale = new Locale("es");
-    public static Locale currentLocale = Locale.getDefault();
+    private final MessageSource messageSource;
 
-    private static final String ERROR_BUNDLE = "i18n.error";
-    private static final String MESSAGE_BUNDLE = "i18n.message";
+    public MessageProvider(MessageSource messageSource){
+        this.messageSource = messageSource;
+    }
+
+    private Locale getCurrentLocale(){
+        return Locale.getDefault();
+    }
 
     /**
      * Obtains a text in the correct language. Is independent of errors or simple plain text.
