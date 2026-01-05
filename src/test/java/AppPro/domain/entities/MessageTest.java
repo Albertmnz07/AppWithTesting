@@ -1,6 +1,5 @@
 package AppPro.domain.entities;
 
-import AppPro.domain.entities.Message;
 import AppPro.domain.valueObject.ChatId;
 import AppPro.domain.valueObject.MessageContent;
 import AppPro.domain.valueObject.MessageId;

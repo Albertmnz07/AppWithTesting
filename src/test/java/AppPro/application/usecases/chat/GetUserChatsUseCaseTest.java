@@ -1,7 +1,5 @@
 package AppPro.application.usecases.chat;
 
-import AppPro.application.usecases.chat.CreateChatUseCase;
-import AppPro.application.usecases.chat.GetUserChatsUseCase;
 import AppPro.domain.entities.Chat;
 import AppPro.domain.valueObject.UserId;
 import AppPro.infrastructure.persistence.inmemory.FakeChatRepository;

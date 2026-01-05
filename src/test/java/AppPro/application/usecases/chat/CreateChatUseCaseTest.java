@@ -1,6 +1,5 @@
 package AppPro.application.usecases.chat;
 
-import AppPro.application.usecases.chat.CreateChatUseCase;
 import AppPro.domain.entities.Chat;
 import AppPro.domain.error.ErrorCode;
 import AppPro.domain.exceptions.chat.ChatAlreadyExistsException;

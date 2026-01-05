@@ -4,9 +4,8 @@ import AppPro.domain.error.ErrorCode;
 import AppPro.domain.exceptions.password.PasswordEmptyException;
 import AppPro.domain.exceptions.password.PasswordTooLongException;
 import AppPro.domain.exceptions.password.PasswordTooShortException;
-import AppPro.domain.valueObject.Password;
-import org.junit.jupiter.api.Test;
 import AppPro.temporalUtils.TestConstants;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -3,6 +3,7 @@ package AppPro.infrastructure.utils;
 import AppPro.domain.exceptions.DomainException;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
+
 import java.util.Locale;
 
 @Component

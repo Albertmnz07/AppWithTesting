@@ -1,7 +1,6 @@
 package AppPro.application.usecases.message;
 
 import AppPro.application.usecases.chat.CreateChatUseCase;
-import AppPro.application.usecases.message.SendMessageUseCase;
 import AppPro.domain.entities.Chat;
 import AppPro.domain.entities.Message;
 import AppPro.domain.error.ErrorCode;
@@ -13,9 +12,9 @@ import AppPro.domain.valueObject.ChatId;
 import AppPro.domain.valueObject.UserId;
 import AppPro.infrastructure.persistence.inmemory.FakeChatRepository;
 import AppPro.infrastructure.persistence.inmemory.FakeMessageRepository;
+import AppPro.temporalUtils.TestConstants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import AppPro.temporalUtils.TestConstants;
 
 import java.util.List;
 

@@ -4,9 +4,8 @@ import AppPro.domain.error.ErrorCode;
 import AppPro.domain.exceptions.user.UserNameEmptyException;
 import AppPro.domain.exceptions.user.UserNameTooLongException;
 import AppPro.domain.exceptions.user.UserNameTooShortException;
-import AppPro.domain.valueObject.UserName;
-import org.junit.jupiter.api.Test;
 import AppPro.temporalUtils.TestConstants;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

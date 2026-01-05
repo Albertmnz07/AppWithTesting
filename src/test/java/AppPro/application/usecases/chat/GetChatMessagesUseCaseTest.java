@@ -13,9 +13,9 @@ import AppPro.domain.valueObject.MessageId;
 import AppPro.domain.valueObject.UserId;
 import AppPro.infrastructure.persistence.inmemory.FakeChatRepository;
 import AppPro.infrastructure.persistence.inmemory.FakeMessageRepository;
+import AppPro.temporalUtils.TestConstants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import AppPro.temporalUtils.TestConstants;
 
 import java.util.List;
 

@@ -3,13 +3,13 @@ package AppPro.infrastructure.input.CLI.pages;
 import AppPro.application.ports.InputPort;
 import AppPro.application.usecases.message.GetChatMessagesUseCase;
 import AppPro.application.usecases.message.SendMessageUseCase;
+import AppPro.domain.entities.Chat;
 import AppPro.domain.entities.Message;
 import AppPro.domain.entities.User;
 import AppPro.domain.exceptions.DomainException;
 import AppPro.domain.service.UserFinder;
 import AppPro.infrastructure.input.CLI.utils.SessionContext;
 import AppPro.infrastructure.utils.MessageProvider;
-import AppPro.domain.entities.Chat;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

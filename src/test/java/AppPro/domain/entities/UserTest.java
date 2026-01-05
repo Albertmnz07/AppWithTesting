@@ -1,11 +1,10 @@
 package AppPro.domain.entities;
 
-import AppPro.domain.entities.User;
 import AppPro.domain.valueObject.Password;
 import AppPro.domain.valueObject.UserId;
 import AppPro.domain.valueObject.UserName;
-import org.junit.jupiter.api.Test;
 import AppPro.temporalUtils.TestConstants;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
