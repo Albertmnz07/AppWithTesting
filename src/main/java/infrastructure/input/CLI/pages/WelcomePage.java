@@ -7,7 +7,9 @@ import domain.entities.User;
 import domain.exceptions.DomainException;
 import infrastructure.input.CLI.utils.SessionContext;
 import infrastructure.utils.MessageProvider;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WelcomePage {
 
     private final InputPort input;
