@@ -9,9 +9,11 @@ import domain.entities.User;
 import domain.exceptions.DomainException;
 import infrastructure.input.CLI.utils.SessionContext;
 import infrastructure.utils.MessageProvider;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class HomePage {
 
     private final User user;
@@ -21,6 +23,7 @@ public class HomePage {
     private final GetUserChatsUseCase getUserChatsUseCase;
     private final FindUserByUserNameUseCase findUserByUserNameUseCase;
     private final CreateChatUseCase createChatUseCase;
+    private final ChatPage chatPage;
 
     public static final int CHECK_CHATS = 1;
     public static final int START_CHAT = 2;
@@ -28,7 +31,7 @@ public class HomePage {
     public static final int LOGOUT = 4;
 
     public HomePage(InputPort input , MessageProvider messageProvider , SessionContext sessionContext , GetUserChatsUseCase getUserChatsUseCase
-     , FindUserByUserNameUseCase findUserByUserNameUseCase , CreateChatUseCase createChatUseCase){
+     , FindUserByUserNameUseCase findUserByUserNameUseCase , CreateChatUseCase createChatUseCase , ChatPage chatPage){
         this.input = input;
         this.messageProvider = messageProvider;
         this.user = sessionContext.getCurrentUser();
@@ -36,6 +39,7 @@ public class HomePage {
         this.getUserChatsUseCase = getUserChatsUseCase;
         this.findUserByUserNameUseCase = findUserByUserNameUseCase;
         this.createChatUseCase = createChatUseCase;
+        this.chatPage = chatPage;
     }
 
     public void show(){
@@ -73,8 +77,14 @@ public class HomePage {
         for (int i = 0 ; i < chatList.size() ; i++){
             System.out.println((i + 1) + ". " + chatList.get(i));
         }
-        input.readString("Enter the chat number or 0 to return to the main menu");
-        //create chat page
+        try{
+            int selectedChat = input.readInt("Enter the chat number or 0 to return to the main menu");
+            chatPage.show(chatList.get(selectedChat - 1));
+        } catch (DomainException e){
+            messageProvider.getError(e);
+        }
+
+
 
     }
 
