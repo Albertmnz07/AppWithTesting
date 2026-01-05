@@ -1,4 +1,4 @@
-package domain.valueObject;
+package AppPro.domain.valueObject;
 
 import AppPro.domain.valueObject.ChatId;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package application.usecases.message;
+package AppPro.application.usecases.message;
 
 import AppPro.application.usecases.chat.CreateChatUseCase;
 import AppPro.application.usecases.message.SendMessageUseCase;

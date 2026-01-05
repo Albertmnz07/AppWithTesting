@@ -1,4 +1,4 @@
-package application.usecases.chat;
+package AppPro.application.usecases.chat;
 
 import AppPro.application.usecases.chat.CreateChatUseCase;
 import AppPro.application.usecases.chat.GetUserChatsUseCase;

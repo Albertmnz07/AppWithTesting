@@ -1,4 +1,4 @@
-package domain.valueObject;
+package AppPro.domain.valueObject;
 
 import AppPro.domain.error.ErrorCode;
 import AppPro.domain.exceptions.message.MessageEmptyException;

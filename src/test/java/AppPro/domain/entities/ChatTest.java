@@ -1,4 +1,4 @@
-package domain.entities;
+package AppPro.domain.entities;
 
 import AppPro.domain.entities.Chat;
 import AppPro.domain.entities.User;

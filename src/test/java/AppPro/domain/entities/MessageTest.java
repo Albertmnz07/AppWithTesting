@@ -1,4 +1,4 @@
-package domain.entities;
+package AppPro.domain.entities;
 
 import AppPro.domain.entities.Message;
 import AppPro.domain.valueObject.ChatId;

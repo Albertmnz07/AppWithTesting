@@ -1,4 +1,4 @@
-package domain.valueObject;
+package AppPro.domain.valueObject;
 
 import AppPro.domain.valueObject.UserId;
 import org.junit.jupiter.api.Test;

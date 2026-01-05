@@ -1,4 +1,4 @@
-package application.usecases.user;
+package AppPro.application.usecases.user;
 
 import AppPro.application.usecases.user.CreateUserUseCase;
 import AppPro.domain.entities.User;
