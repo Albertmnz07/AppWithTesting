@@ -21,7 +21,7 @@ public class MessageProvider {
     }
 
     public String getError(DomainException code){
-        return messageSource.getMessage(code.getCode().toString() , null , getCurrentLocale());
+        return messageSource.getMessage(code.getCode().name() , null , getCurrentLocale());
     }
 
     public String getMessage(String text , Object... args){
