@@ -13,7 +13,7 @@ public class ConsoleRunner implements CommandLineRunner {
     private final HomePage homePage;
     private final SessionContext sessionContext;
 
-    boolean isRunning = true;
+    private boolean isRunning = true;
 
     public ConsoleRunner(WelcomePage welcomePage , HomePage homePage , SessionContext sessionContext){
         this.welcomePage = welcomePage;

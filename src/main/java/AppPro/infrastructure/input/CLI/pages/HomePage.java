@@ -16,7 +16,6 @@ import java.util.List;
 @Component
 public class HomePage {
 
-    private final User user;
     private final InputPort input;
     private final MessageProvider messageProvider;
     private final SessionContext sessionContext;
@@ -34,7 +33,6 @@ public class HomePage {
      , FindUserByUserNameUseCase findUserByUserNameUseCase , CreateChatUseCase createChatUseCase , ChatPage chatPage){
         this.input = input;
         this.messageProvider = messageProvider;
-        this.user = sessionContext.getCurrentUser();
         this.sessionContext = sessionContext;
         this.getUserChatsUseCase = getUserChatsUseCase;
         this.findUserByUserNameUseCase = findUserByUserNameUseCase;
@@ -44,6 +42,7 @@ public class HomePage {
 
     public void show(){
         boolean isOnPage = true;
+        User user = sessionContext.getCurrentUser();
 
         while (isOnPage){
 
@@ -58,8 +57,8 @@ public class HomePage {
             int selection = input.readInt("Selection");
 
             switch (selection){
-                case CHECK_CHATS -> handleCheckChats();
-                case START_CHAT -> handleStartChat();
+                case CHECK_CHATS -> handleCheckChats(user);
+                case START_CHAT -> handleStartChat(user);
                 case CONFIGURATION -> System.out.println("Unimplemented");
                 case LOGOUT -> {
                     sessionContext.setUser(null);
@@ -71,7 +70,7 @@ public class HomePage {
 
     }
 
-    public void handleCheckChats(){
+    public void handleCheckChats(User user){
         System.out.println("====Your chats====");
         List<Chat> chatList = getUserChatsUseCase.execute(user.getUserId());
         for (int i = 0 ; i < chatList.size() ; i++){
@@ -88,13 +87,15 @@ public class HomePage {
 
     }
 
-    public void handleStartChat(){
+    public void handleStartChat(User user){
         System.out.println("====Adding new chat====");
         String username = input.readString("Please insert the username");
 
         try{
             User newUser = findUserByUserNameUseCase.execute(user.getUserId() , username);
-            Chat chat = createChatUseCase.execute(this.user.getUserId() , newUser.getUserId());
+            Chat chat = createChatUseCase.execute(user.getUserId() , newUser.getUserId());
+            //need to implement the chat logic
+
         } catch(DomainException e){
             System.out.println(messageProvider.getError(e));
         }
