@@ -10,7 +10,7 @@ import AppPro.infrastructure.utils.MessageProvider;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WelcomePage {
+public class WelcomePage implements CLIPage {
 
     private final InputPort input;
     private final MessageProvider messageProvider;
@@ -31,7 +31,7 @@ public class WelcomePage {
         this.sessionContext = sessionContext;
     }
 
-    public void show(Runnable exitCallBack){
+    public void show(){
         System.out.println("Welcome to chat");
         System.out.println("Please, choose an option");
         System.out.println("1.Log In\n2.Create Account\n0.Exit");
@@ -40,7 +40,6 @@ public class WelcomePage {
         switch (selection){
             case LOGIN -> handleLogIn();
             case CREATE_ACCOUNT -> handleCreateAccount();
-            case EXIT -> exitCallBack.run(); //the interface Runnable gives only one method, we define it like the reference of exit method
         }
     }
 
