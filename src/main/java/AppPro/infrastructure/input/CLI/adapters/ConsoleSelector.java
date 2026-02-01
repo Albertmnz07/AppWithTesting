@@ -2,6 +2,8 @@ package AppPro.infrastructure.input.CLI.adapters;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
@@ -23,6 +25,34 @@ public class ConsoleSelector {
     public ConsoleSelector addItem(Runnable action , String label){
         itemList.add(new MenuItem(action , label));
         return this;
+    }
+
+    public void show(){
+        int selectedItem = 0;
+        boolean running = true;
+
+        while (running){
+
+            try{
+                render(selectedItem);
+
+                KeyStroke stroke = screen.readInput();
+                KeyType type = stroke.getKeyType();
+
+                switch (type){
+                    case ArrowUp -> selectedItem = selectedItem == 0 ? itemList.size() - 1 : selectedItem + 1;
+                    case ArrowDown -> selectedItem = selectedItem == itemList.size() - 1 ? 0 : selectedItem - 1;
+                    case Enter -> {
+                        itemList.get(selectedItem).action().run();
+                        running = false;
+                    }
+                    case Escape -> running = false;
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void render(int selectedItem) throws IOException {
