@@ -1,4 +1,4 @@
-package AppPro.infrastructure.input;
+package AppPro.infrastructure.input.CLI;
 
 import AppPro.infrastructure.input.CLI.pages.CLIPage;
 import com.googlecode.lanterna.screen.Screen;
