@@ -20,6 +20,16 @@ public class ConsoleScrollingForm {
         clear();
     }
 
+    public void printLine(String prompt , TextColor color){
+        tg.setForegroundColor(color);
+        tg.putString(0 , currentY++ , prompt);
+        refresh();
+    }
+
+    public void printLine(String prompt){
+        printLine(prompt , TextColor.ANSI.WHITE);
+    }
+
     public void checkScroll(){
         TerminalSize size = screen.getTerminalSize();
         int rows = size.getRows();
