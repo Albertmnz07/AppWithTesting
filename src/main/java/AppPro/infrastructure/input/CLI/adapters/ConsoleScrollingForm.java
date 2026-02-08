@@ -4,11 +4,15 @@ package AppPro.infrastructure.input.CLI.adapters;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
 
 public class ConsoleScrollingForm {
+
+    public static final int X = 1;
 
     private final Screen screen;
     private final TextGraphics tg;
@@ -22,12 +26,73 @@ public class ConsoleScrollingForm {
 
     public void printLine(String prompt , TextColor color){
         tg.setForegroundColor(color);
-        tg.putString(0 , currentY++ , prompt);
+        tg.putString(X , currentY++ , prompt);
         refresh();
     }
 
     public void printLine(String prompt){
         printLine(prompt , TextColor.ANSI.WHITE);
+    }
+
+    public String readInput(String prompt , boolean isPassword){
+
+        checkScroll();
+        StringBuilder buffer = new StringBuilder();
+        int promptWidth = X + buffer.length() + 2; //+2 because ": "
+        int startX = promptWidth + 2; //point to star writing
+        boolean isWriting = true;
+
+        while (isWriting){
+
+            tg.setForegroundColor(TextColor.ANSI.CYAN);
+            tg.putString(X , currentY , prompt + ": ");
+            tg.setForegroundColor(TextColor.ANSI.WHITE);
+            String visibleString = isPassword ?
+                    "*".repeat(buffer.length()) :
+                    buffer.toString();
+            tg.putString(startX , currentY , visibleString + "_ ");
+
+            try {
+
+                KeyStroke stroke = screen.readInput();
+                KeyType key = stroke.getKeyType();
+
+                switch(key){
+                    case Enter -> {
+                        tg.putString(startX , currentY , visibleString + " ");
+                        currentY++;
+                        isWriting = false;
+                    }
+
+                    case Escape -> {
+                        isWriting = false;
+                        return null;
+                    }
+
+                    case Backspace -> {
+                        if (buffer.length() > 0){
+                            buffer.deleteCharAt(buffer.length() - 1);
+                            tg.putString(startX + buffer.length() - 1 , currentY , " ");
+                        }
+                    }
+
+                    default -> {
+                        if (stroke.getCharacter() != null){
+                            buffer.append(stroke.getCharacter());
+                        }
+                    }
+                }
+
+
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        }
+
+        return buffer.toString();
     }
 
     public void checkScroll(){
