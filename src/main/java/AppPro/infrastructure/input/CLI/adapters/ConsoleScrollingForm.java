@@ -13,10 +13,11 @@ import java.io.IOException;
 public class ConsoleScrollingForm {
 
     public static final int X = 1;
+    public static final TextColor defaultColor = TextColor.ANSI.WHITE;
 
     private final Screen screen;
     private final TextGraphics tg;
-    private int currentY = 0;
+    private int currentY = 1;
 
     public ConsoleScrollingForm(Screen screen){
         this.screen = screen;
@@ -25,21 +26,21 @@ public class ConsoleScrollingForm {
     }
 
     public void printLine(String prompt , TextColor color){
+        checkScroll();
         tg.setForegroundColor(color);
         tg.putString(X , currentY++ , prompt);
         refresh();
     }
 
     public void printLine(String prompt){
-        printLine(prompt , TextColor.ANSI.WHITE);
+        printLine(prompt , defaultColor);
     }
 
     public String readInput(String prompt , boolean isPassword){
 
         checkScroll();
         StringBuilder buffer = new StringBuilder();
-        int promptWidth = X + buffer.length() + 2; //+2 because ": "
-        int startX = promptWidth + 2; //point to star writing
+        int startX = X + prompt.length() + 2; //point to star writing //+2 because ": "
         boolean isWriting = true;
 
         while (isWriting){
@@ -100,7 +101,7 @@ public class ConsoleScrollingForm {
         int rows = size.getRows();
         int cols = size.getColumns();
 
-        if (rows >= currentY - 1){
+        if (currentY >= rows - 1){
             screen.scrollLines(0 , rows -1 , 1);
             currentY = rows - 2;
             tg.putString(2 , currentY , " ".repeat(cols));
