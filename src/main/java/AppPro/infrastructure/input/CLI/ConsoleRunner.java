@@ -1,6 +1,7 @@
 package AppPro.infrastructure.input.CLI;
 
 import AppPro.infrastructure.input.CLI.pages.WelcomePage;
+import AppPro.infrastructure.input.CLI.services.CLINavigator;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
