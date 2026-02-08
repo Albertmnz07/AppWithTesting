@@ -40,8 +40,8 @@ public class ConsoleSelector {
                 KeyType type = stroke.getKeyType();
 
                 switch (type){
-                    case ArrowUp -> selectedItem = selectedItem == 0 ? itemList.size() - 1 : selectedItem + 1;
-                    case ArrowDown -> selectedItem = selectedItem == itemList.size() - 1 ? 0 : selectedItem - 1;
+                    case ArrowUp -> selectedItem = selectedItem == 0 ? itemList.size() - 1 : selectedItem - 1;
+                    case ArrowDown -> selectedItem = selectedItem == itemList.size() - 1 ? 0 : selectedItem +1;
                     case Enter -> {
                         itemList.get(selectedItem).action().run();
                         running = false;
