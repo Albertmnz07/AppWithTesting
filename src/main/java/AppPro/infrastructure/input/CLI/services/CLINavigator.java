@@ -13,9 +13,8 @@ public class CLINavigator {
     private final ApplicationContext context;
     private final Stack<Class<? extends CLIPage>> history = new Stack<>();
 
-    public CLINavigator(ApplicationContext context, Screen screen) {
+    public CLINavigator(ApplicationContext context) {
         this.context = context;
-        this.screen = screen;
     }
 
     public void goToPage(Class<? extends CLIPage> page){
