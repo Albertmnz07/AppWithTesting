@@ -4,10 +4,12 @@ import AppPro.domain.exceptions.DomainException;
 import AppPro.infrastructure.input.CLI.adapters.ConsoleScrollingForm;
 import AppPro.infrastructure.utils.MessageProvider;
 import com.googlecode.lanterna.TextColor;
+import org.springframework.stereotype.Service;
 
 /**
  * Orchestrates the visual representation of messages and errors using colors.
  */
+@Service
 public class LanternaMessagePresenter {
 
     private final MessageProvider messageProvider;
