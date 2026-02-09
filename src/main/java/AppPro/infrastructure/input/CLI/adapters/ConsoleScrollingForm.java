@@ -54,6 +54,8 @@ public class ConsoleScrollingForm {
                     buffer.toString();
             tg.putString(startX , currentY , visibleString + "_ ");
 
+            refresh();
+
             try {
 
                 KeyStroke stroke = screen.readInput();
