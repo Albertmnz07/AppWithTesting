@@ -26,16 +26,16 @@ public class LoginPage extends AbstractFormPage {
 
     @Override
     public void onShow(ConsoleScrollingForm form) {
-        boolean inLogin = false;
+        boolean inLogin = true;
         while (inLogin){
 
-            String userName = form.readInput("Username" , false);
-            String password = form.readInput("Password" , false);
+            String userName = readInputOrBack(form , "Username" , false);
+            String password = readInputOrBack(form , "Password" , false);
 
             try{
 
                 User user = logInUseCase.execute(userName , password);
-                //navigate to user main menu
+                System.out.println("Success login");
 
             } catch(DomainException e){
                 ui.showError(form , e);
