@@ -9,7 +9,7 @@ import java.util.Locale;
 @Component
 public class MessageProvider {
 
-    //public static Locale currentLocale = new Locale("es");
+    public static Locale currentLocale = new Locale("en");
     private final MessageSource messageSource;
 
     public MessageProvider(MessageSource messageSource){
