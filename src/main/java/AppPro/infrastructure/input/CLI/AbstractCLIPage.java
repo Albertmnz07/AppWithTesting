@@ -33,11 +33,11 @@ public abstract class AbstractCLIPage implements CLIPage {
         this.navigator = navigator;
     }
 
-    public abstract void onShow();
+    public abstract void runSafe();
 
     public void show(){
         try{
-            onShow();
+            runSafe();
         } catch(BackNavigationException e){
             navigator.goBack();
         }
