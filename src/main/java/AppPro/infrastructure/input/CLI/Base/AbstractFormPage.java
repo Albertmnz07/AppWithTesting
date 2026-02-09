@@ -1,0 +1,21 @@
+package AppPro.infrastructure.input.CLI.Base;
+
+import AppPro.infrastructure.input.CLI.AbstractCLIPage;
+import AppPro.infrastructure.input.CLI.adapters.ConsoleScrollingForm;
+import AppPro.infrastructure.input.CLI.services.CLINavigator;
+import AppPro.infrastructure.input.CLI.services.UIManager;
+
+public abstract class AbstractFormPage extends AbstractCLIPage {
+
+    public AbstractFormPage(UIManager ui, CLINavigator navigator) {
+        super(ui, navigator);
+    }
+
+    @Override
+    public void runSafe() {
+        ConsoleScrollingForm form = ui.createForm();
+        onShow(form);
+    }
+
+    public abstract void onShow(ConsoleScrollingForm form);
+}
