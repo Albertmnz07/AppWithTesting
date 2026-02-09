@@ -63,18 +63,20 @@ public class ConsoleSelector {
         screen.clear();
         TextGraphics tg = screen.newTextGraphics();
 
-        tg.setForegroundColor(TextColor.ANSI.BLACK);
+        tg.setForegroundColor(TextColor.ANSI.CYAN);
         tg.putString(1 , 1, title);
 
+        int startRow = 2;
+
         for (int i = 0 ; i < itemList.size() ; i++){
-            if (i == selectedItem){
+            if (i != selectedItem){
                 tg.setBackgroundColor(TextColor.ANSI.BLACK);
                 tg.setForegroundColor(TextColor.ANSI.WHITE);
-                tg.putString(1 , 1 + i , itemList.get(i).label());
+                tg.putString(1 , startRow + i , itemList.get(i).label());
             } else{
                 tg.setBackgroundColor(TextColor.ANSI.WHITE);
                 tg.setForegroundColor(TextColor.ANSI.BLACK);
-                tg.putString(1 , 1 + i , itemList.get(i).label());
+                tg.putString(1 , startRow + i , itemList.get(i).label());
             }
         }
 
