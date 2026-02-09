@@ -5,68 +5,26 @@ import AppPro.application.usecases.user.CreateUserUseCase;
 import AppPro.application.usecases.user.LogInUseCase;
 import AppPro.domain.entities.User;
 import AppPro.domain.exceptions.DomainException;
+import AppPro.infrastructure.input.CLI.AbstractCLIPage;
+import AppPro.infrastructure.input.CLI.Base.AbstractSelectorPage;
+import AppPro.infrastructure.input.CLI.services.CLINavigator;
+import AppPro.infrastructure.input.CLI.services.UIManager;
 import AppPro.infrastructure.input.CLI.utils.SessionContext;
 import AppPro.infrastructure.utils.MessageProvider;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WelcomePage implements CLIPage {
+public class WelcomePage extends AbstractSelectorPage {
 
-    private final InputPort input;
-    private final MessageProvider messageProvider;
-    private final LogInUseCase logInUseCase;
-    private final CreateUserUseCase createUserUseCase;
-    private final SessionContext sessionContext;
-
-    public static final int LOGIN = 1;
-    public static final int CREATE_ACCOUNT = 2;
-    public static final int EXIT = 0;
-
-    public WelcomePage(InputPort input , MessageProvider messageProvider , CreateUserUseCase createUserUseCase , LogInUseCase logInUseCase
-    , SessionContext sessionContext){
-        this.input = input;
-        this.messageProvider = messageProvider;
-        this.logInUseCase = logInUseCase;
-        this.createUserUseCase = createUserUseCase;
-        this.sessionContext = sessionContext;
+    public WelcomePage(UIManager ui, CLINavigator navigator) {
+        super(ui, navigator);
     }
 
-    public void show(){
-        System.out.println("Welcome to chat");
-        System.out.println("Please, choose an option");
-        System.out.println("1.Log In\n2.Create Account\n0.Exit");
-        int selection = input.readInt("Option");
-
-        switch (selection){
-            case LOGIN -> handleLogIn();
-            case CREATE_ACCOUNT -> handleCreateAccount();
-        }
-    }
-
-    public void  handleLogIn(){
-        System.out.println("LOG IN");
-        String username = input.readString("Username");
-        String password = input.readString("Password");
-
-        try{
-            User user = logInUseCase.execute(username , password);
-            System.out.println("Login successful");
-            sessionContext.setUser(user);
-        } catch (DomainException e){
-            System.out.println(messageProvider.getError(e));
-        }
-    }
-
-    public void handleCreateAccount(){
-        System.out.println("Create Account");
-        String username = input.readString("Username");
-        String password = input.readString("Password");
-
-        try{
-            User user = createUserUseCase.execute(username , password);
-            sessionContext.setUser(user);
-        } catch (DomainException e){
-            System.out.println(messageProvider.getError(e));
-        }
+    @Override
+    public void onShow() {
+        createSelector("Welcome, choose an option").
+                addItem(() -> navigator.goToPage(LoginPage.class) , "Login")
+                .addItem(() -> System.out.println("Create") , "Create account")
+                .show();
     }
 }
