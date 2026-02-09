@@ -4,10 +4,11 @@ import AppPro.infrastructure.input.CLI.pages.CLIPage;
 import com.googlecode.lanterna.screen.Screen;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Stack;
 
-@Component
+@Service
 public class CLINavigator {
 
     private final ApplicationContext context;
