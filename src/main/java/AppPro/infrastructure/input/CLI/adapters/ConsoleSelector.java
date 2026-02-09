@@ -1,5 +1,6 @@
 package AppPro.infrastructure.input.CLI.adapters;
 
+import AppPro.infrastructure.input.CLI.exceptions.BackNavigationException;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -46,7 +47,10 @@ public class ConsoleSelector {
                         itemList.get(selectedItem).action().run();
                         running = false;
                     }
-                    case Escape -> running = false;
+                    case Escape ->{
+                        running = false;
+                        throw new BackNavigationException();
+                    }
                 }
 
             } catch (IOException e) {

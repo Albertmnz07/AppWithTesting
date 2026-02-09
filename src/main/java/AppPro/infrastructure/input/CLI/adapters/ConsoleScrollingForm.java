@@ -1,6 +1,7 @@
 package AppPro.infrastructure.input.CLI.adapters;
 
 
+import AppPro.infrastructure.input.CLI.exceptions.BackNavigationException;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -67,7 +68,7 @@ public class ConsoleScrollingForm {
 
                     case Escape -> {
                         isWriting = false;
-                        return null;
+                        throw new BackNavigationException();
                     }
 
                     case Backspace -> {
