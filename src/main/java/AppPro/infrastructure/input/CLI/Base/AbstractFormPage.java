@@ -18,4 +18,8 @@ public abstract class AbstractFormPage extends AbstractCLIPage {
     }
 
     public abstract void onShow(ConsoleScrollingForm form);
+
+    protected String readInputOrBack(ConsoleScrollingForm form, String prompt, boolean isPassword) {
+        return form.readInput(prompt, isPassword);
+    }
 }
