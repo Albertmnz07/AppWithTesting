@@ -1,5 +1,6 @@
 package AppPro.infrastructure.input.CLI;
 
+import AppPro.infrastructure.input.CLI.exceptions.BackNavigationException;
 import AppPro.infrastructure.input.CLI.pages.CLIPage;
 import AppPro.infrastructure.input.CLI.services.CLINavigator;
 import AppPro.infrastructure.input.CLI.services.UIManager;
@@ -30,5 +31,15 @@ public abstract class AbstractCLIPage implements CLIPage {
     public AbstractCLIPage(UIManager ui, CLINavigator navigator) {
         this.ui = ui;
         this.navigator = navigator;
+    }
+
+    public abstract void onShow();
+
+    public void show(){
+        try{
+            onShow();
+        } catch(BackNavigationException e){
+            navigator.goBack();
+        }
     }
 }
