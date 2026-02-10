@@ -1,6 +1,5 @@
-package AppPro.infrastructure.input.CLI.Base;
+package AppPro.infrastructure.input.CLI.base;
 
-import AppPro.infrastructure.input.CLI.AbstractCLIPage;
 import AppPro.infrastructure.input.CLI.adapters.ConsoleSelector;
 import AppPro.infrastructure.input.CLI.services.CLINavigator;
 import AppPro.infrastructure.input.CLI.services.UIManager;

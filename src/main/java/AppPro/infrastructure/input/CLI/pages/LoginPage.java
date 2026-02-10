@@ -3,7 +3,7 @@ package AppPro.infrastructure.input.CLI.pages;
 import AppPro.application.usecases.user.LogInUseCase;
 import AppPro.domain.entities.User;
 import AppPro.domain.exceptions.DomainException;
-import AppPro.infrastructure.input.CLI.Base.AbstractFormPage;
+import AppPro.infrastructure.input.CLI.base.AbstractFormPage;
 import AppPro.infrastructure.input.CLI.adapters.ConsoleScrollingForm;
 import AppPro.infrastructure.input.CLI.services.CLINavigator;
 import AppPro.infrastructure.input.CLI.services.UIManager;

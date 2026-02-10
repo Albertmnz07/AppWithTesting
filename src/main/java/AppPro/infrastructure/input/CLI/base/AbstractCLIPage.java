@@ -1,4 +1,4 @@
-package AppPro.infrastructure.input.CLI;
+package AppPro.infrastructure.input.CLI.base;
 
 import AppPro.infrastructure.input.CLI.exceptions.BackNavigationException;
 import AppPro.infrastructure.input.CLI.pages.CLIPage;

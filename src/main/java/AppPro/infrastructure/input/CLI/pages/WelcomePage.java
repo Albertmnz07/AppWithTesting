@@ -1,6 +1,6 @@
 package AppPro.infrastructure.input.CLI.pages;
 
-import AppPro.infrastructure.input.CLI.Base.AbstractSelectorPage;
+import AppPro.infrastructure.input.CLI.base.AbstractSelectorPage;
 import AppPro.infrastructure.input.CLI.services.CLINavigator;
 import AppPro.infrastructure.input.CLI.services.UIManager;
 import org.springframework.stereotype.Component;
