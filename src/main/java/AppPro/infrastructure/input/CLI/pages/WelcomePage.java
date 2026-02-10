@@ -17,6 +17,7 @@ public class WelcomePage extends AbstractSelectorPage {
         createSelector("Welcome, choose an option").
                 addItem(() -> navigator.goToPage(LoginPage.class) , "Login")
                 .addItem(() -> System.out.println("Create") , "Create account")
+                .addItem(navigator::goBack, "Exit")
                 .show();
     }
 }
