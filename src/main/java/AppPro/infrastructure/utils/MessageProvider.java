@@ -9,15 +9,19 @@ import java.util.Locale;
 @Component
 public class MessageProvider {
 
-    public static Locale currentLocale = new Locale("en");
+    public Locale currentLocale = Locale.of("en");
     private final MessageSource messageSource;
 
     public MessageProvider(MessageSource messageSource){
         this.messageSource = messageSource;
     }
 
-    private Locale getCurrentLocale(){
-        return Locale.getDefault();
+    public Locale getCurrentLocale(){
+        return currentLocale;
+    }
+
+    public void setCurrentLocale(Locale currentLocale) {
+        this.currentLocale = currentLocale;
     }
 
     public String getError(DomainException code){
