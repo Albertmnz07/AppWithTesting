@@ -5,7 +5,6 @@ import AppPro.infrastructure.input.CLI.adapters.ConsoleScrollingForm;
 import AppPro.infrastructure.input.CLI.adapters.ConsoleSelector;
 import AppPro.infrastructure.input.CLI.utils.LanternaMessagePresenter;
 import com.googlecode.lanterna.screen.Screen;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 //Manager independent from displays technology
