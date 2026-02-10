@@ -1,6 +1,7 @@
 package AppPro.application.usecases.user;
 
 import AppPro.domain.entities.User;
+import AppPro.domain.exceptions.password.PasswordMismatchException;
 import AppPro.domain.exceptions.user.UserNameAlreadyExistsException;
 import AppPro.domain.repositories.UserRepository;
 import AppPro.domain.valueObject.Password;
@@ -17,11 +18,16 @@ public class CreateUserUseCase {
         this.userRepository = userRepository;
     }
 
-    public User execute(String userNameString , String passwordString){
+    public User execute(String userNameString , String passwordString , String confirmPasswordString){
 
         UserName userName = new UserName(userNameString);
         Password password = new Password(passwordString);
+        Password confirmPassword = new Password(confirmPasswordString);
         UserId userId = UserId.generate();
+
+        if (!password.equals(confirmPassword)){
+            throw new PasswordMismatchException();
+        }
 
         User user = new User(userName , password , userId);
 
