@@ -6,7 +6,9 @@ import AppPro.infrastructure.input.CLI.adapters.ConsoleScrollingForm;
 import AppPro.infrastructure.input.CLI.base.AbstractFormPage;
 import AppPro.infrastructure.input.CLI.services.CLINavigator;
 import AppPro.infrastructure.input.CLI.services.UIManager;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreateUserPage extends AbstractFormPage {
 
     private final CreateUserUseCase createUserUseCase;
