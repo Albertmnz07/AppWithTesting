@@ -1,13 +1,13 @@
 package AppPro.infrastructure.persistence.inmemory;
 
+import AppPro.domain.entities.Chat;
 import AppPro.domain.entities.User;
 import AppPro.domain.repositories.UserRepository;
 import AppPro.domain.valueObject.UserId;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Repository
 public class FakeUserRepository implements UserRepository {
@@ -27,4 +27,11 @@ public class FakeUserRepository implements UserRepository {
         return storage.values().stream().filter(user -> user.getUserName().getValue().equals(userName)).findFirst();
     }
 
+    @Override
+    public Set<User> findAllByUserName(String userNamePart) {
+        return storage.values().stream()
+                .filter(user -> user.getUserName().getValue().startsWith(userNamePart))
+                .sorted(Comparator.comparingInt(user -> user.getUserName().getValue().length()))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+    }
 }
