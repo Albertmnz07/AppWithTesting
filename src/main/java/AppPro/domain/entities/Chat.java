@@ -10,8 +10,6 @@ public class Chat {
     private final UserId userB;
     private final ChatId chatId;
 
-    public static final String SAME_USER_ERROR = "Both users in chat must be different";
-
     public Chat(UserId userA , UserId userB , ChatId chatId){
 
         if (userA.equals(userB)){
