@@ -1,8 +1,12 @@
 package AppPro.infrastructure.input.CLI.adapters;
 
+import AppPro.infrastructure.input.CLI.exceptions.BackNavigationException;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.BasicCharacterPattern;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
@@ -37,6 +41,35 @@ public class SearchSelector<T> {
         this.searchProvider = searchProvider;
         this.labelProvider = labelProvider;
         this.onSelectAction = onSelectAction;
+    }
+
+    public void show() throws IOException{
+        refreshResults(); //update variables
+
+        while(true){
+            render(); //paint the current state
+
+            KeyStroke key = screen.readInput();
+            KeyType type = key.getKeyType();
+
+            switch(type){
+                case Escape -> throw new BackNavigationException();
+                case ArrowUp -> moveSelection(1);
+                case ArrowDown -> moveSelection(-1);
+                case Backspace -> {
+                    if (!currentQuery.isEmpty()){
+                        currentQuery = currentQuery.substring(0 , currentQuery.length() - 1);
+                        refreshResults();
+                    }
+                }
+                case Character -> {
+                    currentQuery = currentQuery + key.getCharacter();
+                    refreshResults();
+                }
+            }
+
+
+        }
     }
 
     private void refreshResults(){
