@@ -22,8 +22,8 @@ public class SearchSelector<T> {
     private final TextGraphics tg;
 
     //providers
-    private final Function<String , List<T>> searchProvider;
-    private final Function<T , String> labelProvider;
+    private final Function<String, List<T>> searchProvider;
+    private final Function<T, String> labelProvider;
     private final Consumer<T> onSelectAction;
 
     //component state
@@ -43,70 +43,85 @@ public class SearchSelector<T> {
         this.onSelectAction = onSelectAction;
     }
 
-    public void show() throws IOException{
+    public void show() throws IOException {
         refreshResults(); //update variables
 
-        while(true){
-            render(); //paint the current state
+        boolean running = true;
+        while (running) {
+            try {
 
-            KeyStroke key = screen.readInput();
-            KeyType type = key.getKeyType();
+                render(); //paint the current state
 
-            switch(type){
-                case Escape -> throw new BackNavigationException();
-                case ArrowUp -> moveSelection(1);
-                case ArrowDown -> moveSelection(-1);
-                case Backspace -> {
-                    if (!currentQuery.isEmpty()){
-                        currentQuery = currentQuery.substring(0 , currentQuery.length() - 1);
+                KeyStroke key = screen.readInput();
+                if (key == null) continue;
+                KeyType type = key.getKeyType();
+
+                switch (type) {
+                    case Escape -> {
+                        running = false;
+                        throw new BackNavigationException();
+                    }
+                    case Enter -> executeSelection();
+                    case ArrowUp -> moveSelection(1);
+                    case ArrowDown -> moveSelection(-1);
+                    case Backspace -> {
+                        if (!currentQuery.isEmpty()) {
+                            currentQuery = currentQuery.substring(0, currentQuery.length() - 1);
+                            refreshResults();
+                        }
+                    }
+                    case Character -> {
+                        currentQuery = currentQuery + key.getCharacter();
                         refreshResults();
                     }
                 }
-                case Character -> {
-                    currentQuery = currentQuery + key.getCharacter();
-                    refreshResults();
-                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                running = false;
             }
 
 
         }
     }
 
-    private void refreshResults(){
+    private void refreshResults() {
         List<T> rawResults = searchProvider.apply(currentQuery);
 
         rawResults.sort(Comparator.comparingInt(item -> labelProvider.apply(item).length()));
 
         this.currentResults = rawResults;
-
         this.selectedItem = 0;
         this.scrollOffset = 0;
     }
 
-    private void moveSelection(int delta){
-        if (currentResults.isEmpty()){
+    private void moveSelection(int delta) {
+        if (currentResults.isEmpty()) {
             return;
         }
 
         int newIndex = selectedItem + delta;
+        int maxIndex = currentResults.size() - 1;
 
-        if (newIndex >= 0 && newIndex <= currentResults.size()){
-            selectedItem = newIndex;
+        if(newIndex < 0) newIndex = 0;
+        if (newIndex > maxIndex) newIndex = maxIndex;
 
-            int visibleRows = screen.getTerminalSize().getRows() - 4;
+        selectedItem = newIndex;
+        chekScroll();
 
-            if (selectedItem >= scrollOffset + visibleRows){
-                scrollOffset = selectedItem - visibleRows + 1;
-            }
+    }
 
-            if (selectedItem < scrollOffset){
-                scrollOffset = selectedItem;
-            }
+    private void chekScroll(){
+        int visibleRows = screen.getTerminalSize().getRows() - 4;
+
+        if (selectedItem < scrollOffset){
+            scrollOffset = selectedItem;
+        } else if (selectedItem >= scrollOffset + visibleRows){
+            scrollOffset = selectedItem - visibleRows + 1;
         }
     }
 
-    private void executeSelection(){
-        if (!currentResults.isEmpty() && selectedItem >= 0 && selectedItem < currentResults.size()){
+    private void executeSelection() {
+        if (!currentResults.isEmpty() && selectedItem >= 0 && selectedItem < currentResults.size()) {
             T selectedItem = currentResults.get(this.selectedItem);
             onSelectAction.accept(selectedItem);
         }
@@ -116,31 +131,33 @@ public class SearchSelector<T> {
         screen.clear();
 
         tg.setForegroundColor(TextColor.ANSI.CYAN);
-        tg.putString(2 , 1 , "Search: " + currentQuery + "_");
+        tg.putString(2, 1, "Search: " + currentQuery + "_");
 
         tg.setForegroundColor(TextColor.ANSI.WHITE);
-        tg.putString(2 , 2 , "-".repeat(screen.getTerminalSize().getColumns()));
+        tg.putString(2, 2, "-".repeat(screen.getTerminalSize().getColumns()));
 
         int startRow = 3;
         int maxRows = screen.getTerminalSize().getRows() - 4;
 
-        for (int i = 0 ; i < maxRows; i++){
+        for (int i = 0; i < maxRows; i++) {
             int itemIndex = scrollOffset + i;
 
-            if (itemIndex >= currentResults.size()){break;}
+            if (itemIndex >= currentResults.size()) {
+                break;
+            }
 
             String label = labelProvider.apply(currentResults.get(itemIndex));
 
-            if (itemIndex == selectedItem){
+            if (itemIndex == selectedItem) {
                 tg.enableModifiers(SGR.REVERSE);
                 tg.putString(4, startRow + i, "-> " + label);
                 tg.disableModifiers(SGR.REVERSE);
-            } else{
-                tg.putString(2 , itemIndex , label);
+            } else {
+                tg.putString(2, itemIndex, label);
             }
         }
 
-        if (currentResults.isEmpty()){
+        if (currentResults.isEmpty()) {
             tg.setForegroundColor(TextColor.ANSI.RED);
             tg.putString(4, startRow, "(No results)");
         }
