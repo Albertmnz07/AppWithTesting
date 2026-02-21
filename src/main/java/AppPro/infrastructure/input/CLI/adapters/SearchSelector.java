@@ -21,7 +21,7 @@ public class SearchSelector<T> {
 
     //component state
     private String currentQuery = "";
-    private List<T> currentRestults = new ArrayList<>();
+    private List<T> currentResults = new ArrayList<>();
     private int selectedItem = 0;
     private int scrollOffset = 0;
 
@@ -41,11 +41,39 @@ public class SearchSelector<T> {
 
         rawResults.sort(Comparator.comparingInt(item -> labelProvider.apply(item).length()));
 
-        this.currentRestults = rawResults;
+        this.currentResults = rawResults;
 
         this.selectedItem = 0;
         this.scrollOffset = 0;
     }
 
+    private void moveSelection(int delta){
+        if (currentResults.isEmpty()){
+            return;
+        }
+
+        int newIndex = selectedItem + delta;
+
+        if (newIndex >= 0 && newIndex <= currentResults.size()){
+            selectedItem = newIndex;
+
+            int visibleRows = screen.getTerminalSize().getRows() - 4;
+
+            if (selectedItem >= scrollOffset + visibleRows){
+                scrollOffset = selectedItem - visibleRows + 1;
+            }
+
+            if (selectedItem < scrollOffset){
+                scrollOffset = selectedItem;
+            }
+        }
+    }
+
+    private void executeSelection(){
+        if (!currentResults.isEmpty() && selectedItem >= 0 && selectedItem < currentResults.size()){
+            T selectedItem = currentResults.get(this.selectedItem);
+            onSelectAction.accept(selectedItem);
+        }
+    }
 
 }
