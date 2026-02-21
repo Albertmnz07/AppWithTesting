@@ -1,8 +1,11 @@
 package AppPro.infrastructure.input.CLI.adapters;
 
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -75,5 +78,42 @@ public class SearchSelector<T> {
             onSelectAction.accept(selectedItem);
         }
     }
+
+    private void render() throws IOException {
+        screen.clear();
+
+        tg.setForegroundColor(TextColor.ANSI.CYAN);
+        tg.putString(2 , 1 , "Search: " + currentQuery + "_");
+
+        tg.setForegroundColor(TextColor.ANSI.WHITE);
+        tg.putString(2 , 2 , "-".repeat(screen.getTerminalSize().getColumns()));
+
+        int startRow = 3;
+        int maxRows = screen.getTerminalSize().getRows() - 4;
+
+        for (int i = 0 ; i < maxRows; i++){
+            int itemIndex = scrollOffset + i;
+
+            if (itemIndex >= currentResults.size()){break;}
+
+            String label = labelProvider.apply(currentResults.get(itemIndex));
+
+            if (itemIndex == selectedItem){
+                tg.enableModifiers(SGR.REVERSE);
+                tg.putString(4, startRow + i, "-> " + label);
+                tg.disableModifiers(SGR.REVERSE);
+            } else{
+                tg.putString(2 , itemIndex , label);
+            }
+        }
+
+        if (currentResults.isEmpty()){
+            tg.setForegroundColor(TextColor.ANSI.RED);
+            tg.putString(4, startRow, "(No results)");
+        }
+
+        screen.refresh();
+    }
+
 
 }
