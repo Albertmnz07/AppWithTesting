@@ -43,7 +43,7 @@ public class SearchSelector<T> {
         this.onSelectAction = onSelectAction;
     }
 
-    public void show() throws IOException {
+    public void show() {
         refreshResults(); //update variables
 
         boolean running = true;
