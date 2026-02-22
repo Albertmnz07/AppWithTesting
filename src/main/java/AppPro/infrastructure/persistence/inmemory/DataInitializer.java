@@ -28,8 +28,27 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        userRepository.save(new User(new UserName("Albert") , new Password("123") , UserId.generate()));
-        userRepository.save(new User(new UserName("Test") , new Password("123") , UserId.generate()));
+
+        userRepository.save(new User(new UserName("Al"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Alba"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Albert"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Alberto"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Alejandro"), new Password("123"), UserId.generate()));
+
+        userRepository.save(new User(new UserName("Ana"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Anabel"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Antonio"), new Password("123"), UserId.generate()));
+
+        userRepository.save(new User(new UserName("Bo"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Bea"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Belén"), new Password("123"), UserId.generate()));
+
+        userRepository.save(new User(new UserName("Carlos"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Cris"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("David"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Dan"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Elena"), new Password("123"), UserId.generate()));
+        userRepository.save(new User(new UserName("Edu"), new Password("123"), UserId.generate()));
 
     }
 }
