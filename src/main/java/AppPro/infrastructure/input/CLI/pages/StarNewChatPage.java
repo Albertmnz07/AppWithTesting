@@ -5,9 +5,11 @@ import AppPro.domain.service.UserFinder;
 import AppPro.infrastructure.input.CLI.base.AbstractSearchSelector;
 import AppPro.infrastructure.input.CLI.services.CLINavigator;
 import AppPro.infrastructure.input.CLI.services.UIManager;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class StarNewChatPage extends AbstractSearchSelector<User> {
 
     private final UserFinder userFinder;
@@ -30,5 +32,6 @@ public class StarNewChatPage extends AbstractSearchSelector<User> {
     @Override
     protected void onSelect(User item) {
         System.out.println("Get into chat with " + item.getUserName().getValue());
+        navigator.goBack();
     }
 }
