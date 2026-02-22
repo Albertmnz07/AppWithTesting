@@ -4,7 +4,6 @@ import AppPro.infrastructure.input.CLI.exceptions.BackNavigationException;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.BasicCharacterPattern;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -61,9 +60,12 @@ public class SearchSelector<T> {
                         running = false;
                         throw new BackNavigationException();
                     }
-                    case Enter -> executeSelection();
-                    case ArrowUp -> moveSelection(1);
-                    case ArrowDown -> moveSelection(-1);
+                    case Enter -> {
+                        running = false;
+                        executeSelection();
+                    }
+                    case ArrowUp -> moveSelection(-1);
+                    case ArrowDown -> moveSelection(1);
                     case Backspace -> {
                         if (!currentQuery.isEmpty()) {
                             currentQuery = currentQuery.substring(0, currentQuery.length() - 1);
@@ -106,11 +108,11 @@ public class SearchSelector<T> {
         if (newIndex > maxIndex) newIndex = maxIndex;
 
         selectedItem = newIndex;
-        chekScroll();
+        checkScroll();
 
     }
 
-    private void chekScroll(){
+    private void checkScroll(){
         int visibleRows = screen.getTerminalSize().getRows() - 4;
 
         if (selectedItem < scrollOffset){
@@ -153,7 +155,7 @@ public class SearchSelector<T> {
                 tg.putString(4, startRow + i, "-> " + label);
                 tg.disableModifiers(SGR.REVERSE);
             } else {
-                tg.putString(2, itemIndex, label);
+                tg.putString(2, startRow + i, label);
             }
         }
 
