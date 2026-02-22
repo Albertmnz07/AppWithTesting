@@ -4,6 +4,7 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -53,7 +54,11 @@ public class LanternaConfig {
      * @throws IOException cannot close application
      */
     public Terminal createTerminalBasedOnEnvironment() throws IOException {
+        Font defaultFont = new Font("Monospaced" , Font.PLAIN , 24);
+        SwingTerminalFontConfiguration fontConfiguration = SwingTerminalFontConfiguration.newInstance(defaultFont);
+
         DefaultTerminalFactory factory = new DefaultTerminalFactory();
+        factory.setTerminalEmulatorFontConfiguration(fontConfiguration);
 
         if (System.console() == null) { //there is no real console
 
