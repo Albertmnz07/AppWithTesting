@@ -28,10 +28,10 @@ public class FakeUserRepository implements UserRepository {
     }
 
     @Override
-    public Set<User> findAllByUserName(String userNamePart) {
+    public List<User> findAllByUserName(String userNamePart) {
         return storage.values().stream()
                 .filter(user -> user.getUserName().getValue().startsWith(userNamePart))
                 .sorted(Comparator.comparingInt(user -> user.getUserName().getValue().length()))
-                .collect(Collectors.toCollection(LinkedHashSet::new));
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }
