@@ -6,6 +6,7 @@ import AppPro.infrastructure.input.CLI.adapters.ConsoleScrollingForm;
 import AppPro.infrastructure.input.CLI.base.AbstractFormPage;
 import AppPro.infrastructure.input.CLI.services.CLINavigator;
 import AppPro.infrastructure.input.CLI.services.UIManager;
+import AppPro.infrastructure.input.CLI.utils.LanternaMessagePresenter;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,8 +14,8 @@ public class CreateUserPage extends AbstractFormPage {
 
     private final CreateUserUseCase createUserUseCase;
 
-    public CreateUserPage(UIManager ui, CLINavigator navigator, CreateUserUseCase createUserUseCase) {
-        super(ui, navigator);
+    public CreateUserPage(UIManager ui, CLINavigator navigator, CreateUserUseCase createUserUseCase , LanternaMessagePresenter presenter) {
+        super(ui, navigator , presenter);
         this.createUserUseCase = createUserUseCase;
     }
 
@@ -32,7 +33,7 @@ public class CreateUserPage extends AbstractFormPage {
                 createUserUseCase.execute(username , password , confirmPassword);
                 navigator.goBack();
             } catch (DomainException e){
-                ui.showError(form , e);
+                showError(form , e);
             }
 
         }

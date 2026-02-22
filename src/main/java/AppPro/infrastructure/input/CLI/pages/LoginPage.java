@@ -7,6 +7,7 @@ import AppPro.infrastructure.input.CLI.base.AbstractFormPage;
 import AppPro.infrastructure.input.CLI.adapters.ConsoleScrollingForm;
 import AppPro.infrastructure.input.CLI.services.CLINavigator;
 import AppPro.infrastructure.input.CLI.services.UIManager;
+import AppPro.infrastructure.input.CLI.utils.LanternaMessagePresenter;
 import AppPro.infrastructure.input.CLI.utils.SessionContext;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +17,8 @@ public class LoginPage extends AbstractFormPage {
     private final SessionContext sessionContext;
     private final LogInUseCase logInUseCase;
 
-    public LoginPage(UIManager ui, CLINavigator navigator, SessionContext sessionContext, LogInUseCase logInUseCase) {
-        super(ui, navigator);
+    public LoginPage(UIManager ui, CLINavigator navigator, SessionContext sessionContext, LogInUseCase logInUseCase , LanternaMessagePresenter presenter) {
+        super(ui, navigator , presenter);
         this.sessionContext = sessionContext;
         this.logInUseCase = logInUseCase;
     }
@@ -36,7 +37,7 @@ public class LoginPage extends AbstractFormPage {
                 System.out.println("Success login");
 
             } catch(DomainException e){
-                ui.showError(form , e);
+                showError(form , e);
             }
         }
     }

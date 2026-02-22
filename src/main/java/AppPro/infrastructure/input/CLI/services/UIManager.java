@@ -38,11 +38,4 @@ public class UIManager {
         return new SearchSelector<>(this.screen , searchProvider , labelProvider , onSelectedAction);
     }
 
-    public void showError(ConsoleScrollingForm form , DomainException e){
-        presenter.printError(form , e);
-    }
-
-    public void showInfo(ConsoleScrollingForm form , String key){
-        presenter.printInfo(form , key);
-    }
 }
