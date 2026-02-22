@@ -9,6 +9,8 @@ import com.googlecode.lanterna.screen.Screen;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 //Manager independent from displays technology
 @Service
@@ -30,7 +32,7 @@ public class UIManager {
         return new ConsoleScrollingForm(screen);
     }
 
-    public SearchSelector<T> createSearchSelector(Function<String , List<T>> searchProvider
+    public <T> SearchSelector<T> createSearchSelector(Function<String , List<T>> searchProvider
                                                   , Function<T , String> labelProvider
                                                   , Consumer<T> onSelectedAction){
         return new SearchSelector<>(this.screen , searchProvider , labelProvider , onSelectedAction);
