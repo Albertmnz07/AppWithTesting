@@ -28,7 +28,8 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        userRepository.save(new User(new UserName("Albert") , new Password("1234") , UserId.generate()));
+        userRepository.save(new User(new UserName("Albert") , new Password("123") , UserId.generate()));
+        userRepository.save(new User(new UserName("Test") , new Password("123") , UserId.generate()));
 
     }
 }
