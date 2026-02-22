@@ -34,7 +34,9 @@ public class LoginPage extends AbstractFormPage {
             try{
 
                 User user = logInUseCase.execute(userName , password);
-                System.out.println("Success login");
+                sessionContext.setUser(user);
+                inLogin = false;
+                navigator.goToPage(UserMenuPage.class);
 
             } catch(DomainException e){
                 showError(form , e);
