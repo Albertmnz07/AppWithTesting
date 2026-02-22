@@ -29,7 +29,7 @@ class FindUserByUserNameUseCaseTest {
 
     @Test
     void shouldGetUser(){
-        User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
+        User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD , TestConstants.PASSWORD);
 
         User foundUser = findUserByUserNameUseCase.execute(UserId.generate() , user.getUserName().getValue());
 
@@ -38,7 +38,7 @@ class FindUserByUserNameUseCaseTest {
 
     @Test
     void shouldThrowUserNotFoundException(){
-        User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
+        User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD , TestConstants.PASSWORD);
 
         UserNotFoundException error = assertThrows(UserNotFoundException.class,
                 () -> findUserByUserNameUseCase.execute(UserId.generate() , TestConstants.DF_USER_NAME));
@@ -48,7 +48,7 @@ class FindUserByUserNameUseCaseTest {
 
     @Test
     void shouldThrowUserSearchHimselfException(){
-        User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
+        User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD , TestConstants.PASSWORD);
 
         UserSearchHimSelfException error = assertThrows(UserSearchHimSelfException.class ,
                 () -> findUserByUserNameUseCase.execute(user.getUserId() , TestConstants.USER_NAME));

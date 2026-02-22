@@ -20,7 +20,7 @@ class LogInUseCaseTest {
         CreateUserUseCase createUserUseCase = new CreateUserUseCase(userRepository);
         LogInUseCase logInUseCase = new LogInUseCase(userRepository);
 
-        User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
+        User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD , TestConstants.PASSWORD);
         User loggedUser = logInUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
 
         assertEquals(user , loggedUser);
@@ -36,7 +36,7 @@ class LogInUseCaseTest {
             CreateUserUseCase createUserUseCase = new CreateUserUseCase(userRepository);
             LogInUseCase logInUseCase = new LogInUseCase(userRepository);
 
-            User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
+            User user = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD , TestConstants.PASSWORD);
 
             PasswordMismatchException error = assertThrows(PasswordMismatchException.class ,
                     () -> logInUseCase.execute(TestConstants.USER_NAME , TestConstants.DF_PASSWORD));

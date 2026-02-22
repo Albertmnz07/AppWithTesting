@@ -20,7 +20,7 @@ class CreateUserUseCaseTest {
         CreateUserUseCase createUserUseCase = new CreateUserUseCase(userRepository);
         String name = TestConstants.USER_NAME;
         String password = TestConstants.PASSWORD;
-        User user = createUserUseCase.execute(name , password);
+        User user = createUserUseCase.execute(name , password , password);
 
         assertEquals(name , user.getUserName().getValue());
         assertEquals(password , user.getPassword().getValue());
@@ -33,10 +33,10 @@ class CreateUserUseCaseTest {
         FakeUserRepository userRepository = new FakeUserRepository();
         CreateUserUseCase createUserUseCase = new CreateUserUseCase(userRepository);
 
-        User userA = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD);
+        User userA = createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD , TestConstants.PASSWORD);
 
         UserNameAlreadyExistsException error = assertThrows(UserNameAlreadyExistsException.class ,
-                () -> createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD));
+                () -> createUserUseCase.execute(TestConstants.USER_NAME , TestConstants.PASSWORD , TestConstants.PASSWORD));
 
         assertEquals(ErrorCode.USERNAME_ALREADY_EXISTS , error.getCode());
     }
