@@ -12,7 +12,11 @@ public class UserMenuPage extends AbstractSelectorPage {
 
     @Override
     public void onShow() {
-        createSelector("Select an option").show();
+        createSelector("Select an option")
+                .addItem(() -> System.out.println("Unimplemented") , "Check my chats")
+                .addItem(() -> System.out.println("Unimplemented") , "Star new chat")
+                .addItem(() -> System.out.println("Unimplemented") , "Star new chat")
+                .addItem(navigator::goBack, "Exit");
 
     }
 }
