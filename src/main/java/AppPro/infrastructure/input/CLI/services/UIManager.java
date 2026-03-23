@@ -1,6 +1,9 @@
 package AppPro.infrastructure.input.CLI.services;
 
+import AppPro.domain.entities.Message;
+import AppPro.domain.entities.User;
 import AppPro.domain.exceptions.DomainException;
+import AppPro.infrastructure.input.CLI.adapters.ChatAdapter;
 import AppPro.infrastructure.input.CLI.adapters.ConsoleScrollingForm;
 import AppPro.infrastructure.input.CLI.adapters.ConsoleSelector;
 import AppPro.infrastructure.input.CLI.adapters.SearchSelector;
@@ -36,6 +39,13 @@ public class UIManager {
                                                   , Function<T , String> labelProvider
                                                   , Consumer<T> onSelectedAction){
         return new SearchSelector<>(this.screen , searchProvider , labelProvider , onSelectedAction);
+    }
+
+    public ChatAdapter createChatAdapter(User currentUser,
+                                         String title,
+                                         List<Message> messages,
+                                         Consumer<String> onSendMessage){
+        return new ChatAdapter(this.screen , currentUser , title , messages , onSendMessage);
     }
 
 }
