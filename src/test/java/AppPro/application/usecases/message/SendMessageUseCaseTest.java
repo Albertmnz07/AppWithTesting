@@ -1,6 +1,6 @@
 package AppPro.application.usecases.message;
 
-import AppPro.application.usecases.chat.CreateChatUseCase;
+import AppPro.application.usecases.chat.GetOrCreateChatUseCase;
 import AppPro.domain.entities.Chat;
 import AppPro.domain.entities.Message;
 import AppPro.domain.error.ErrorCode;
@@ -26,13 +26,13 @@ class SendMessageUseCaseTest {
     MessageRepository messageRepository;
     SendMessageUseCase sendMessageUseCase;
     ChatRepository chatRepository;
-    CreateChatUseCase createChatUseCase;
+    GetOrCreateChatUseCase getOrCreateChatUseCase;
 
     @BeforeEach
     void setUp(){
         messageRepository = new FakeMessageRepository();
         chatRepository = new FakeChatRepository();
-        createChatUseCase = new CreateChatUseCase(chatRepository);
+        getOrCreateChatUseCase = new GetOrCreateChatUseCase(chatRepository);
         sendMessageUseCase = new SendMessageUseCase(messageRepository , chatRepository);
 
     }
@@ -62,7 +62,7 @@ class SendMessageUseCaseTest {
         UserId userA = UserId.generate();
         UserId userB = UserId.generate();
 
-        Chat chat = createChatUseCase.execute(userA , userB);
+        Chat chat = getOrCreateChatUseCase.execute(userA , userB);
 
         ChatNotFoundException error = assertThrows(ChatNotFoundException.class ,
                 () -> sendMessageUseCase.execute(ChatId.generate() , userA , TestConstants.MESSAGE));
@@ -75,7 +75,7 @@ class SendMessageUseCaseTest {
         UserId userA = UserId.generate();
         UserId userB = UserId.generate();
 
-        Chat chat = createChatUseCase.execute(userA , userB);
+        Chat chat = getOrCreateChatUseCase.execute(userA , userB);
 
         UserNotParticipantInChat error = assertThrows(UserNotParticipantInChat.class ,
                 () -> sendMessageUseCase.execute(chat.getChatId() , UserId.generate() , TestConstants.MESSAGE));

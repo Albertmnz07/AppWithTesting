@@ -15,13 +15,13 @@ class GetUserChatsUseCaseTest {
     FakeChatRepository chatRepository;
     UserId userId;
     GetUserChatsUseCase getUserChatsUseCase;
-    CreateChatUseCase createChatUseCase;
+    GetOrCreateChatUseCase getOrCreateChatUseCase;
 
     @BeforeEach
     void setUp(){
         chatRepository = new FakeChatRepository();
         getUserChatsUseCase = new GetUserChatsUseCase(chatRepository);
-        createChatUseCase = new CreateChatUseCase(chatRepository);
+        getOrCreateChatUseCase = new GetOrCreateChatUseCase(chatRepository);
         userId = UserId.generate();
         //user = new User(new UserName(TestConstants.USER_NAME) , new Password(TestConstants.PASSWORD) , UserId.generate());
     }
@@ -29,7 +29,7 @@ class GetUserChatsUseCaseTest {
     @Test
     void shouldGetChatList(){
 
-        Chat chat = createChatUseCase.execute(userId , UserId.generate());
+        Chat chat = getOrCreateChatUseCase.execute(userId , UserId.generate());
         List<Chat> chatList = getUserChatsUseCase.execute(userId);
 
         assertNotNull(chatList);

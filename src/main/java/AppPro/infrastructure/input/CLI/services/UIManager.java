@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 //Manager independent from displays technology
 @Service
@@ -43,9 +44,9 @@ public class UIManager {
 
     public ChatAdapter createChatAdapter(User currentUser,
                                          String title,
-                                         List<Message> messages,
+                                         Supplier<List<Message>> historyProvider,
                                          Consumer<String> onSendMessage){
-        return new ChatAdapter(this.screen , currentUser , title , messages , onSendMessage);
+        return new ChatAdapter(this.screen , currentUser , title , historyProvider , onSendMessage);
     }
 
 }

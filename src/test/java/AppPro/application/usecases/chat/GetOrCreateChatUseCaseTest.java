@@ -10,17 +10,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CreateChatUseCaseTest {
+class GetOrCreateChatUseCaseTest {
 
     FakeChatRepository chatRepository;
-    CreateChatUseCase createChatUseCase;
+    GetOrCreateChatUseCase getOrCreateChatUseCase;
     UserId userA;
     UserId userB;
 
     @BeforeEach
     void setUp(){
         chatRepository = new FakeChatRepository();
-        createChatUseCase = new CreateChatUseCase(chatRepository);
+        getOrCreateChatUseCase = new GetOrCreateChatUseCase(chatRepository);
         userA = UserId.generate();
         userB = UserId.generate();
     }
@@ -28,7 +28,7 @@ class CreateChatUseCaseTest {
     @Test
     void shouldCreateChat(){
 
-        Chat chat = createChatUseCase.execute(userA , userB);
+        Chat chat = getOrCreateChatUseCase.execute(userA , userB);
 
         assertNotNull(chat);
         assertEquals(userA , chat.getUserA());
@@ -39,11 +39,11 @@ class CreateChatUseCaseTest {
 
     @Test
     void shouldThrowChatAlreadyExistsException(){
-        Chat chat = createChatUseCase.execute(userA , userB);
+        Chat chat = getOrCreateChatUseCase.execute(userA , userB);
 
         ChatAlreadyExistsException error = assertThrows(
                 ChatAlreadyExistsException.class ,
-                () -> createChatUseCase.execute(userA , userB)
+                () -> getOrCreateChatUseCase.execute(userA , userB)
         );
 
         assertEquals(ErrorCode.CHAT_ALREADY_EXISTS , error.getCode());

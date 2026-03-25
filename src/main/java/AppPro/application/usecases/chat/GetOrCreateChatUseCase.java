@@ -8,27 +8,25 @@ import AppPro.domain.valueObject.UserId;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateChatUseCase {
+public class GetOrCreateChatUseCase {
 
     ChatRepository chatRepository;
 
-    public CreateChatUseCase(ChatRepository chatRepository){
+    public GetOrCreateChatUseCase(ChatRepository chatRepository){
         this.chatRepository = chatRepository;
     }
 
     public Chat execute(UserId userA , UserId userB){
+        var existingChat = chatRepository.findByUsersIds(userA , userB);
 
-        if (chatRepository.findByUsersIds(userA , userB).isPresent()){
-            throw new ChatAlreadyExistsException();
+        if (existingChat.isPresent()){
+            return existingChat.get();
         }
 
-        ChatId chatId = ChatId.generate();
+        Chat newChat = new Chat(userA, userB, ChatId.generate());
+        chatRepository.save(newChat);
 
-        Chat chat = new Chat(userA , userB , chatId);
-
-        chatRepository.save(chat);
-
-        return chat;
+        return newChat;
 
     }
 }

@@ -1,12 +1,12 @@
 package AppPro.infrastructure.persistence.inmemory;
 
+import AppPro.domain.entities.Chat;
+import AppPro.domain.entities.Message;
 import AppPro.domain.entities.User;
 import AppPro.domain.repositories.ChatRepository;
 import AppPro.domain.repositories.MessageRepository;
 import AppPro.domain.repositories.UserRepository;
-import AppPro.domain.valueObject.Password;
-import AppPro.domain.valueObject.UserId;
-import AppPro.domain.valueObject.UserName;
+import AppPro.domain.valueObject.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -80,6 +80,50 @@ public class DataInitializer implements CommandLineRunner {
         userRepository.save(new User(new UserName("Oscar"), new Password("123"), UserId.generate()));
         userRepository.save(new User(new UserName("Pablo"), new Password("123"), UserId.generate()));
         userRepository.save(new User(new UserName("Sara"), new Password("123"), UserId.generate()));
+
+
+        // 1. Definimos los usuarios
+        User userA = new User(new UserName("aaa"), new Password("111"), UserId.generate());
+        User userB = new User(new UserName("bbb"), new Password("111"), UserId.generate());
+        userRepository.save(userA);
+        userRepository.save(userB);
+
+// 2. Definimos el Chat
+        ChatId chatId = ChatId.generate();
+        Chat chat = new Chat(userA.getUserId(), userB.getUserId(), chatId);
+        chatRepository.save(chat);
+
+// 3. Generamos los mensajes siguiendo tu constructor:
+// (UserId senderId, MessageId messageId, MessageContent messageContent, ChatId chatId)
+
+        messageRepository.save(new Message(
+                userA.getUserId(), MessageId.generate(), new MessageContent("¡Hola bbb! ¿Cómo va la interfaz?"), chatId));
+
+        messageRepository.save(new Message(
+                userB.getUserId(), MessageId.generate(), new MessageContent("Buenas aaa. Pues probando los márgenes."), chatId));
+
+// Mensaje largo para probar el wrapping (salto de línea automático)
+        messageRepository.save(new Message(
+                userA.getUserId(),
+                MessageId.generate(),
+                new MessageContent("Oye, ¿has probado a escribir un texto que sea ridículamente largo para ver si el ChatAdapter lo corta bien o si se sale de la pantalla de Lanterna? Debería saltar de línea automáticamente."),
+                chatId));
+
+        messageRepository.save(new Message(
+                userB.getUserId(), MessageId.generate(), new MessageContent("Lo acabo de ver y se ajusta perfecto a la izquierda."), chatId));
+
+        messageRepository.save(new Message(
+                userA.getUserId(), MessageId.generate(), new MessageContent("Genial. Voy a mandar un par más para probar el scroll."), chatId));
+
+        messageRepository.save(new Message(
+                userA.getUserId(), MessageId.generate(), new MessageContent("Test de mensaje consecutivo 1"), chatId));
+
+        messageRepository.save(new Message(
+                userA.getUserId(), MessageId.generate(), new MessageContent("Test de mensaje consecutivo 2"), chatId));
+
+        messageRepository.save(new Message(
+                userB.getUserId(), MessageId.generate(), new MessageContent("Recibidos. Todo en orden por aquí."), chatId));
+
 
     }
 }

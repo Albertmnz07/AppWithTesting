@@ -24,14 +24,13 @@ public abstract class AbstractChatPage extends AbstractCLIPage {
         // 1. Recopilamos los datos necesarios mediante los métodos abstractos (Hooks)
         User currentUser = getCurrentUser();
         String chatTitle = getChatTitle();
-        List<Message> history = getMessageHistory();
 
         // 2. Creamos el adaptador visual
         // Nota: Delegamos la creación al UIManager para mantener la inyección de dependencias limpia
         ChatAdapter chatAdapter = ui.createChatAdapter(
                 currentUser,
                 chatTitle,
-                history,
+                this::getMessageHistory,
                 this::onSendMessage // Pasamos la acción de enviar como referencia a método
         );
 

@@ -6,14 +6,11 @@ import AppPro.domain.valueObject.ChatId;
 import AppPro.domain.valueObject.MessageId;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Repository
 public class FakeMessageRepository implements MessageRepository {
-    Map<MessageId , Message> storage = new HashMap<>();
+    Map<MessageId , Message> storage = new LinkedHashMap<>();
 
     @Override
     public void save(Message message) {
